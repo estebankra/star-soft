@@ -10,8 +10,20 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
+//= require js/jquery-1.10.2.js
+//= require js/bootstrap.min.js
+//= require materialize/js/materialize.min.js
+//= require js/jquery.metisMenu.js
+//= require js/morris/raphael-2.1.0.min.js
+//= require js/morris/morris.js
+//= require js/easypiechart.js
+//= require js/easypiechart-data.js
+//= require js/Lightweight-Chart/jquery.chart.js
+//= require js/custom-scripts.js
+//= require js/dataTables/jquery.dataTables.js
+
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require bootstrap-sprockets
 //= require_tree .

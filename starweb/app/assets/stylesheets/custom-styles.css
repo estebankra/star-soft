@@ -442,13 +442,13 @@ padding-top: 4px;
     padding-left: 55px;
 }
 .sidebar-collapse , .sidebar-collapse .nav{
-	background:none;
+	background:#233342;
 }
 .sidebar-collapse .nav {
 	padding:0;
 }
 .sidebar-collapse .nav > li > a {
-	color: rgba(255, 255, 255, 0.39);
+	/*color: rgba(255, 255, 255, 0.39);*/
 	background:transparent;
 	text-shadow:none;
 }
@@ -546,7 +546,8 @@ ul.dropdown-menu.dropdown-messages li a div {
 	text-transform:uppercase;
 }
 .collection .collection-item{
-	padding: 16px 20px;
+	
+padding: 16px 20px;
 }
 /*----------------------------------------------
     UI ELEMENTS STYLES     
@@ -685,9 +686,12 @@ font-size: 19px;
 	color: #f44336;
 }
 .dropdown-content li{
-	padding: 15px;
-	color: #233342;
-	font-size: 13px;
+	
+padding: 15px;
+	
+color: #233342;
+	
+font-size: 13px;
 }
 .taskList li{padding: 20px 15px 5px;background: #fff;font-size: 12px;}
 .taskList > div{

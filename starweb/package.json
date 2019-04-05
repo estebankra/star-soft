@@ -1,5 +1,7 @@
 {
   "name": "starweb",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "metismenu": "^3.0.4"
+  }
 }
