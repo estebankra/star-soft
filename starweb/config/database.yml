@@ -28,8 +28,8 @@ development:
   database: starweb_development
   host: localhost
   pool: 5
-  username: team
-  password: secret
+  username: postgres
+  password: 12345
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -64,6 +64,10 @@ development:
 test:
   <<: *default
   database: starweb_test
+  host: localhost
+  pool: 5
+  username: postgres
+  password: 12345
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
