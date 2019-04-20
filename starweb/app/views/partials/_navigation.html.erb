@@ -15,66 +15,138 @@
 		<li><a class="dropdown-button waves-effect waves-dark" data-activates="dropdown4"><i class="fa fa-envelope fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>				
 		<li><a class="dropdown-button waves-effect waves-dark" data-activates="dropdown3"><i class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
 		<li><a class="dropdown-button waves-effect waves-dark" data-activates="dropdown2"><i class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
-		  <li><a class="dropdown-button waves-effect waves-dark" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>John Doe</b> <i class="material-icons right">arrow_drop_down</i></a></li>
+		<% if user_signed_in?%>
+			<li><a class="dropdown-button waves-effect waves-dark" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>John Doe</b> <i class="material-icons right">arrow_drop_down</i></a></li>
+		<%else%>
+			<li><%= link_to "Inicia sesión", new_user_session_path %></li>
+		<%end%>
     </ul>
-    </nav>
-	<!-- Dropdown Structure -->
-	<ul id="dropdown1" class="dropdown-content">
-		<li><a href="#"><i class="fa fa-user fa-fw"></i> My Profile</a>
-		</li>
-		<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-		</li> 
-		<li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-		</li>
-	</ul>
-<ul id="dropdown2" class="dropdown-content w250">
-  <li>
-                                <div>
-                                    <i class="fa fa-comment fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small">4 min</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                                <div>
-                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                    <span class="pull-right text-muted small">12 min</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                                <div>
-                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                    <span class="pull-right text-muted small">4 min</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                                <div>
-                                    <i class="fa fa-tasks fa-fw"></i> New Task
-                                    <span class="pull-right text-muted small">4 min</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                                <div>
-                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                    <span class="pull-right text-muted small">4 min</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>See All Alerts</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
+</nav>
+
+<nav class="navbar-default navbar-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+
+	        <li>
+	           	<%= link_to(raw("<i class='fa fa-dashboard'></i> Inicio"), root_path, class: "waves-effect waves-dark") %>
+	        </li>
+	        <li>
+	            <a href="ui-elements.html" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> Pedidos</a>
+	        </li>
+			<li>
+	            <a href="chart.html" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> Clientes</a>
+	        </li>
+	        <li>
+	            <a href="tab-panel.html" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i> Venta</a>
+	        </li>
+	        
+	        <li>
+	            <a href="table.html" class="waves-effect waves-dark"><i class="fa fa-table"></i> Insumos</a>
+	        </li>
+	        <li>
+	            <a href="form.html" class="waves-effect waves-dark"><i class="fa fa-edit"></i> Productos </a>
+	        </li>
+
+	       	<li>
+	       		<%= link_to(raw("<i class='fa fa-table'></i> Colores"), colors_path, class: "waves-effect waves-dark") %>
+	        </li>
+
+            <li>
+                <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> Admin<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="#">Usuarios</a>
+                    </li>
+                    <li>
+                        <a href="#">Informes</a>
+                    </li>
+                    <li>
+                        <a href="#">Second Level Link<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li>
+                                <a href="#">Third Level Link</a>
+                            </li>
+                            <li>
+                                <a href="#">Third Level Link</a>
+                            </li>
+                            <li>
+                                <a href="#">Third Level Link</a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="empty.html" class="waves-effect waves-dark"><i class="fa fa-fw fa-file"></i> Empty Page</a>
+            </li>
+        </ul>
+
+    </div>
+
+</nav>
+<!-- /. NAV SIDE  -->
+
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+	<li><a href="#"><i class="fa fa-user fa-fw"></i> My Profile</a>
+	</li>
+	<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+	</li> 
+	<li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+	</li>
 </ul>
+
+<ul id="dropdown2" class="dropdown-content w250">
+ 	<li>
+		<div>
+			<i class="fa fa-comment fa-fw"></i> New Comment
+			<span class="pull-right text-muted small">4 min</span>
+		</div>
+	</a>
+	</li>
+	<li class="divider"></li>
+	<li>
+		<div>
+			<i class="fa fa-twitter fa-fw"></i> 3 New Followers
+			<span class="pull-right text-muted small">12 min</span>
+		</div>
+		</a>
+	</li>
+	<li class="divider"></li>
+	<li>
+		<div>
+			<i class="fa fa-envelope fa-fw"></i> Message Sent
+			<span class="pull-right text-muted small">4 min</span>
+		</div>
+		</a>
+	</li>
+	<li class="divider"></li>
+	<li>
+		<div>
+			<i class="fa fa-tasks fa-fw"></i> New Task
+			<span class="pull-right text-muted small">4 min</span>
+		</div>
+		</a>
+	</li>
+	<li class="divider"></li>
+	<li>
+		<div>
+			<i class="fa fa-upload fa-fw"></i> Server Rebooted
+			<span class="pull-right text-muted small">4 min</span>
+		</div>
+	</a>
+	</li>
+	<li class="divider"></li>
+	<li>
+		<a class="text-center" href="#">
+			<strong>See All Alerts</strong>
+			<i class="fa fa-angle-right"></i>
+		</a>
+	</li>
+</ul>
+
 <ul id="dropdown3" class="dropdown-content dropdown-tasks w250">
 <li>
 		<a href="#">
@@ -141,9 +213,10 @@
 	</li>
 	<li class="divider"></li>
 	<li>
-</ul>   
+</ul> 
+
 <ul id="dropdown4" class="dropdown-content dropdown-tasks w250 taskList">
-  <li>
+ 	<li>
         <div>
             <strong>John Doe</strong>
             <span class="pull-right text-muted">
@@ -151,24 +224,24 @@
             </span>
         </div>
         <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</p>
-    </a>
-</li>
-<li class="divider"></li>
-<li>
-        <div>
-            <strong>John Smith</strong>
-            <span class="pull-right text-muted">
-                <em>Yesterday</em>
-            </span>
-        </div>
-        <p>Lorem Ipsum has been the industry's standard dummy text ever since an kwilnw...</p>
-    </a>
-</li>
-<li class="divider"></li>
-<li>
-    <a class="text-center" href="#">
-        <strong>Read All Messages</strong>
-        <i class="fa fa-angle-right"></i>
-    </a>
-</li>
-</ul>  
+    	</a>
+	</li>
+	<li class="divider"></li>
+	<li>
+	        <div>
+	            <strong>John Smith</strong>
+	            <span class="pull-right text-muted">
+	                <em>Yesterday</em>
+	            </span>
+	        </div>
+	        <p>Lorem Ipsum has been the industry's standard dummy text ever since an kwilnw...</p>
+	    </a>
+	</li>
+	<li class="divider"></li>
+	<li>
+	    <a class="text-center" href="#">
+	        <strong>Read All Messages</strong>
+	        <i class="fa fa-angle-right"></i>
+	    </a>
+	</li>
+</ul>
