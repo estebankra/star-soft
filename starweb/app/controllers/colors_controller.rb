@@ -7,11 +7,6 @@ class ColorsController < ApplicationController
     @colors = Color.all
   end
 
-  # GET /colors/1
-  # GET /colors/1.json
-  def show
-  end
-
   # GET /colors/new
   def new
     @color = Color.new
@@ -28,8 +23,8 @@ class ColorsController < ApplicationController
 
     respond_to do |format|
       if @color.save
-        format.html { redirect_to @color, notice: 'Color was successfully created.' }
-        format.json { render :show, status: :created, location: @color }
+        format.html { redirect_to colors_url, notice: 'Color was successfully created.' }
+        format.json { render :index, status: :created, location: @color }
       else
         format.html { render :new }
         format.json { render json: @color.errors, status: :unprocessable_entity }
@@ -42,8 +37,8 @@ class ColorsController < ApplicationController
   def update
     respond_to do |format|
       if @color.update(color_params)
-        format.html { redirect_to @color, notice: 'Color was successfully updated.' }
-        format.json { render :show, status: :ok, location: @color }
+        format.html { redirect_to colors_url, notice: 'Color was successfully updated.' }
+        format.json { render :index, status: :ok, location: @color }
       else
         format.html { render :edit }
         format.json { render json: @color.errors, status: :unprocessable_entity }
@@ -71,4 +66,4 @@ class ColorsController < ApplicationController
     def color_params
       params.require(:color).permit(:description)
     end
-end
+  end

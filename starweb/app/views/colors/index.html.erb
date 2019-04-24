@@ -1,47 +1,48 @@
 <div class="header"> 
-    <h1 class="page-header">
-        Colores
-    </h1>
-    <ol class="breadcrumb">
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Colores</a></li>
-        <li class="active">Index</li>
-    </ol> 
+  <h1 class="page-header">
+    Colores
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Colores</a></li>
+    <li class="active">Index</li>
+  </ol> 
 </div>
 
 <div id="page-inner">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-content"> 
-                    <div class="row">
-                        <div class="card-content">
-                            <h3>Colores creados</h3><br>
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Description</th>
-                                            <th>Editar</th>
-                                            <th>Eliminar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% @colors.each do |color| %>
-                                            <tr>
-                                                <td><%= color.description %></td>
-                                                <td><%= link_to '', edit_color_path(color), class: 'glyphicon glyphicon-pencil' %></td>
-                                                <td><%= link_to '' , color, method: :delete, data: { confirm: 'Estás seguro?' }, class: "glyphicon glyphicon-remove"  %></td>
-                                            </tr>
-                                        <% end %>
-                                    </tbody>
-                                </table>
-                                <%= link_to 'Nuevo color', new_color_path %>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p id="notice"><%= notice %></p>
+      <div class="card">
+        <div class="card-content"> 
+          <div class="row">
+            <div class="card-content">
+              <h3>Colores registrados</h3><br>
+              <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>Description</th>
+                      <th>Editar</th>
+                      <th>Eliminar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @colors.each do |color| %>
+                    <tr>
+                      <td><%= color.description %></td>
+                      <td><%= link_to '', edit_color_path(color), class: 'fas fa-edit' %></td>
+                      <td><%= link_to '' , color, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>
+                    </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+                <%= link_to 'Nuevo color', new_color_path %>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

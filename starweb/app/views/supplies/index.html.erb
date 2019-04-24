@@ -1,33 +1,54 @@
-<p id="notice"><%= notice %></p>
+<div class="header"> 
+  <h1 class="page-header">
+    Insumos
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Insumos</a></li>
+    <li class="active">Index</li>
+  </ol> 
+</div>
 
-<h1>Supplies</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Image</th>
-      <th>Stock</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @supplies.each do |supply| %>
-      <tr>
-        <td><%= supply.name %></td>
-        <td><%= supply.image %></td>
-        <td><%= supply.stock %></td>
-        <td><%= supply.description %></td>
-        <td><%= link_to 'Show', supply %></td>
-        <td><%= link_to 'Edit', edit_supply_path(supply) %></td>
-        <td><%= link_to 'Destroy', supply, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Supply', new_supply_path %>
+<div id="page-inner">
+  <div class="row">
+    <div class="col-md-12">
+      <p id="notice"><%= notice %></p>
+      <div class="card">
+        <div class="card-content"> 
+          <div class="row">
+            <div class="card-content">
+              <h3>Insumos registrados</h3><br>
+              <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>Nombre</th>
+                      <th>Imagen</th>
+                      <th>Stock</th>
+                      <th>Descripción</th>
+                      <th>Editar</th>
+                      <th>Eliminar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @supplies.each do |supply| %>
+                    <tr>
+                      <td><%= supply.name %></td>
+                      <td><%= supply.image %></td>
+                      <td><%= supply.stock %></td>
+                      <td><%= supply.description %></td>
+                      <td><%= link_to '', edit_supply_path(supply), class: 'fas fa-edit' %></td>
+                      <td><%= link_to '', supply, method: :delete, data: {  confirm: 'Estás seguro?' }, class: "fas fa-trash" %></td>
+                    </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+                <%= link_to 'Nuevo insumo', new_supply_path %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
