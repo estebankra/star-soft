@@ -34,10 +34,14 @@
         <a href="ui-elements.html" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> Pedidos</a>
       </li>
       <li>
-        <a href="chart.html" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> Clientes</a>
+        <%= link_to(raw("<i class='fas fa-donate '></i> Clientes"), clients_path, class: "waves-effect waves-dark") %>
       </li>
       <li>
         <a href="tab-panel.html" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i> Venta</a>
+      </li>
+
+      <li>
+        <%= link_to(raw("<i class='fas fa-donate '></i> Productos"), products_path, class: "waves-effect waves-dark") %>
       </li>
 
       <li>
