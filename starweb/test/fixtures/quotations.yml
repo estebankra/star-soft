@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  currencies: one
+  currency: one
   purchase: MyString
   sale: MyString
 
 two:
-  currencies: two
+  currency: two
   purchase: MyString
   sale: MyString

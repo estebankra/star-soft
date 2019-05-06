@@ -7,11 +7,6 @@ class CurrenciesController < ApplicationController
     @currencies = Currency.all
   end
 
-  # GET /currencies/1
-  # GET /currencies/1.json
-  def show
-  end
-
   # GET /currencies/new
   def new
     @currency = Currency.new
@@ -28,8 +23,8 @@ class CurrenciesController < ApplicationController
 
     respond_to do |format|
       if @currency.save
-        format.html { redirect_to @currency, notice: 'Currency was successfully created.' }
-        format.json { render :show, status: :created, location: @currency }
+        format.html { redirect_to currencies_url, notice: 'Currency was successfully created.' }
+        format.json { render :index, status: :created, location: @currency }
       else
         format.html { render :new }
         format.json { render json: @currency.errors, status: :unprocessable_entity }
@@ -42,8 +37,8 @@ class CurrenciesController < ApplicationController
   def update
     respond_to do |format|
       if @currency.update(currency_params)
-        format.html { redirect_to @currency, notice: 'Currency was successfully updated.' }
-        format.json { render :show, status: :ok, location: @currency }
+        format.html { redirect_to currencies_url, notice: 'Currency was successfully updated.' }
+        format.json { render :index, status: :ok, location: @currency }
       else
         format.html { render :edit }
         format.json { render json: @currency.errors, status: :unprocessable_entity }

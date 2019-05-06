@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :currencies_id %>
-    <%= form.text_field :currencies_id %>
+    <%= form.collection_select :currency_id, Currency.all, :id, :name %><br>
   </div>
 
   <div class="field">
@@ -27,6 +27,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary'  %>
   </div>
 <% end %>

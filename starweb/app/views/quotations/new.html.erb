@@ -1,5 +1,33 @@
-<h1>New Quotation</h1>
+<div class="header"> 
+  <h1 class="page-header">
+    Cotizaciones
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Cotizaciones</a></li>
+    <li class="active">Nuevo</li>
+  </ol> 
 
-<%= render 'form', quotation: @quotation %>
+</div>
 
-<%= link_to 'Back', quotations_path %>
+<div id="page-inner"> 
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-content"> 
+          <p>
+			<h1>Nueva Cotizacion</h1><br>
+
+			
+			<%= render 'form', quotation: @quotation %><br>
+
+			<%= link_to 'Volver', quotations_path %>
+
+          <div class="clearBoth"><br/></div>
+        </div>
+      </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+  </div>
+  <!-- /. PAGE WRAPPER  -->
+</div>

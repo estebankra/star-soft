@@ -28,8 +28,8 @@ class QuotationsController < ApplicationController
 
     respond_to do |format|
       if @quotation.save
-        format.html { redirect_to @quotation, notice: 'Quotation was successfully created.' }
-        format.json { render :show, status: :created, location: @quotation }
+        format.html { redirect_to quotations_url, notice: 'Quotation was successfully created.' }
+        format.json { render :index, status: :created, location: @quotation }
       else
         format.html { render :new }
         format.json { render json: @quotation.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ class QuotationsController < ApplicationController
   def update
     respond_to do |format|
       if @quotation.update(quotation_params)
-        format.html { redirect_to @quotation, notice: 'Quotation was successfully updated.' }
-        format.json { render :show, status: :ok, location: @quotation }
+        format.html { redirect_to quotations_url, notice: 'Quotation was successfully updated.' }
+        format.json { render :index, status: :ok, location: @quotation }
       else
         format.html { render :edit }
         format.json { render json: @quotation.errors, status: :unprocessable_entity }
@@ -69,6 +69,6 @@ class QuotationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quotation_params
-      params.require(:quotation).permit(:currencies_id, :purchase, :sale)
+      params.require(:quotation).permit(:currency_id, :purchase, :sale)
     end
 end

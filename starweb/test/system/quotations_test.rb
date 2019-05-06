@@ -14,7 +14,7 @@ class QuotationsTest < ApplicationSystemTestCase
     visit quotations_url
     click_on "New Quotation"
 
-    fill_in "Currencies", with: @quotation.currencies_id
+    fill_in "Currency", with: @quotation.currency_id
     fill_in "Purchase", with: @quotation.purchase
     fill_in "Sale", with: @quotation.sale
     click_on "Create Quotation"
@@ -27,7 +27,7 @@ class QuotationsTest < ApplicationSystemTestCase
     visit quotations_url
     click_on "Edit", match: :first
 
-    fill_in "Currencies", with: @quotation.currencies_id
+    fill_in "Currency", with: @quotation.currency_id
     fill_in "Purchase", with: @quotation.purchase
     fill_in "Sale", with: @quotation.sale
     click_on "Update Quotation"
