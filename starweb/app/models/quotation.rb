@@ -1,3 +1,3 @@
 class Quotation < ApplicationRecord
-  belongs_to :currency_id
+  belongs_to :currencies
 end

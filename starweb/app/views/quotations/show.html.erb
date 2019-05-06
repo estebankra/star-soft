@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Currencies:</strong>
+  <%= @quotation.currencies %>
+</p>
+
+<p>
+  <strong>Purchase:</strong>
+  <%= @quotation.purchase %>
+</p>
+
+<p>
+  <strong>Sale:</strong>
+  <%= @quotation.sale %>
+</p>
+
+<%= link_to 'Edit', edit_quotation_path(@quotation) %> |
+<%= link_to 'Back', quotations_path %>
