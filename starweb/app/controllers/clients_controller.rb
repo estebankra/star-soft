@@ -1,4 +1,5 @@
 class ClientsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :new, :edit, :destroy]
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   # GET /clients
@@ -28,8 +29,8 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
-        format.json { render :show, status: :created, location: @client }
+        format.html { redirect_to clients_url, notice: 'Client was successfully created.' }
+        format.json { render :index, status: :created, location: @client }
       else
         format.html { render :new }
         format.json { render json: @client.errors, status: :unprocessable_entity }
@@ -42,8 +43,8 @@ class ClientsController < ApplicationController
   def update
     respond_to do |format|
       if @client.update(client_params)
-        format.html { redirect_to @client, notice: 'Client was successfully updated.' }
-        format.json { render :show, status: :ok, location: @client }
+        format.html { redirect_to clients_url, notice: 'Client was successfully updated.' }
+        format.json { render :index, status: :ok, location: @client }
       else
         format.html { render :edit }
         format.json { render json: @client.errors, status: :unprocessable_entity }
@@ -69,6 +70,6 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:firstname, :lastname, :doc/ruc, :telephone, :date_nac, :mail, :city, :country)
+      params.require(:client).permit(:firstname, :lastname, :doc_ruc, :telephone, :date_nac, :mail, :city, :country)
     end
 end

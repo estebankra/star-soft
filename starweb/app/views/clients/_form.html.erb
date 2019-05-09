@@ -1,4 +1,4 @@
-<%= form_with(model: client, local: true) do |form| %>
+  <%= form_with(model: client, local: true) do |form| %>
   <% if client.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
@@ -22,8 +22,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :doc/ruc %>
-    <%= form.text_field :doc/ruc %>
+    <%= form.label :doc_ruc %>
+    <%= form.text_field :doc_ruc %>
   </div>
 
   <div class="field">
@@ -34,7 +34,7 @@
   <div class="field">
     <%= form.label :date_nac %>
     <%= form.date_select :date_nac %>
-  </div>
+  </div><br>
 
   <div class="field">
     <%= form.label :mail %>
@@ -52,6 +52,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

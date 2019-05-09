@@ -1,4 +1,5 @@
 class QuotationsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :new, :edit, :destroy]
   before_action :set_quotation, only: [:show, :edit, :update, :destroy]
 
   # GET /quotations

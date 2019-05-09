@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Starweb</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,18 +13,27 @@
     
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>   
 
-  </head>
+</head>
 
-  <body>
+<body>
     <div id="wrapper">
-    <%= render "partials/navigation" %>
-    <div id="page-wrapper">
-        <%= yield %>
-        <%= render "partials/footer" %>
-    </div>
-
+        <%= render "partials/navigation" %>
+        <div id="page-wrapper">
+            <% unless notice.nil? %>
+            <div class="alert alert-success" role="alert">
+                <p class="notice"><%= notice %></p>
+            </div>
+            <%end%>
+            <% unless alert.nil? %>
+            <div class="alert alert-warning" role="alert">
+                <p class="alert"><%= alert %></p>
+            </div>
+            <%end%>
+            <%= yield %>
+            <%= render "partials/footer" %>
+        </div>
     </div>
     
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </body>
+</body>
 </html>

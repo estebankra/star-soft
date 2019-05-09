@@ -16,7 +16,7 @@
     <li><a class="dropdown-button waves-effect waves-dark" data-activates="dropdown3"><i class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
     <li><a class="dropdown-button waves-effect waves-dark" data-activates="dropdown2"><i class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
     <% if user_signed_in?%>
-    <li><a class="dropdown-button waves-effect waves-dark" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>John Doe</b> <i class="material-icons right">arrow_drop_down</i></a></li>
+    <li><a class="dropdown-button waves-effect waves-dark" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b><%= current_user.email %></b> <i class="material-icons right">arrow_drop_down</i></a></li>
     <%else%>
     <li><%= link_to "Inicia sesión", new_user_session_path %></li>
     <%end%>
@@ -103,7 +103,7 @@
   </li>
   <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
   </li> 
-  <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+  <li><%= link_to(raw("<i class='fa fa-sign-out fa-fw'></i> Cerrar sesión"), destroy_user_session_path, method: :delete, class: "waves-effect waves-dark")%>
   </li>
 </ul>
 

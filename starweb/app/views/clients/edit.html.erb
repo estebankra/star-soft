@@ -1,6 +1,34 @@
-<h1>Editing Client</h1>
+<div class="header"> 
+  <h1 class="page-header">
+    Clientes
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Clientes</a></li>
+    <li class="active">Editar</li>
+  </ol> 
+</div>
 
-<%= render 'form', client: @client %>
+<div id="page-inner"> 
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-content"> 
+          <p>
+            <h3>Editar Clientes</h3><br>
+          
+      			<%= render 'form', client: @client %><br>
 
-<%= link_to 'Show', @client %> |
-<%= link_to 'Back', clients_path %>
+      			<%= link_to 'Volver', clients_path %>
+
+          </p>
+
+          <div class="clearBoth"><br/></div>
+
+        </div>
+      </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+  </div>
+  <!-- /. PAGE WRAPPER  -->
+</div>

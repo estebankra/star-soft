@@ -7,3 +7,11 @@ git push
 
 ##para actualizar
 git pull
+
+##para crear tablas intermedias
+http://community.logicalbricks.com/node/41
+
+##pass Magui
+khaleesi8
+
+

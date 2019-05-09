@@ -1,6 +1,33 @@
-<h1>Editing Product</h1>
+<div class="header"> 
+  <h1 class="page-header">
+    Producto
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Productos</a></li>
+    <li class="active">Editar</li>
+  </ol> 
+</div>
 
-<%= render 'form', product: @product %>
+<div id="page-inner"> 
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-content"> 
+          <p>
+            <h3>Editar Productos</h3><br>
+            
+			<%= render 'form', product: @product %><br>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+			<%= link_to 'Volver', products_path %>
+          </p>
+
+          <div class="clearBoth"><br/></div>
+
+        </div>
+      </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+  </div>
+  <!-- /. PAGE WRAPPER  -->
+</div>
