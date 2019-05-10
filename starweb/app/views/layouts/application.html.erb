@@ -18,7 +18,11 @@
 <body>
     <div id="wrapper">
         <%= render "partials/navigation" %>
+        <% if user_signed_in?%>
         <div id="page-wrapper">
+        <% else %>
+        <div id="page-wrapper-login">
+        <%end%>
             <% unless notice.nil? %>
             <div class="alert alert-success" role="alert">
                 <p class="notice"><%= notice %></p>

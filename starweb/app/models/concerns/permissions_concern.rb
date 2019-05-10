@@ -1,14 +1,14 @@
 module PermissionsConcern
 	extend ActiveSupport::Concern
 	def is_secretary?
-		self.permission_level == 1
+		self.permission_level == '1'
 	end
 
-	def is_work_team?
-		self.permission_level == 2
+	def is_team?
+		self.permission_level == '2'
 	end
 
 	def is_admin?
-		self.permission_level == 3
+		self.permission_level == '3'
 	end
 end

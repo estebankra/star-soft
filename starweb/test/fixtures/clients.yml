@@ -3,7 +3,7 @@
 one:
   firstname: MyString
   lastname: MyString
-  doc/ruc: MyString
+  doc_ruc: MyString
   telephone: MyString
   date_nac: 2019-04-24
   mail: MyString
@@ -13,7 +13,7 @@ one:
 two:
   firstname: MyString
   lastname: MyString
-  doc/ruc: MyString
+  doc_ruc: MyString
   telephone: MyString
   date_nac: 2019-04-24
   mail: MyString

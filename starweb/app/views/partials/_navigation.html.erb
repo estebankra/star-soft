@@ -1,3 +1,4 @@
+<% if user_signed_in?%>
 <nav class="navbar navbar-default top-navbar" role="navigation">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle waves-effect waves-dark" data-toggle="collapse" data-target=".sidebar-collapse">
@@ -15,24 +16,26 @@
     <li><a class="dropdown-button waves-effect waves-dark" data-activates="dropdown4"><i class="fa fa-envelope fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>       
     <li><a class="dropdown-button waves-effect waves-dark" data-activates="dropdown3"><i class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
     <li><a class="dropdown-button waves-effect waves-dark" data-activates="dropdown2"><i class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
-    <% if user_signed_in?%>
     <li><a class="dropdown-button waves-effect waves-dark" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b><%= current_user.email %></b> <i class="material-icons right">arrow_drop_down</i></a></li>
-    <%else%>
-    <li><%= link_to "Inicia sesión", new_user_session_path %></li>
-    <%end%>
   </ul>
 </nav>
 
 <nav class="navbar-default navbar-side" role="navigation">
   <div class="sidebar-collapse">
     <ul class="nav" id="main-menu">
+      <% if current_user.is_admin? %>
+      <li>
+        <%= link_to(raw("<i class='fa fa-dashboard'></i> Reportes"), root_path, class: "waves-effect waves-dark") %>
+      </li>
+      <% end %>
 
+      <% if current_user.is_team? or current_user.is_admin? %>
       <li>
-        <%= link_to(raw("<i class='fa fa-dashboard'></i> Inicio"), root_path, class: "waves-effect waves-dark") %>
+        <a href="ui-elements.html" class="waves-effect waves-dark"><i class="fas fa-shopping-cart"></i>Pedidos</a>
       </li>
-      <li>
-        <a href="ui-elements.html" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> Pedidos</a>
-      </li>
+      <% end %>
+
+      <% if current_user.is_secretary? %>
       <li>
         <%= link_to(raw("<i class='fas fa-donate '></i> Clientes"), clients_path, class: "waves-effect waves-dark") %>
       </li>
@@ -62,34 +65,13 @@
       <li>
         <%= link_to(raw("<i class='fas fa-donate '></i> Cotizaciones"), quotations_path, class: "waves-effect waves-dark") %>
       </li>
+      <% end %>
 
-      <li>
-        <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> Admin<span class="fa arrow"></span></a>
-        <!--<ul class="nav nav-second-level">
-          <li>
-            <a href="#">Usuarios</a>
-          </li>
-          <li>
-            <a href="#">Informes</a>
-          </li>
-          <li>
-            <a href="#">Second Level Link<span class="fa arrow"></span></a>
-            <ul class="nav nav-third-level">
-              <li>
-                <a href="#">Third Level Link</a>
-              </li>
-              <li>
-                <a href="#">Third Level Link</a>
-              </li>
-              <li>
-                <a href="#">Third Level Link</a>
-              </li>
-
-            </ul>
-
-          </li>
-        </ul>-->
-      </li>
+      <% if current_user.is_admin? %>
+        <li>
+          <%= link_to(raw("<i class='fa fa-user'></i> Usuarios"), new_user_registration_path, class: "waves-effect waves-dark") %>
+        </li>
+      <% end %>
     </ul>
 
   </div>
@@ -254,3 +236,4 @@
   </a>
 </li>
 </ul>
+<%end%>
