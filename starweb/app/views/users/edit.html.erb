@@ -1,0 +1,35 @@
+<div class="header"> 
+  <h1 class="page-header">
+    Editar Usuario
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Usuarios</a></li>
+    <li class="active">Editar</li>
+  </ol> 
+</div>
+
+<div id="page-inner"> 
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-content"> 
+          <p>
+            <h3>Editar permisos</h3><br>
+
+			       <%= form_for @user, :url => { :action => :update } do |p| %>
+			       <%= render "form", p: p %><br>
+			       <% end %>
+
+			       <%= link_to 'Volver', users_index_path %>
+          </p>
+
+          <div class="clearBoth"><br/></div>
+
+        </div>
+      </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+  </div>
+  <!-- /. PAGE WRAPPER  -->
+</div>

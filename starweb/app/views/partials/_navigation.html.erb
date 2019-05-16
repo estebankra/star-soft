@@ -69,7 +69,7 @@
 
       <% if current_user.is_admin? %>
         <li>
-          <%= link_to(raw("<i class='fa fa-user'></i> Usuarios"), new_user_registration_path, class: "waves-effect waves-dark") %>
+          <%= link_to(raw("<i class='fa fa-user'></i> Usuarios"), '/users/index', class: "waves-effect waves-dark") %>
         </li>
       <% end %>
     </ul>

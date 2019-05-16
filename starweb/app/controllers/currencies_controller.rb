@@ -1,5 +1,5 @@
 class CurrenciesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_secretary!
   before_action :set_currency, only: [:show, :edit, :update, :destroy]
 
   # GET /currencies

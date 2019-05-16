@@ -1,0 +1,41 @@
+<div class="header"> 
+  <h1 class="page-header">
+    Nuevo usuario
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Usuarios</a></li>
+    <li class="active">Nuevo</li>
+  </ol> 
+</div>
+<div id="page-inner">
+  <div class="row">
+    <div class="col-md-12">
+      <p id="notice"><%= notice %></p>
+      <div class="card">
+        <div class="card-content"> 
+          <div class="row">
+            <div class="card-content">
+              <h3>Enviar invitación</h3><br>
+                <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f| %>
+                  <%= render "devise/shared/error_messages", resource: resource %>
+
+                  <% resource.class.invite_key_fields.each do |field| -%>
+                    <div class="field">
+                      <%= f.label field %><br />
+                      <%= f.text_field field %>
+                    </div>
+                  <% end -%>
+
+                  <div class="actions">
+                    <%= f.submit "Enviar", class: 'btn btn-primary' %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
