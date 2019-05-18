@@ -29,8 +29,8 @@ class SuppliesController < ApplicationController
 
     respond_to do |format|
       if @supply.save
-        format.html { redirect_to @supply, notice: 'Supply was successfully created.' }
-        format.json { render :show, status: :created, location: @supply }
+        format.html { redirect_to supplies_url, notice: 'Supply was successfully created.' }
+        format.json { render :show, status: :created, location: supplies_url }
       else
         format.html { render :new }
         format.json { render json: @supply.errors, status: :unprocessable_entity }
@@ -43,8 +43,8 @@ class SuppliesController < ApplicationController
   def update
     respond_to do |format|
       if @supply.update(supply_params)
-        format.html { redirect_to @supply, notice: 'Supply was successfully updated.' }
-        format.json { render :show, status: :ok, location: @supply }
+        format.html { redirect_to supplies_url, notice: 'Supply was successfully updated.' }
+        format.json { render :show, status: :ok, location: supplies_url }
       else
         format.html { render :edit }
         format.json { render json: @supply.errors, status: :unprocessable_entity }
