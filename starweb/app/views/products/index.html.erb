@@ -28,6 +28,7 @@
                       <th>Imagen</th>
                       <th>Tamaño</th>
                       <th>Descripción</th>
+                      <th>Insumos</th>
                       <th>Editar</th>
                       <th>Eliminar</th>
                     </tr>
@@ -41,6 +42,10 @@
                       <td><%= image_tag product.image.url(:thumb)%></td>
                       <td><%= product.size %></td>
                       <td><%= product.description %></td>
+                      <td><% product.supplies.each do |supply|%>
+                            <%= supply.name %>
+                          <%end%>
+                      </td>
                       <td><%= link_to '', edit_product_path(product) , class: 'fas fa-edit' %></td>
                       <td><%= link_to '', product, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>
                     <% end %>

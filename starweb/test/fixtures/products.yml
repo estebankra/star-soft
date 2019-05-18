@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   name: MyString
   price: MyString
   quantity: MyString
@@ -9,6 +10,7 @@ one:
   description: MyString
 
 two:
+  id: 2
   name: MyString
   price: MyString
   quantity: MyString

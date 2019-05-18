@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   firstname: MyString
   lastname: MyString
   doc_ruc: MyString
@@ -11,6 +12,7 @@ one:
   country: MyString
 
 two:
+  id: 2
   firstname: MyString
   lastname: MyString
   doc_ruc: MyString

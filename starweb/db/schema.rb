@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_16_002953) do
+ActiveRecord::Schema.define(version: 2019_05_18_185800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,17 +34,19 @@ ActiveRecord::Schema.define(version: 2019_05_16_002953) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "colors_products", id: false, force: :cascade do |t|
-    t.bigint "product_id"
-    t.bigint "color_id"
-    t.index ["color_id"], name: "index_colors_products_on_color_id"
-    t.index ["product_id"], name: "index_colors_products_on_product_id"
-  end
-
   create_table "currencies", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "has_supplies", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "supply_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_has_supplies_on_product_id"
+    t.index ["supply_id"], name: "index_has_supplies_on_supply_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -60,15 +62,6 @@ ActiveRecord::Schema.define(version: 2019_05_16_002953) do
     t.string "image_content_type"
     t.bigint "image_file_size"
     t.datetime "image_updated_at"
-  end
-
-  create_table "products_supplies", id: false, force: :cascade do |t|
-    t.bigint "products_id"
-    t.bigint "supplies_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["products_id"], name: "index_products_supplies_on_products_id"
-    t.index ["supplies_id"], name: "index_products_supplies_on_supplies_id"
   end
 
   create_table "quotations", force: :cascade do |t|
@@ -133,5 +126,7 @@ ActiveRecord::Schema.define(version: 2019_05_16_002953) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "has_supplies", "products"
+  add_foreign_key "has_supplies", "supplies"
   add_foreign_key "quotations", "currencies"
 end

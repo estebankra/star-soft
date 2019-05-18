@@ -6,6 +6,12 @@ body {
     background: #1F2837;
 }
 
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    position: unset;
+    left: 0;
+    opacity: 1;
+}
+
 select {
   display: block !important;
   height: 35px;

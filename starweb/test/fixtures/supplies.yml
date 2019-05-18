@@ -1,12 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   name: MyString
   image: MyString
   stock: MyString
   description: MyString
 
 two:
+  id: 2
   name: MyString
   image: MyString
   stock: MyString

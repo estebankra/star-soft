@@ -16,16 +16,19 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @supplies = Supply.all
   end
 
   # GET /products/1/edit
   def edit
+    @supplies = Supply.all
   end
 
   # POST /products
   # POST /products.json
   def create
     @product = Product.new(product_params)
+    @product.supplies = params[:supplies]
 
     respond_to do |format|
       if @product.save
@@ -43,6 +46,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
+        @product.supplies = params[:supplies]
         format.html { redirect_to products_url, notice: 'Product was successfully updated.' }
         format.json { render :index, status: :ok, location: @product }
       else
@@ -56,6 +60,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     @product.destroy
+    @supplies = Supply.all
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
@@ -70,6 +75,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :price, :quantity, :image, :size, :description)
+      params.require(:product).permit(:name, :price, :quantity, :image, :size, :description, :supplies)
     end
 end

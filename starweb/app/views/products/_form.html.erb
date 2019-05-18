@@ -41,6 +41,15 @@
     <%= form.text_field :description %>
   </div>
 
+  <div class="field">
+    <%= form.label 'Insumos necesarios'%>
+    <% @supplies.each do |supply| %>
+      <br><%= check_box_tag "supplies[]", supply.id, @product.supplies.include?(supply)  %> <%= supply.name %>
+    <%end%>
+  </div>
+  
+  <br>
+
   <div class="actions">
     <%= form.submit class: 'btn btn-primary' %>
   </div>
