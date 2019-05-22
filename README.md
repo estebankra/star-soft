@@ -1,17 +1,14 @@
 # star-soft
 
-##para  hacer commit
+## Para  hacer commit
 git add *
 git commit -m (nombre del commit)
 git push
 
-##para actualizar
+## Para actualizar
 git pull
 
-##para crear tablas intermedias
+## Para crear tablas intermedias
 http://community.logicalbricks.com/node/41
-
-##pass Magui
-khaleesi8
 
 

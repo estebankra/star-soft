@@ -36,7 +36,7 @@
                     <% @orders.each do |order| %>
                     <tr>
                       <td><%= order.deliver_date %></td>
-                      <td><%= order.client %></td>
+                      <td><%= order.client.firstname %></td>
                       <td><%= order.course_club %></td>
                       <td><%= order.logo %></td>
                       <td><%= order.state %></td>
