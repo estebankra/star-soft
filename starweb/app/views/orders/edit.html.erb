@@ -1,0 +1,33 @@
+<div class="header"> 
+  <h1 class="page-header">
+    Pedidos
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Pedido</a></li>
+    <li class="active">Editar</li>
+  </ol> 
+</div>
+
+<div id="page-inner"> 
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-content"> 
+          <p>
+            <h1>Editar pedido</h1>
+
+            <%= render 'form', order: @order %>
+
+            <%= link_to 'Volver', currencies_path %>
+          </p>
+
+          <div class="clearBoth"><br/></div>
+
+        </div>
+      </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+  </div>
+  <!-- /. PAGE WRAPPER  -->
+</div>

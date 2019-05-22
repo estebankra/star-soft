@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  deliver_date: 2019-05-21
+  client: one
+  course_club: MyString
+  logo: MyString
+  state: MyString
+
+two:
+  deliver_date: 2019-05-21
+  client: two
+  course_club: MyString
+  logo: MyString
+  state: MyString

@@ -1,3 +1,3 @@
 class Currency < ApplicationRecord
-  has_many :quotations
+  	has_many :quotation
 end

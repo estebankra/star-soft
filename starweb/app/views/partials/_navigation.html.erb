@@ -37,10 +37,11 @@
 
       <% if current_user.is_secretary? %>
       <li>
-        <%= link_to(raw("<i class='fas fa-donate '></i> Clientes"), clients_path, class: "waves-effect waves-dark") %>
+        <%= link_to(raw("<i class='fas fa-donate '></i> Pedidos"), orders_path, class: "waves-effect waves-dark") %>
       </li>
+
       <li>
-        <a href="tab-panel.html" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i> Venta</a>
+        <%= link_to(raw("<i class='fas fa-donate '></i> Clientes"), clients_path, class: "waves-effect waves-dark") %>
       </li>
 
       <li>

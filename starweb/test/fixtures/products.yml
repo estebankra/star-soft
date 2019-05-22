@@ -4,7 +4,6 @@ one:
   id: 1
   name: MyString
   price: MyString
-  quantity: MyString
   image: MyString
   size: MyString
   description: MyString
@@ -13,7 +12,6 @@ two:
   id: 2
   name: MyString
   price: MyString
-  quantity: MyString
   image: MyString
   size: MyString
   description: MyString
