@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_21_234715) do
+ActiveRecord::Schema.define(version: 2019_05_23_202426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,6 @@ ActiveRecord::Schema.define(version: 2019_05_21_234715) do
     t.string "mail"
     t.string "city"
     t.string "country"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "colors", force: :cascade do |t|
-    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,12 +43,23 @@ ActiveRecord::Schema.define(version: 2019_05_21_234715) do
     t.index ["supply_id"], name: "index_has_supplies_on_supply_id"
   end
 
+  create_table "info_details", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.integer "number"
+    t.string "size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.date "deliver_date"
     t.bigint "client_id"
     t.string "course_club"
     t.string "logo"
     t.string "state"
+    t.string "notes"
+    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_orders_on_client_id"
@@ -64,7 +69,6 @@ ActiveRecord::Schema.define(version: 2019_05_21_234715) do
     t.string "name"
     t.string "price"
     t.string "image"
-    t.string "size"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

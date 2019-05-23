@@ -1,33 +1,5 @@
-<div class="header"> 
-  <h1 class="page-header">
-    Pedidos
-  </h1>
-  <ol class="breadcrumb">
-    <li><a href="#">Inicio</a></li>
-    <li><a href="#">Pedido</a></li>
-    <li class="active">Nuevo</li>
-  </ol> 
+<h1>New Order</h1>
 
-</div>
+<%= render 'form', order: @order %>
 
-<div id="page-inner"> 
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-content"> 
-          <p>
-            <h3>Nuevo Pedido</h3><br>
-            
-			<%= render 'form', order: @order %>
-
-			<%= link_to 'Back', orders_path %>
-          </p>
-
-          <div class="clearBoth"><br/></div>
-        </div>
-      </div>
-    </div>
-    <!-- /. PAGE INNER  -->
-  </div>
-  <!-- /. PAGE WRAPPER  -->
-</div>
+<%= link_to 'Back', orders_path %>

@@ -18,6 +18,8 @@ class OrdersTest < ApplicationSystemTestCase
     fill_in "Course club", with: @order.course_club
     fill_in "Deliver date", with: @order.deliver_date
     fill_in "Logo", with: @order.logo
+    fill_in "Notes", with: @order.notes
+    fill_in "Quantity", with: @order.quantity
     fill_in "State", with: @order.state
     click_on "Create Order"
 
@@ -33,6 +35,8 @@ class OrdersTest < ApplicationSystemTestCase
     fill_in "Course club", with: @order.course_club
     fill_in "Deliver date", with: @order.deliver_date
     fill_in "Logo", with: @order.logo
+    fill_in "Notes", with: @order.notes
+    fill_in "Quantity", with: @order.quantity
     fill_in "State", with: @order.state
     click_on "Update Order"
 

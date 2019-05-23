@@ -12,17 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= form.label 'Cliente' %>
-    <%= form.collection_select :client_id, Client.all, :id, :firstname %>
-  </div><br>
-
-  <div class="field">
-    <%= form.label 'Fecha de entrega' %>
+    <%= form.label :deliver_date %>
     <%= form.date_select :deliver_date %>
-  </div><br>
+  </div>
 
   <div class="field">
-    <%= form.label 'Curso o Club' %>
+    <%= form.label :client_id %>
+    <%= form.collection_select :client_id, Client.all, :id, :firstname %><br>
+  </div>
+
+  <div class="field">
+    <%= form.label :course_club %>
     <%= form.text_field :course_club %>
   </div>
 
@@ -31,13 +31,19 @@
     <%= form.text_field :logo %>
   </div>
 
-  <div class="input-group date">
-    <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+  <div class="field">
+    <%= form.label :state %>
+    <%= form.text_field :state %>
   </div>
 
   <div class="field">
-    <%= form.label 'Estado' %>
-    <%= form.text_field :state %>
+    <%= form.label :notes %>
+    <%= form.text_field :notes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity %>
   </div>
 
   <div class="actions">

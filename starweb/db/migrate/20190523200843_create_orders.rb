@@ -6,6 +6,8 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.string :course_club
       t.string :logo
       t.string :state
+      t.string :notes
+      t.integer :quantity
 
       t.timestamps
     end

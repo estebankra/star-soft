@@ -17,16 +17,19 @@
         <div class="card-content"> 
           <div class="row">
             <div class="card-content">
-              <h3>Pedidos registradas</h3><br>
+              <h3>Pedidos</h3><br>
               <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th>Fecha de entrega</th>
-                      <th>Cliente</th>
-                      <th>Curso - Club</th>
+                      <th>Client</th>
+                      <th>Deliver date</th>
+                      <th>Course club</th>
                       <th>Logo</th>
-                      <th>Estado del pedido</th>
+                      <th>State</th>
+                      <th>Notes</th>
+                      <th>Quantity</th>
+                      <th>Ver</th>
                       <th>Editar</th>
                       <th>Eliminar</th>
                     </tr>
@@ -34,22 +37,22 @@
 
                   <tbody>
                     <% @orders.each do |order| %>
-                    <tr>
-                      <td><%= order.deliver_date %></td>
-                      <td><%= order.client.firstname %></td>
-                      <td><%= order.course_club %></td>
-                      <td><%= order.logo %></td>
-                      <td><%= order.state %></td>
-                      <td><%= link_to '', edit_order_path(order), class: 'fas fa-edit' %></td>
-                      <td><%= link_to '', order, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>
-                    </tr>
-                    <% end %>
+                      <tr>
+                        <td><%= order.client.firstname %></td>
+                        <td><%= order.deliver_date %></td>
+                        <td><%= order.course_club %></td>
+                        <td><%= order.logo %></td>
+                        <td><%= order.state %></td>
+                        <td><%= order.notes %></td>
+                        <td><%= order.quantity %></td>
+                        <td><%= link_to 'Ver', order %></td>
+                        <td><%= link_to '', edit_order_path(order) , class: 'fas fa-edit' %></td>
+                        <td><%= link_to '', order, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>
+                      </tr>
+                    <%end%>                
                   </tbody>
                 </table>
-
-                <br>
-
-                <%= link_to 'New Order', new_order_path %>
+                <%= link_to 'Nuevo pedido', new_order_path %>
               </div>
             </div>
           </div>

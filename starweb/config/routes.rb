@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :info_details
   resources :orders
   get 'users/index'
   get 'users/edit/:id', to: 'users#edit', as: 'users_edit'

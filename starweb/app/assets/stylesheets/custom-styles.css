@@ -7,10 +7,9 @@ body {
 }
 
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-    position: unset;
+    position: initial;
     left: 0;
     opacity: 1;
-    display: none;
 }
 
 select {
