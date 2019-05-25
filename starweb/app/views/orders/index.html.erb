@@ -1,4 +1,4 @@
-<div class="header"> 
+<div class="header">
   <h1 class="page-header">
     Pedidos
   </h1>
@@ -6,7 +6,7 @@
     <li><a href="#">Inicio</a></li>
     <li><a href="#">Pedidos</a></li>
     <li class="active">Index</li>
-  </ol> 
+  </ol>
 </div>
 
 <div id="page-inner">
@@ -14,49 +14,50 @@
     <div class="col-md-12">
       <p id="notice"><%= notice %></p>
       <div class="card">
-        <div class="card-content"> 
+        <div class="card-content">
           <div class="row">
             <div class="card-content">
               <h3>Pedidos</h3><br>
               <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover">
                   <thead>
-                    <tr>
-                      <th>Cliente</th>
-                      <th>Fecha del pedido</th>
-                      <th>Fecha de Entrega</th>
-                      <th>Curso o Club</th>
-                      <th>Logo</th>
-                      <th>Notas</th>
-                      <th>Cantidad</th>
-                      <th>Auspiciantes</th>
-                      <th>Estado</th>
-                      <th>Ver</th>
-                      <th>Editar</th>
-                      <th>Eliminar</th>
-                    </tr>
+                  <tr>
+                    <th>Cliente</th>
+                    <th>Fecha del pedido</th>
+                    <th>Fecha de Entrega</th>
+                    <th>Curso o Club</th>
+                    <th>Logo</th>
+                    <th>Notas</th>
+                    <th>Cantidad</th>
+                    <th>Auspiciantes</th>
+                    <th>Estado</th>
+                    <th>Ver</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                  </tr>
                   </thead>
 
                   <tbody>
-                    <% @orders.each do |order| %>
-                      <tr>
-                        <td><%= order.client.firstname %></td>
-                        <td><%= order.created_at %></td>
-                        <td><%= order.deliver_date %></td>
-                        <td><%= order.course_club %></td>
-                        <td><%= order.logo %></td>
-                        <td><%= order.notes %></td>
-                        <td><%= order.quantity %></td>
-                        <td><% order.sponsors.each do |sponsor|%>
-                            <%= sponsor.name %>
-                          <%end%>
-                        </td>
-                        <td><%= order.state %></td>
-                        <td><%= link_to '', order, class: 'fas fa-eye' %></td>
-                        <td><%= link_to '', edit_order_path(order) , class: 'fas fa-edit' %></td>
-                        <td><%= link_to '', order, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>
-                      </tr>
-                    <%end%>                
+                  <% @orders.each do |order| %>
+                    <tr>
+                      <td><%= order.client.firstname %></td>
+                      <td><%= order.created_at %></td>
+                      <td><%= order.deliver_date %></td>
+                      <td><%= order.course_club %></td>
+                      <td><%= order.logo %></td>
+                      <td><%= order.notes %></td>
+                      <td><%= order.quantity %></td>
+                      <td>
+                        <% order.sponsors.each do |sponsor| %>
+                          <%= sponsor.name %>
+                        <% end %>
+                      </td>
+                      <td><%= order.state %></td>
+                      <td><%= link_to '', order, class: 'fas fa-eye' %></td>
+                      <td><%= link_to '', edit_order_path(order), class: 'fas fa-edit' %></td>
+                      <td><%= link_to '', order, method: :delete, data: {confirm: 'Estás seguro?'}, class: "fas fa-trash" %></td>
+                    </tr>
+                  <% end %>
                   </tbody>
                 </table>
                 <%= link_to 'Nuevo pedido', new_order_path %>

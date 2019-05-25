@@ -1,4 +1,4 @@
-<div class="header"> 
+<div class="header">
   <h1 class="page-header">
     Pedidos
   </h1>
@@ -6,54 +6,86 @@
     <li><a href="#">Inicio</a></li>
     <li><a href="#">Pedidos</a></li>
     <li class="active">Editar</li>
-  </ol> 
+  </ol>
 </div>
 
-<div id="page-inner"> 
+<div id="page-inner">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-content"> 
+        <div class="card-content">
           <p>
-            <p id="notice"><%= notice %></p>
+          <p id="notice"><%= notice %></p>
 
-            <p>
-              <strong>Deliver date:</strong>
-              <%= @order.deliver_date %>
-            </p>
+          <p>
+            <strong>Deliver date:</strong>
+            <%= @order.deliver_date %>
+          </p>
 
-            <p>
-              <strong>Client:</strong>
-              <%= @order.client %>
-            </p>
+          <p>
+            <strong>Client:</strong>
+            <%= @order.client.firstname %>
+            <%= @order.client.lastname %>
+            <%= @order.client.doc_ruc %>
+          </p>
 
-            <p>
-              <strong>Course club:</strong>
-              <%= @order.course_club %>
-            </p>
+          <p>
+            <strong>Course club:</strong>
+            <%= @order.course_club %>
+          </p>
 
-            <p>
-              <strong>Logo:</strong>
-              <%= @order.logo %>
-            </p>
+          <p>
+            <strong>Logo:</strong>
+            <%= @order.logo %>
+          </p>
 
-            <p>
-              <strong>State:</strong>
-              <%= @order.state %>
-            </p>
+          <p>
+            <strong>State:</strong>
+            <%= @order.state %>
+          </p>
 
-            <p>
-              <strong>Notes:</strong>
-              <%= @order.notes %>
-            </p>
+          <p>
+            <strong>Notes:</strong>
+            <%= @order.notes %>
+          </p>
 
-            <p>
-              <strong>Quantity:</strong>
-              <%= @order.quantity %>
-            </p>
+          <p>
+            <strong>Quantity:</strong>
+            <%= @order.quantity %>
+          </p>
 
-            <%= link_to 'Edit', edit_order_path(@order) %> |
-            <%= link_to 'Back', orders_path %>
+          <h3>Detalles</h3>
+          <% @order.order_details.each do |order_detail| %>
+            <%= order_detail.firstname %>
+            <%= order_detail.lastname %>
+            <%= order_detail.number %>
+            <%= order_detail.size %><br>
+          <% end %>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Agregar detalles
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title" id="exampleModalLabel">Agregar detalles</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= render 'form_order_detail', order_detail: @order_detail %>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <%= link_to 'Edit', edit_order_path(@order) %> |
+          <%= link_to 'Back', orders_path %>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-<div class="header"> 
+<div class="header">
   <h1 class="page-header">
     Pedidos
   </h1>
@@ -6,20 +6,20 @@
     <li><a href="#">Inicio</a></li>
     <li><a href="#">Pedidos</a></li>
     <li class="active">Nuevo</li>
-  </ol> 
+  </ol>
 </div>
 
-<div id="page-inner"> 
+<div id="page-inner">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-content"> 
+        <div class="card-content">
           <p>
-			<h1>Nuevo Pedido</h1>
+          <h1>Nuevo Pedido</h1>
 
-			<%= render 'form', order: @order %><br>
+          <%= render 'form', order: @order %><br>
 
-			<%= link_to 'Back', orders_path %>
+          <%= link_to 'Back', orders_path %>
           </p>
 
           <div class="clearBoth"><br/></div>

@@ -12,6 +12,11 @@ body {
     opacity: 1;
 }
 
+.modal {
+  box-shadow: none;
+  background-color: unset;
+}
+
 select {
   display: block !important;
   height: 35px;

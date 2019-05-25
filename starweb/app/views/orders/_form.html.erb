@@ -4,9 +4,9 @@
       <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
       <ul>
-      <% order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -44,8 +44,20 @@
   <div class="field">
     <h2>Auspiciantes</h2>
     <% @sponsors.each do |sponsor| %>
-      <br><%= check_box_tag "sponsors[]", sponsor.id, @order.sponsors.include?(sponsor)  %> <%= sponsor.name %>
-    <%end%>
+      <br><%= check_box_tag "sponsors[]", sponsor.id, @order.sponsors.include?(sponsor) %> <%= sponsor.name %>
+    <% end %>
+  </div><br>
+
+  <div class="field">
+    <h2>Detalles</h2>
+      <h5>Nombre</h5>
+      <%= text_field_tag "order_details[]" %>
+      <h5>Apellido</h5>
+      <%= text_field_tag "order_details[]" %>
+      <h5>Número</h5>
+      <%= text_field_tag "order_details[]" %>
+      <h5>Tamaño</h5>
+      <%= text_field_tag "order_details[]" %>
   </div><br>
 
   <div class="actions">
