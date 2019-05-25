@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :order_details
   resources :info_details
   resources :orders
   get 'users/index'

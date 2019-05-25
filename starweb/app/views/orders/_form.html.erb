@@ -32,11 +32,6 @@
   </div>
 
   <div class="field">
-    <%= form.label :state %>
-    <%= form.text_field :state %>
-  </div>
-
-  <div class="field">
     <%= form.label :notes %>
     <%= form.text_field :notes %>
   </div>
@@ -45,6 +40,13 @@
     <%= form.label :quantity %>
     <%= form.number_field :quantity %>
   </div>
+
+  <div class="field">
+    <h2>Auspiciantes</h2>
+    <% @sponsors.each do |sponsor| %>
+      <br><%= check_box_tag "sponsors[]", sponsor.id, @order.sponsors.include?(sponsor)  %> <%= sponsor.name %>
+    <%end%>
+  </div><br>
 
   <div class="actions">
     <%= form.submit class: 'btn btn-primary' %>

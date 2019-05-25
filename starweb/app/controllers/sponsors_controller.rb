@@ -29,8 +29,8 @@ class SponsorsController < ApplicationController
 
     respond_to do |format|
       if @sponsor.save
-        format.html { redirect_to @sponsor, notice: 'Sponsor was successfully created.' }
-        format.json { render :show, status: :created, location: @sponsor }
+        format.html { redirect_to sponsors_url, notice: 'Sponsor was successfully created.' }
+        format.json { render :show, status: :created, location: sponsors_url }
       else
         format.html { render :new }
         format.json { render json: @sponsor.errors, status: :unprocessable_entity }
@@ -43,8 +43,8 @@ class SponsorsController < ApplicationController
   def update
     respond_to do |format|
       if @sponsor.update(sponsor_params)
-        format.html { redirect_to @sponsor, notice: 'Sponsor was successfully updated.' }
-        format.json { render :show, status: :ok, location: @sponsor }
+        format.html { redirect_to sponsors_url, notice: 'Sponsor was successfully updated.' }
+        format.json { render :show, status: :ok, location: sponsors_url }
       else
         format.html { render :edit }
         format.json { render json: @sponsor.errors, status: :unprocessable_entity }

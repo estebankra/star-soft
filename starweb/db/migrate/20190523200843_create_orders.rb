@@ -5,7 +5,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.references :client, foreign_key: true
       t.string :course_club
       t.string :logo
-      t.string :state
+      t.string :state, default: 'En espera' 
       t.string :notes
       t.integer :quantity
 

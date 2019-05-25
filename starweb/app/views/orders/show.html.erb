@@ -1,39 +1,63 @@
-<p id="notice"><%= notice %></p>
+<div class="header"> 
+  <h1 class="page-header">
+    Pedidos
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Pedidos</a></li>
+    <li class="active">Editar</li>
+  </ol> 
+</div>
 
-<p>
-  <strong>Deliver date:</strong>
-  <%= @order.deliver_date %>
-</p>
+<div id="page-inner"> 
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-content"> 
+          <p>
+            <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Client:</strong>
-  <%= @order.client %>
-</p>
+            <p>
+              <strong>Deliver date:</strong>
+              <%= @order.deliver_date %>
+            </p>
 
-<p>
-  <strong>Course club:</strong>
-  <%= @order.course_club %>
-</p>
+            <p>
+              <strong>Client:</strong>
+              <%= @order.client %>
+            </p>
 
-<p>
-  <strong>Logo:</strong>
-  <%= @order.logo %>
-</p>
+            <p>
+              <strong>Course club:</strong>
+              <%= @order.course_club %>
+            </p>
 
-<p>
-  <strong>State:</strong>
-  <%= @order.state %>
-</p>
+            <p>
+              <strong>Logo:</strong>
+              <%= @order.logo %>
+            </p>
 
-<p>
-  <strong>Notes:</strong>
-  <%= @order.notes %>
-</p>
+            <p>
+              <strong>State:</strong>
+              <%= @order.state %>
+            </p>
 
-<p>
-  <strong>Quantity:</strong>
-  <%= @order.quantity %>
-</p>
+            <p>
+              <strong>Notes:</strong>
+              <%= @order.notes %>
+            </p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+            <p>
+              <strong>Quantity:</strong>
+              <%= @order.quantity %>
+            </p>
+
+            <%= link_to 'Edit', edit_order_path(@order) %> |
+            <%= link_to 'Back', orders_path %>
+        </div>
+      </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+  </div>
+  <!-- /. PAGE WRAPPER  -->
+</div>

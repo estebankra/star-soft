@@ -4,8 +4,8 @@ class Product < ApplicationRecord
   has_many :has_supplies
   has_many :supplies, through: :has_supplies
 
-  before_update :clear_categories
-  before_destroy :clear_categories
+  before_update :clear_supplies
+  before_destroy :clear_supplies
 	after_create :save_supplies
   after_update :save_supplies
 
@@ -22,7 +22,7 @@ class Product < ApplicationRecord
   	end
   end
 
-  def clear_categories 
+  def clear_supplies
     HasSupply.all.each do | hasSupply |
       if hasSupply.product_id == self.id
         HasSupply.destroy(hasSupply.id)

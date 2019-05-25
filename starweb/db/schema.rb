@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_23_202426) do
+ActiveRecord::Schema.define(version: 2019_05_25_160335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,38 @@ ActiveRecord::Schema.define(version: 2019_05_23_202426) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "has_details", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "order_detail_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_detail_id"], name: "index_has_details_on_order_detail_id"
+    t.index ["order_id"], name: "index_has_details_on_order_id"
+  end
+
+  create_table "has_products", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "product_id"
+    t.string "specs_f"
+    t.string "specs_b"
+    t.integer "quantity"
+    t.string "color"
+    t.string "design"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_has_products_on_order_id"
+    t.index ["product_id"], name: "index_has_products_on_product_id"
+  end
+
+  create_table "has_sponsors", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "sponsor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_has_sponsors_on_order_id"
+    t.index ["sponsor_id"], name: "index_has_sponsors_on_sponsor_id"
+  end
+
   create_table "has_supplies", force: :cascade do |t|
     t.bigint "product_id"
     t.bigint "supply_id"
@@ -43,7 +75,7 @@ ActiveRecord::Schema.define(version: 2019_05_23_202426) do
     t.index ["supply_id"], name: "index_has_supplies_on_supply_id"
   end
 
-  create_table "info_details", force: :cascade do |t|
+  create_table "order_details", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
     t.integer "number"
@@ -57,7 +89,7 @@ ActiveRecord::Schema.define(version: 2019_05_23_202426) do
     t.bigint "client_id"
     t.string "course_club"
     t.string "logo"
-    t.string "state"
+    t.string "state", default: "En espera"
     t.string "notes"
     t.integer "quantity"
     t.datetime "created_at", null: false
@@ -140,6 +172,12 @@ ActiveRecord::Schema.define(version: 2019_05_23_202426) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "has_details", "order_details"
+  add_foreign_key "has_details", "orders"
+  add_foreign_key "has_products", "orders"
+  add_foreign_key "has_products", "products"
+  add_foreign_key "has_sponsors", "orders"
+  add_foreign_key "has_sponsors", "sponsors"
   add_foreign_key "has_supplies", "products"
   add_foreign_key "has_supplies", "supplies"
   add_foreign_key "orders", "clients"

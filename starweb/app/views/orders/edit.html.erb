@@ -1,10 +1,10 @@
 <div class="header"> 
   <h1 class="page-header">
-    Colores
+    Pedidos
   </h1>
   <ol class="breadcrumb">
     <li><a href="#">Inicio</a></li>
-    <li><a href="#">Moneda</a></li>
+    <li><a href="#">Pedidos</a></li>
     <li class="active">Editar</li>
   </ol> 
 </div>
@@ -15,9 +15,9 @@
       <div class="card">
         <div class="card-content"> 
           <p>
-			<h1>Editing Pedido</h1>
+			<h1>Editar Pedido</h1>
 
-			<%= render 'form', order: @order %>
+			<%= render 'form', order: @order %><br>
 
 			<%= link_to 'Volver', orders_path %>
           </p>
