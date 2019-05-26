@@ -54,6 +54,22 @@
             <%= @order.quantity %>
           </p>
 
+          <h3>Productos</h3>
+          <% @order.products.each do |product| %>
+            <%= product.name %>
+            <br>
+          <% end %>
+
+           <h3>Productos</h3>
+          <% @order.has_products.each do |hasProduct| %>
+            <%= hasProduct.specs_f %>
+            <%= hasProduct.specs_b %>
+            <%= hasProduct.quantity %>
+            <%= hasProduct.color %>
+            <%= hasProduct.design %>
+            <br>
+          <% end %>
+
           <h3>Detalles</h3>
           <% @order.order_details.each do |order_detail| %>
             <%= order_detail.firstname %>
@@ -63,12 +79,35 @@
           <% end %>
 
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalProduct">
+            Agregar producto
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title" id="exampleModalLabel">Agregar producto</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= render 'form_has_product', has_product: @hasProduct %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalOrderDetail">
             Agregar detalles
           </button>
 
           <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="modalOrderDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">

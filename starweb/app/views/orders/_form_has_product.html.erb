@@ -1,0 +1,51 @@
+<%= form_with(model: has_product, local: true) do |form| %>
+  <% if has_product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(has_product.errors.count, "error") %> prohibited this has_product from being saved:</h2>
+
+      <ul>
+      <% has_product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.hidden_field :order_id, value: @order.id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :product_id %>
+    <%= form.collection_select :product_id, Product.all, :id, :name %><br>
+  </div>
+
+  <div class="field">
+    <%= form.label :specs_f %>
+    <%= form.text_area :specs_f %>
+  </div>
+
+  <div class="field">
+    <%= form.label :specs_b %>
+    <%= form.text_area :specs_b %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :color %>
+    <%= form.text_field :color %>
+  </div>
+
+  <div class="field">
+    <%= form.label :design %>
+    <%= form.text_field :design %>
+  </div>
+
+  <div class="modal-footer">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>  
+<% end %>

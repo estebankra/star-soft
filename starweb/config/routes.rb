@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :has_products
+  get 'has_products/index'
+  get 'has_products/new'
+  post 'has_products/create'
+  get 'has_products/edit/:id', to: 'has_products#edit', as: 'has_products_edit'
+  patch 'has_products/edit/:id', to: 'has_products#update', as: 'has_products_update'
+  get 'has_products/destroy/:id', to: 'has_products#destroy', as: 'has_products_destroy'
   resources :order_details
   resources :info_details
   resources :orders

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Has Products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order</th>
+      <th>Product</th>
+      <th>Specs f</th>
+      <th>Specs b</th>
+      <th>Quantity</th>
+      <th>Color</th>
+      <th>Design</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @has_products.each do |has_product| %>
+      <tr>
+        <td><%= has_product.order %></td>
+        <td><%= has_product.product %></td>
+        <td><%= has_product.specs_f %></td>
+        <td><%= has_product.specs_b %></td>
+        <td><%= has_product.quantity %></td>
+        <td><%= has_product.color %></td>
+        <td><%= has_product.design %></td>
+        <td><%= link_to 'Show', has_product %></td>
+        <td><%= link_to 'Edit', edit_has_product_path(has_product) %></td>
+        <td><%= link_to 'Destroy', has_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Has Product', new_has_product_path %>

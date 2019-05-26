@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @has_product.order %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @has_product.product %>
+</p>
+
+<p>
+  <strong>Specs f:</strong>
+  <%= @has_product.specs_f %>
+</p>
+
+<p>
+  <strong>Specs b:</strong>
+  <%= @has_product.specs_b %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @has_product.quantity %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @has_product.color %>
+</p>
+
+<p>
+  <strong>Design:</strong>
+  <%= @has_product.design %>
+</p>
+
+<%= link_to 'Edit', edit_has_product_path(@has_product) %> |
+<%= link_to 'Back', has_products_path %>
