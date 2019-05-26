@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_secretary!
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
@@ -55,6 +54,21 @@ class OrdersController < ApplicationController
         format.html { render :edit }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def state
+    @order = Order.find(params[:id])
+    if @order.state == 'En espera'
+      @order.state = 'En proceso'
+    elsif @order.state == 'En proceso'
+      @order.state = 'Completado'
+    else 
+      @order.state = 'En espera'
+    end
+
+    if @order.save
+      redirect_to orders_path
     end
   end
 

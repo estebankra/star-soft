@@ -4,6 +4,9 @@ class Order < ApplicationRecord
   has_many :sponsors, through: :has_sponsors
   has_many :has_products
   has_many :products, through: :has_products
+  has_many :has_details
+  has_many :order_details, through: :has_details
+
 
   # Sponsors
   before_update :clear_sponsors
@@ -16,8 +19,12 @@ class Order < ApplicationRecord
   end
 
   def save_sponsors
-    @sponsors.each do |sponsor_id|
-      HasSponsor.create(order_id: self.id, sponsor_id: sponsor_id )
+    if @sponsors.nil?
+      return
+    else
+      @sponsors.each do |sponsor_id|
+        HasSponsor.create(order_id: self.id, sponsor_id: sponsor_id )
+      end  
     end
   end
 

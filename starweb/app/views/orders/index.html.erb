@@ -52,7 +52,26 @@
                           <%= sponsor.name %>
                         <% end %>
                       </td>
-                      <td><%= order.state %></td>
+                      <% if order.state == 'En espera' %>
+                          <% if current_user.is_admin? or current_user.is_secretary? %>
+                            <td><p class='alert alert-danger'><%= order.state %></td>
+                          <% elsif current_user.is_team? %>
+                            <td class="alert alert-danger"><%= link_to order.state, orders_state_path(order) %></td>
+                          <%end%>
+                      <% elsif order.state == 'En proceso' %>
+                          <% if current_user.is_admin? or current_user.is_secretary? %>
+                            <td><p class='alert alert-warning'><%= order.state %></td>
+                          <% elsif current_user.is_team? %>
+                            <td class="alert alert-warning"><%= link_to order.state, orders_state_path(order) %></td>
+                          <%end%>
+                      <% else %>
+                        <% if current_user.is_admin? or current_user.is_secretary? %>
+                            <td><p class='alert alert-success'><%= order.state %></td>
+                        <% elsif current_user.is_team? %>
+                            <td class="alert alert-success"><%= link_to order.state, orders_state_path(order) %></td>
+                        <%end%>
+                      <% end %>
+
                       <td><%= link_to '', order, class: 'fas fa-eye' %></td>
                       <td><%= link_to '', edit_order_path(order), class: 'fas fa-edit' %></td>
                       <td><%= link_to '', order, method: :delete, data: {confirm: 'Estás seguro?'}, class: "fas fa-trash" %></td>

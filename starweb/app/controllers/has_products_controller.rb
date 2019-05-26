@@ -55,9 +55,10 @@ class HasProductsController < ApplicationController
   # DELETE /has_products/1
   # DELETE /has_products/1.json
   def destroy
+    @order = Order.find(@has_product.order_id)
     @has_product.destroy
     respond_to do |format|
-      format.html { redirect_to has_products_url, notice: 'Has product was successfully destroyed.' }
+      format.html { redirect_to @order, notice: 'Has product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

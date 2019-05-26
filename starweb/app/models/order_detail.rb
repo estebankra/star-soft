@@ -1,4 +1,5 @@
 class OrderDetail < ApplicationRecord
+  has_many :has_details
   has_many :orders, through: :has_details
 
 
@@ -20,7 +21,7 @@ class OrderDetail < ApplicationRecord
   def clear_order_details 
     HasDetail.all.each do | hasDetail |
       if hasDetail.order_id == self.id
-        HasDetail.destroy(hasDetail.id)
+        HasDetail.destroy(hasDetail)
       end
     end
   end

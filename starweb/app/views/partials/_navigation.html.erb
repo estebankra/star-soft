@@ -31,7 +31,7 @@
 
       <% if current_user.is_team? or current_user.is_admin? %>
       <li>
-        <a href="ui-elements.html" class="waves-effect waves-dark"><i class="fas fa-shopping-cart"></i>Pedidos</a>
+        <%= link_to(raw("<i class='fas fa-donate '></i> Pedidos"), orders_path, class: "waves-effect waves-dark") %>
       </li>
       <% end %>
 
