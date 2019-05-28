@@ -15,7 +15,6 @@
   <ul class="nav navbar-top-links navbar-right"> 
     <li><a class="dropdown-button waves-effect waves-dark" data-activates="dropdown4"><i class="fa fa-envelope fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>       
     <li><a class="dropdown-button waves-effect waves-dark" data-activates="dropdown3"><i class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
-    <li><a class="dropdown-button waves-effect waves-dark" data-activates="dropdown2"><i class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
     <li><a class="dropdown-button waves-effect waves-dark" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b><%= current_user.email %></b> <i class="material-icons right">arrow_drop_down</i></a></li>
   </ul>
 </nav>
@@ -25,47 +24,37 @@
     <ul class="nav" id="main-menu">
       <% if current_user.is_admin? %>
       <li>
-        <%= link_to(raw("<i class='fa fa-dashboard'></i> Reportes"), root_path, class: "waves-effect waves-dark") %>
+        <%= link_to(raw("<i class='fa fa-file-alt'></i> Reportes"), root_path, class: "waves-effect waves-dark") %>
       </li>
       <% end %>
 
       <% if current_user.is_team? or current_user.is_admin? %>
       <li>
-        <%= link_to(raw("<i class='fas fa-donate '></i> Pedidos"), orders_path, class: "waves-effect waves-dark") %>
+        <%= link_to(raw("<i class='fas fa-tasks '></i> Pedidos"), orders_path, class: "waves-effect waves-dark") %>
       </li>
       <% end %>
 
       <% if current_user.is_secretary? %>
       <li>
-        <%= link_to(raw("<i class='fas fa-donate '></i> Pedidos"), orders_path, class: "waves-effect waves-dark") %>
+        <%= link_to(raw("<i class='fas fa-tasks '></i> Pedidos"), orders_path, class: "waves-effect waves-dark") %>
       </li>
 
       <li>
-        <%= link_to(raw("<i class='fas fa-donate '></i> Clientes"), clients_path, class: "waves-effect waves-dark") %>
+        <%= link_to(raw("<i class='fas fa-user-friends '></i> Clientes"), clients_path, class: "waves-effect waves-dark") %>
       </li>
 
       <li>
-        <%= link_to(raw("<i class='fas fa-donate '></i> Productos"), products_path, class: "waves-effect waves-dark") %>
+        <%= link_to(raw("<i class='fas fa-tshirt '></i> Productos"), products_path, class: "waves-effect waves-dark") %>
       </li>
 
       <li>
-        <%= link_to(raw("<i class='fas fa-donate '></i> Insumos"), supplies_path, class: "waves-effect waves-dark") %>
-      </li>
-      <li>
-        <%= link_to(raw("<i class='fas fa-donate '></i> Auspiciantes"), sponsors_path, class: "waves-effect waves-dark") %>
+        <%= link_to(raw("<i class='fas fa-boxes '></i> Insumos"), supplies_path, class: "waves-effect waves-dark") %>
       </li>
 
       <li>
-        <%= link_to(raw("<i class='fas fa-palette '></i> Colores"), colors_path, class: "waves-effect waves-dark") %>
+        <%= link_to(raw("<i class='fas fa-hands-helping '></i> Auspiciantes"), sponsors_path, class: "waves-effect waves-dark") %>
       </li>
 
-      <li>
-        <%= link_to(raw("<i class='fas fa-donate '></i> Monedas"), currencies_path, class: "waves-effect waves-dark") %>
-      </li>
-
-      <li>
-        <%= link_to(raw("<i class='fas fa-donate '></i> Cotizaciones"), quotations_path, class: "waves-effect waves-dark") %>
-      </li>
       <% end %>
 
       <% if current_user.is_admin? %>
@@ -88,55 +77,6 @@
   </li> 
   <li><%= link_to(raw("<i class='fa fa-sign-out fa-fw'></i> Cerrar sesión"), destroy_user_session_path, method: :delete, class: "waves-effect waves-dark")%>
   </li>
-</ul>
-
-<ul id="dropdown2" class="dropdown-content w250">
-  <li>
-    <div>
-      <i class="fa fa-comment fa-fw"></i> New Comment
-      <span class="pull-right text-muted small">4 min</span>
-    </div>
-  </a>
-</li>
-<li class="divider"></li>
-<li>
-  <div>
-    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-    <span class="pull-right text-muted small">12 min</span>
-  </div>
-</a>
-</li>
-<li class="divider"></li>
-<li>
-  <div>
-    <i class="fa fa-envelope fa-fw"></i> Message Sent
-    <span class="pull-right text-muted small">4 min</span>
-  </div>
-</a>
-</li>
-<li class="divider"></li>
-<li>
-  <div>
-    <i class="fa fa-tasks fa-fw"></i> New Task
-    <span class="pull-right text-muted small">4 min</span>
-  </div>
-</a>
-</li>
-<li class="divider"></li>
-<li>
-  <div>
-    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-    <span class="pull-right text-muted small">4 min</span>
-  </div>
-</a>
-</li>
-<li class="divider"></li>
-<li>
-  <a class="text-center" href="#">
-    <strong>See All Alerts</strong>
-    <i class="fa fa-angle-right"></i>
-  </a>
-</li>
 </ul>
 
 <ul id="dropdown3" class="dropdown-content dropdown-tasks w250">

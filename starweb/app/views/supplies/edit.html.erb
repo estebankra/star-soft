@@ -12,19 +12,13 @@
 <div id="page-inner"> 
   <div class="row">
     <div class="col-md-12">
-      <div class="card">
-        <div class="card-content"> 
-          <p>
-            <h3>Editar insumo</h3><br>
-            
-            <%= render 'form', supply: @supply %><br>
-			<%= link_to 'Volver', supplies_path %>
-          </p>
+      <p>
+        <%= render 'form', supply: @supply %><br>
 
-          <div class="clearBoth"><br/></div>
+        <%= link_to 'Volver', supplies_path %>
+      </p>
 
-        </div>
-      </div>
+      <div class="clearBoth"><br/></div>
     </div>
     <!-- /. PAGE INNER  -->
   </div>

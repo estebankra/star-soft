@@ -6,6 +6,12 @@ body {
     background: #1F2837;
 }
 
+div .col-md-12 {
+  background-color: white;
+  border-radius: 4px;
+  padding: 10px;
+}
+
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
     position: initial;
     left: 0;
