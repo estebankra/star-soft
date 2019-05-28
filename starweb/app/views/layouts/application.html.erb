@@ -24,14 +24,10 @@
         <div id="page-wrapper-login">
         <%end%>
             <% unless notice.nil? %>
-            <div class="alert alert-success" role="alert">
-                <p class="notice"><%= notice %></p>
-            </div>
+                <p class="alert alert-success"><%= notice %></p>
             <%end%>
             <% unless alert.nil? %>
-            <div class="alert alert-warning" role="alert">
-                <p class="alert"><%= alert %></p>
-            </div>
+                <p class="alert alert-warning"><%= alert %></p>
             <%end%>
             <%= yield %>
             <%= render "partials/footer" %>
