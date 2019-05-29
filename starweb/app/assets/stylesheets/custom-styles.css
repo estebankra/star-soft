@@ -26,16 +26,13 @@ div .col-md-12 {
 
 select {
   display: block !important;
-  height: 35px;
-  font-size: 15px;
-  border: solid 2px cornflowerblue;
 }
 
 a:hover, a:focus{
   color: #cecece !important;
 }
 
- #wrapper {
+#wrapper {
     width: 100%;
 }
 

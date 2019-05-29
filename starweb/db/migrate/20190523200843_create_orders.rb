@@ -7,7 +7,6 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.string :logo
       t.string :state, default: 'En espera' 
       t.string :notes
-      t.integer :quantity
 
       t.timestamps
     end

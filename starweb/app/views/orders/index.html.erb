@@ -70,7 +70,9 @@
             <% end %>
           </tbody>
         </table>
-        <%= link_to 'Nuevo', new_order_path, class: 'btn btn-primary'%>
+        <% if current_user.is_secretary? %>
+          <%= link_to 'Nuevo', new_order_path, class: 'btn btn-primary'%>
+        <% end %>
       </div>
     </div>
   </div>

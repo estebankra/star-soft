@@ -91,7 +91,6 @@ ActiveRecord::Schema.define(version: 2019_05_29_114741) do
     t.string "logo"
     t.string "state", default: "En espera"
     t.string "notes"
-    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "logo_file_name"

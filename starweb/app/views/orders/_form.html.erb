@@ -12,39 +12,38 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :deliver_date %>
-    <%= form.date_select :deliver_date %>
+    <%= form.label 'Fecha de entrega' %>
+    <%= form.date_field :deliver_date %>
   </div>
 
   <div class="field">
-    <%= form.label :client_id %>
+    <%= form.label 'Cliente' %>
     <%= form.collection_select :client_id, Client.all, :id, :firstname %><br>
   </div>
 
   <div class="field">
-    <%= form.label :course_club %>
+    <%= form.label 'Nombre de Curso/Club' %>
     <%= form.text_field :course_club %>
   </div>
 
   <div class="field">
     <%= form.label 'Logo' %>
     <%= form.file_field :logo, class: 'field' %>
-  </div>
+  </div><br>
 
   <div class="field">
-    <%= form.label :notes %>
+    <%= form.label 'Notas' %>
     <%= form.text_field :notes %>
   </div>
 
   <div class="field">
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
-  </div>
-
-  <div class="field">
-    <h2>Auspiciantes</h2>
+    <h4>Auspiciantes</h4>
     <% @sponsors.each do |sponsor| %>
-      <br><%= check_box_tag "sponsors[]", sponsor.id, @order.sponsors.include?(sponsor) %> <%= sponsor.name %>
+      <% if @sponsors.empty? %>
+        <p>No ha agregado ningún auspiciante</p>
+      <% else %>
+        <br><%= check_box_tag "sponsors[]", sponsor.id, @order.sponsors.include?(sponsor) %> <%= sponsor.name %>
+      <% end %>
     <% end %>
   </div><br>
 
