@@ -20,8 +20,9 @@
 //= require js/easypiechart.js
 //= require js/easypiechart-data.js
 //= require js/Lightweight-Chart/jquery.chart.js
-//= require js/custom-scripts.js
 //= require js/dataTables/jquery.dataTables.js
+//= require js/dataTables/dataTables.bootstrap.js
+//= require js/custom-scripts.js
 
 //= require rails-ujs
 //= require activestorage
