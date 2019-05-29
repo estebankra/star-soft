@@ -36,12 +36,16 @@ div .col-md-12 {
 .modal {
   box-shadow: none;
   background-color: unset;
-  overflow-x: hidden; 
+  overflow-x: hidden;
+  max-height: 90%;
 }
 
 .modal .modal-content {
-    padding: 15px;
-    overflow-x: hidden; 
+  padding: 20px;
+}
+
+.modal-open .modal {
+  overflow-y: hidden;
 }
 
 .thumbnail {

@@ -21,7 +21,7 @@ class OrderDetail < ApplicationRecord
   def clear_order_details 
     HasDetail.all.each do | hasDetail |
       if hasDetail.order_id == self.id
-        HasDetail.destroy(hasDetail)
+        HasDetail.destroy(hasDetail.id)
       end
     end
   end

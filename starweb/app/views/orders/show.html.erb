@@ -20,42 +20,28 @@
 
   <div class="row">
     <div class="col-md-12">
-      <div class="col-md-6"> 
-        <p>
-          <p id="notice"><%= notice %></p>
+      <div class="col-md-6">
+                  <h4>Principal</h4>
+          <hr>
+        <div class="col-md-6">
+            <label><b>Fecha de entrega:</b> <br><%= @order.deliver_date %></label><br>
 
-          <p>
-            <strong>Deliver date:</strong>
-            <%= @order.deliver_date %>
-          </p>
+            <label><b>Cliente:</b> <br>
+              <%= @order.client.firstname %>
+              <%= @order.client.lastname %> - 
+              <%= @order.client.doc_ruc %>
+            </label><br>
+            
+            <label><b>Curso / Club:</b> <br><%= @order.course_club %></label><br>
+          </div>
+          <div class="col-md-6">
+            <label><b>Logo:</b> <br><%= image_tag @order.logo.url(:thumb) %></label><br>
 
-          <p>
-            <strong>Client:</strong>
-            <%= @order.client.firstname %>
-            <%= @order.client.lastname %>
-            <%= @order.client.doc_ruc %>
-          </p>
+            <label><b>Estado:</b> <br><%= @order.state %></label><br>
 
-          <p>
-            <strong>Course club:</strong>
-            <%= @order.course_club %>
+            <label><b>Notas:</b> <br><%= @order.notes %></label><br>
           </p>
-
-          <p>
-            <strong>Logo:</strong>
-            <%= image_tag @order.logo.url(:thumb) %>
-          </p>
-
-          <p>
-            <strong>State:</strong>
-            <%= @order.state %>
-          </p>
-
-          <p>
-            <strong>Notes:</strong>
-            <%= @order.notes %>
-          </p>
-        </p>
+        </div>
       </div>
 
       <div class="col-md-6"> 
@@ -87,8 +73,7 @@
 
       </div>
       <%end%>
-      <h4>Detalles</h4> 
-      <% @order.order_details.each do |order_detail| %>       
+      <h4>Detalles</h4>     
       <% if @order.order_details.empty? %>
       <p>No ha agregado ningún detalle</p>
       <% else %>
@@ -97,15 +82,14 @@
           <thead>
             <tr>
               <th>Nombre</th>
-              <th>Apellido</th>
               <th>Número</th>
               <th>Tamaño</th>
             </tr>
           </thead>
           <tbody>
+            <% @order.order_details.each do |order_detail| %>   
             <tr>
-              <td><%= order_detail.firstname %></td>
-              <td><%= order_detail.lastname %></td>
+              <td><%= order_detail.name %></td>
               <td><%= order_detail.number %></td>
               <td><%= order_detail.size %><br> 
                 <td><%= link_to '' , order_detail, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>
@@ -123,7 +107,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title" id="exampleModalLabel">Agregar producto</h3>
+            <h5 class="modal-title" id="exampleModalLabel">Agregar producto</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -140,7 +124,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title" id="exampleModalLabel">Agregar detalles</h3>
+            <h5 class="modal-title" id="exampleModalLabel">Agregar detalles</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
