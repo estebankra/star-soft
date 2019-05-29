@@ -12,46 +12,46 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :firstname %>
+    <%= form.label 'Nombres' %>
     <%= form.text_field :firstname %>
   </div>
 
   <div class="field">
-    <%= form.label :lastname %>
+    <%= form.label 'Apellidos' %>
     <%= form.text_field :lastname %>
   </div>
 
   <div class="field">
-    <%= form.label :doc_ruc %>
+    <%= form.label 'Documento / ruc' %>
     <%= form.text_field :doc_ruc %>
   </div>
 
   <div class="field">
-    <%= form.label :telephone %>
+    <%= form.label 'Telefóno' %>
     <%= form.text_field :telephone %>
   </div>
 
   <div class="field">
-    <%= form.label :date_nac %>
-    <%= form.date_field :date_nac %>
-  </div><br>
-
-  <div class="field">
-    <%= form.label :mail %>
+    <%= form.label 'Correo' %>
     <%= form.text_field :mail %>
   </div>
 
   <div class="field">
-    <%= form.label :city %>
+    <%= form.label 'Ciudad' %>
     <%= form.text_field :city %>
   </div>
 
   <div class="field">
-    <%= form.label :country %>
+    <%= form.label 'País' %>
     <%= form.text_field :country %>
   </div>
 
+  <div class="field">
+    <%= form.label 'Nacimiento' %>
+    <%= form.date_field :date_nac %>
+  </div><br>
+
   <div class="actions">
-    <%= form.submit class: 'btn btn-primary' %>
+    <%= form.submit 'Guardar', class: 'btn btn-primary' %>
   </div>
 <% end %>

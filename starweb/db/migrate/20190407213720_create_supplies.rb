@@ -3,7 +3,7 @@ class CreateSupplies < ActiveRecord::Migration[5.2]
     create_table :supplies do |t|
       t.string :name
       t.string :image
-      t.string :stock
+      t.integer :stock
       t.string :description
 
       t.timestamps
