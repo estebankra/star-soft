@@ -3,9 +3,7 @@
     Productos
   </h1>
   <ol class="breadcrumb">
-    <li><a href="#">Inicio</a></li>
-    <li><a href="#">Productos</a></li>
-    <li class="active">Index</li>
+    <li class="#">Productos</li>
   </ol> 
 </div>
 
@@ -21,8 +19,6 @@
               <th>Imagen</th>
               <th>Descripción</th>
               <th>Insumos</th>
-              <th>Editar</th>
-              <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
@@ -36,13 +32,12 @@
                 <%= supply.name %>
                 <%end%>
               </td>
-              <td><%= link_to '', edit_product_path(product) , class: 'fas fa-edit' %></td>
-              <td><%= link_to '', product, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>
-              <% end %>
-            </tbody>
-          </table>
-          <%= link_to 'Nuevo', new_product_path, class: 'btn btn-primary' %>
-        </div>
+              <td style="width: 70px"><%= link_to '', edit_product_path(product) , class: 'fas fa-edit' %> | <%= link_to '', product, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>
+            <% end %>
+          </tbody>
+        </table>
+        <%= link_to 'Nuevo', new_product_path, class: 'btn btn-primary' %>
       </div>
     </div>
   </div>
+</div>

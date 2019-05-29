@@ -3,29 +3,21 @@
     Auspiciantes
   </h1>
   <ol class="breadcrumb">
-    <li><a href="#">Inicio</a></li>
-    <li><a href="#">Auspiciantes</a></li>
-    <li class="active">Nuevo</li>
+    <li><%= link_to "Auspiciantes", sponsors_path %></li>
+    <li class="#">Nuevo</li>
   </ol> 
 </div>
 
-<div id="page-inner"> 
+<div id="page-inner">  
   <div class="row">
     <div class="col-md-12">
-      <div class="card">
-        <div class="card-content"> 
-          <p>
-            <h3>Nuevo Auspiciante</h3><br>
-            
-            <%= render 'form', sponsor: @sponsor %><br>
+      <p>
+        <%= render 'form', sponsor: @sponsor %><br>
 
-            <%= link_to 'Volver', sponsors_path %>
-          </p>
+        <%= link_to 'Volver', sponsors_path %>
+      </p>
 
-          <div class="clearBoth"><br/></div>
-
-        </div>
-      </div>
+      <div class="clearBoth"><br/></div>
     </div>
     <!-- /. PAGE INNER  -->
   </div>

@@ -3,9 +3,7 @@
     Auspiciantes
   </h1>
   <ol class="breadcrumb">
-    <li><a href="#">Inicio</a></li>
-    <li><a href="#">Auspiciantes</a></li>
-    <li class="active">Index</li>
+    <li class="#">Auspiciantes</li>
   </ol> 
 </div>
 
@@ -18,9 +16,7 @@
             <thead>
               <tr>
                 <th>Nombre</th>
-                <th>Imagen</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
+                <th>Imagen</th> 
               </tr>
             </thead>
             <tbody>
@@ -28,8 +24,7 @@
               <tr>
                 <td><%= sponsor.name %></td>
                 <td><%= image_tag sponsor.image.url(:thumb) %></td>
-                <td><%= link_to '', edit_sponsor_path(sponsor), class: 'fas fa-edit' %></td>
-                <td><%= link_to '', sponsor, method: :delete, data: {  confirm: 'Estás seguro?' }, class: "fas fa-trash" %></td>
+                <td style="width: 70px"><%= link_to '', edit_sponsor_path(sponsor), class: 'fas fa-edit' %> | <%= link_to '', sponsor, method: :delete, data: {  confirm: 'Estás seguro?' }, class: "fas fa-trash" %></td>
               </tr>
               <% end %>
             </tbody>
