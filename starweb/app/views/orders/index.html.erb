@@ -9,6 +9,9 @@
 </div>
 
 <div id="page-inner">
+  <% if current_user.is_secretary? %>
+    <%= link_to 'Nuevo', new_order_path, class: 'btn btn-primary'%>
+  <% end %>
   <div class="row">
     <div class="col-md-12">
       <div class="table-responsive">
@@ -71,9 +74,6 @@
             <% end %>
           </tbody>
         </table>
-        <% if current_user.is_secretary? %>
-          <%= link_to 'Nuevo', new_order_path, class: 'btn btn-primary'%>
-        <% end %>
       </div>
     </div>
   </div>
