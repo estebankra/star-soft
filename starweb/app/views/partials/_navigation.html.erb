@@ -25,7 +25,7 @@
     <ul class="nav" id="main-menu">
       <% if current_user.is_admin? %>
       <li>
-        <%= link_to(raw("<i class='fa fa-file-alt'></i> Reportes"), 'home/index', class: "waves-effect waves-dark") %>
+        <%= link_to(raw("<i class='fa fa-file-alt'></i> Reportes"), '/reports/index', class: "waves-effect waves-dark") %>
       </li>
       <% end %>
 

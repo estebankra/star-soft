@@ -33,7 +33,7 @@
               <td><%= order.created_at %></td>
               <td><%= order.deliver_date %></td>
               <td><%= order.course_club %></td>
-              <td><%= order.logo %></td>
+              <td><%= image_tag order.logo.url(:thumb) %></td>
               <td><%= order.notes %></td>
               <td><%= order.quantity %></td>
               <td>

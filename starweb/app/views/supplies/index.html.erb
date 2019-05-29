@@ -25,7 +25,7 @@
               <% @supplies.each do |supply| %>
               <tr>
                 <td><%= supply.name %></td>
-                <td><%= supply.image %></td>
+                <td><%= image_tag supply.image.url(:thumb) %></td>
                 <td><%= supply.stock %></td>
                 <td><%= supply.description %></td>
                 <td style="width: 70px"><%= link_to '', edit_supply_path(supply), class: 'fas fa-edit' %> | <%= link_to '', supply, method: :delete, data: {  confirm: 'Estás seguro?' }, class: "fas fa-trash" %></td>
