@@ -1,4 +1,5 @@
-<% if user_signed_in?%>
+<% if user_signed_in? %>
+
 <nav class="navbar navbar-default top-navbar" role="navigation">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle waves-effect waves-dark" data-toggle="collapse" data-target=".sidebar-collapse">
@@ -10,7 +11,9 @@
     <%= link_to(raw("<i class='fas fa-volleyball-ball '></i> StarWeb"), root_path, class: "navbar-brand waves-effect waves-dark") %>
 
 
-    <div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
+    <% if !current_user.is_team? %>
+      <div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
+    <% end %>
   </div>
 
   <ul class="nav navbar-top-links navbar-right"> 
@@ -20,6 +23,7 @@
   </ul>
 </nav>
 
+<% if !current_user.is_team? %>
 <nav class="navbar-default navbar-side" role="navigation">
   <div class="sidebar-collapse">
     <ul class="nav" id="main-menu">
@@ -29,7 +33,7 @@
       </li>
       <% end %>
 
-      <% if current_user.is_team? or current_user.is_admin? %>
+      <% if current_user.is_team? %>
       <li>
         <%= link_to(raw("<i class='fas fa-tasks '></i> Pedidos"), orders_path, class: "waves-effect waves-dark") %>
       </li>
@@ -70,6 +74,7 @@
 </nav>
 <!-- /. NAV SIDE  -->
 
+<% end %>
 <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
   <li><a href="#"><i class="fa fa-user fa-fw"></i> My Profile</a>

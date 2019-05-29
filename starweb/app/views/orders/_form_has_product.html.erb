@@ -16,22 +16,22 @@
   </div>
 
   <div class="field">
-    <%= form.label :product_id %>
+    <%= form.label 'Producto' %>
     <%= form.collection_select :product_id, Product.all, :id, :name %><br>
   </div>
 
   <div class="field">
-    <%= form.label :specs_f %>
+    <%= form.label 'Especificaciones frontal' %>
     <%= form.text_area :specs_f %>
   </div>
 
   <div class="field">
-    <%= form.label :specs_b %>
+    <%= form.label 'Especificaciones dorso' %>
     <%= form.text_area :specs_b %>
   </div>
 
   <div class="field">
-    <%= form.label :quantity %>
+    <%= form.label 'Cantidad' %>
     <%= form.number_field :quantity %>
   </div>
 
@@ -41,11 +41,11 @@
   </div>
 
   <div class="field">
-    <%= form.label :design %>
-    <%= form.text_field :design %>
+    <%= form.label 'Diseño' %>
+    <%= form.file_field :design, class: 'field' %>
   </div>
 
   <div class="modal-footer">
-    <%= form.submit class: 'btn btn-primary' %>
+    <%= form.submit 'Guardar', class: 'btn btn-primary' %>
   </div>  
 <% end %>

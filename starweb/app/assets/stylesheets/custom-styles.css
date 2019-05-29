@@ -13,9 +13,10 @@ div .col-md-12 {
 }
 
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-    position: initial;
-    left: 0;
-    opacity: 1;
+  position: initial;
+  left: 0;
+  opacity: 1;
+  padding: 10px;
 }
 
 .modal {

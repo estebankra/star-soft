@@ -22,7 +22,7 @@
     <div id="wrapper">
         <%= render "partials/navigation" %>
         <% if user_signed_in?%>
-        <div id="page-wrapper">
+        <div id="page-wrapper" <% if current_user.is_team? %>style="margin-left: 0px"<%end%>>
         <% else %>
         <div id="page-wrapper-login">
         <%end%>

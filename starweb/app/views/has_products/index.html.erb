@@ -25,7 +25,7 @@
         <td><%= has_product.specs_b %></td>
         <td><%= has_product.quantity %></td>
         <td><%= has_product.color %></td>
-        <td><%= has_product.design %></td>
+        <td><%= image_tag has_product.design.url(:thumb) %></td>
         <td><%= link_to 'Show', has_product %></td>
         <td><%= link_to 'Edit', edit_has_product_path(has_product) %></td>
         <td><%= link_to 'Destroy', has_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>

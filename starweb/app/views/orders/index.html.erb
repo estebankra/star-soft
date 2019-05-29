@@ -33,7 +33,7 @@
               <td><%= order.created_at %></td>
               <td><%= order.deliver_date %></td>
               <td><%= order.course_club %></td>
-              <td><%= image_tag order.logo.url(:thumb) %></td>
+              <td><p><%= image_tag order.logo.url(:thumb) %></p></td>
               <td><%= order.notes %></td>
               <td><%= order.quantity %></td>
               <td>
@@ -45,27 +45,27 @@
               <% if order.state == 'En espera' %>
 
                 <% if current_user.is_admin? or current_user.is_secretary? %>
-                  <td><p class='alert alert-danger'><%= order.state %></td>
-                  <% elsif current_user.is_team? %>
-                  <td class="alert alert-danger"><%= link_to order.state, orders_state_path(order) %></td>
+                  <td><p class='alert alert-danger'><%= order.state %></p></td>
+                <% elsif current_user.is_team? %>
+                  <td><p class="alert alert-danger"><%= link_to order.state, orders_state_path(order) %></td>
                 <%end%>
 
-                <% elsif order.state == 'En proceso' %>
-                  <% if current_user.is_admin? or current_user.is_secretary? %>
-                    <td><p class='alert alert-warning'><%= order.state %></td>
-                  <% elsif current_user.is_team? %>
-                    <td class="alert alert-warning"><%= link_to order.state, orders_state_path(order) %></td>
-                  <%end%>
-                  
-                  <% if current_user.is_admin? or current_user.is_secretary? %>
-                    <td><p class='alert alert-success'><%= order.state %></td>
-                  <% elsif current_user.is_team? %>
-                    <td class="alert alert-success"><%= link_to order.state, orders_state_path(order) %></td>
-                  <%end%>
+              <% elsif order.state == 'En proceso' %>
+                <% if current_user.is_admin? or current_user.is_secretary? %>
+                  <td><p class='alert alert-warning'><%= order.state %></td>
+                <% elsif current_user.is_team? %>
+                  <td><p class="alert alert-warning"><%= link_to order.state, orders_state_path(order) %></td>
+                <%end%>
 
-                <% end %>
+              <% else order.state == 'Completado' %>
+                <% if current_user.is_admin? or current_user.is_secretary? %>
+                  <td><p class='alert alert-success'><%= order.state %></td>
+                <% elsif current_user.is_team? %>
+                  <td><p class="alert alert-success"><%= link_to order.state, orders_state_path(order) %></td>
+                <%end%>
+              <% end %>
 
-              <td style="width: 70px"><%= link_to '', order, class: 'fas fa-eye' %> |<%= link_to '', edit_order_path(order), class: 'fas fa-edit' %> | <%= link_to '', order, method: :delete, data: {confirm: 'Estás seguro?'}, class: "fas fa-trash" %></td>
+              <td style="width: 100px"><%= link_to '', order, class: 'fas fa-eye' %> |<%= link_to '', edit_order_path(order), class: 'fas fa-edit' %> | <%= link_to '', order, method: :delete, data: {confirm: 'Estás seguro?'}, class: "fas fa-trash" %></td>
               </tr>
             <% end %>
           </tbody>
