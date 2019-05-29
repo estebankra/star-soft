@@ -13,7 +13,11 @@ body {
 
 label {
   font-size: 1.1rem;
-  color: #6b6b6b;
+  color: #3a3a3a;
+}
+
+.card {
+  border: 1px solid #b7aeae;
 }
 
 div .col-md-12 {
@@ -32,6 +36,26 @@ div .col-md-12 {
 .modal {
   box-shadow: none;
   background-color: unset;
+  overflow-x: hidden; 
+}
+
+.modal .modal-content {
+    padding: 15px;
+    overflow-x: hidden; 
+}
+
+.thumbnail {
+    padding: 4px;
+    margin-bottom: 0;
+    background-color: #fff;
+    border: 1px solid #906161;
+    border-radius: 7px;
+}
+
+.thumbnail .caption {
+    padding: 9px;
+    color: #333;
+    text-align: center;
 }
 
 select {

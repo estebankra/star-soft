@@ -10,6 +10,14 @@
 </div>
 
 <div id="page-inner">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalProduct">
+    Agregar producto
+  </button>
+
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalOrderDetail">
+    Agregar detalles
+  </button>
+
   <div class="row">
     <div class="col-md-12"> 
       <p>
@@ -34,7 +42,7 @@
 
         <p>
           <strong>Logo:</strong>
-          <%= @order.logo %>
+          <%= image_tag @order.logo.url(:thumb) %>
         </p>
 
         <p>
@@ -45,11 +53,6 @@
         <p>
           <strong>Notes:</strong>
           <%= @order.notes %>
-        </p>
-
-        <p>
-          <strong>Quantity:</strong>
-          <%= @order.quantity %>
         </p>
 
         <h4>Productos</h4>
@@ -86,11 +89,6 @@
         <% end %>
         <% end %>
 
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalProduct">
-          Agregar producto
-        </button>
-
         <!-- Modal -->
         <div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -107,12 +105,6 @@
             </div>
           </div>
         </div>
-
-
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalOrderDetail">
-          Agregar detalles
-        </button>
 
         <!-- Modal -->
         <div class="modal fade" id="modalOrderDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -131,8 +123,7 @@
           </div>
         </div>
 
-        <%= link_to 'Edit', edit_order_path(@order) %> |
-        <%= link_to 'Back', orders_path %>
+        <%= link_to 'Edit', edit_order_path(@order) %>
       </div>
       <!-- /. PAGE INNER  -->
     </div>

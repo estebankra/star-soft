@@ -11,29 +11,31 @@
 <div id="page-inner">
   <%= link_to 'Nuevo', new_product_path, class: 'btn btn-primary' %>
   <div class="row">
-    <% @products.each do |product| %>
-    <div class="col-md-3 col-sm-3">
-      <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-          <%= image_tag product.image.url(:thumb)%>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4"><%= product.name %><i class="material-icons right">more_vert</i></span><br>
-          <p><label>Precio:</label>  <b><%= product.price %></b></p><br>
-          <div class="list-group">
-            <%= link_to 'Insumos', supplies_path, class: 'list-group-item active' %>
-            <% product.supplies.each do |supply|%>
-            <%= link_to supply.name, supply, class: 'list-group-item' %>
-            <%end%>
+    <div class="col-md-12">
+      <% @products.each do |product| %>
+      <div class="col-md-3 col-sm-3">
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <%= image_tag product.image.url(:thumb)%>
           </div>
-          <p style="width: 70px"><%= link_to '', edit_product_path(product) , class: 'fas fa-edit' %> | <%= link_to '', product, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></p>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4"><%= product.name %><i class="material-icons right">close</i></span>
-          <p><%= product.description %></p>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4"><%= product.name %><i class="material-icons right">more_vert</i></span><br>
+            <p><label>Precio:</label>  <b><%= product.price %></b></p><br>
+            <div class="list-group">
+              <%= link_to 'Insumos', supplies_path, class: 'list-group-item active' %>
+              <% product.supplies.each do |supply|%>
+              <%= link_to supply.name, supply, class: 'list-group-item' %>
+              <%end%>
+            </div>
+            <p style="width: 70px"><%= link_to '', edit_product_path(product) , class: 'fas fa-edit' %> | <%= link_to '', product, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"><%= product.name %><i class="material-icons right">close</i></span>
+            <p><%= product.description %></p>
+          </div>
         </div>
       </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
 </div>
