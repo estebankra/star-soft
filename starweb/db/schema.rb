@@ -53,6 +53,10 @@ ActiveRecord::Schema.define(version: 2019_05_29_114741) do
     t.string "design"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "design_file_name"
+    t.string "design_content_type"
+    t.bigint "design_file_size"
+    t.datetime "design_updated_at"
     t.index ["order_id"], name: "index_has_products_on_order_id"
     t.index ["product_id"], name: "index_has_products_on_product_id"
   end
@@ -76,8 +80,7 @@ ActiveRecord::Schema.define(version: 2019_05_29_114741) do
   end
 
   create_table "order_details", force: :cascade do |t|
-    t.string "firstname"
-    t.string "lastname"
+    t.string "name"
     t.integer "number"
     t.string "size"
     t.datetime "created_at", null: false
@@ -136,7 +139,7 @@ ActiveRecord::Schema.define(version: 2019_05_29_114741) do
   create_table "supplies", force: :cascade do |t|
     t.string "name"
     t.string "image"
-    t.string "stock"
+    t.integer "stock"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -144,10 +147,6 @@ ActiveRecord::Schema.define(version: 2019_05_29_114741) do
     t.string "image_content_type"
     t.bigint "image_file_size"
     t.datetime "image_updated_at"
-    t.string "design_file_name"
-    t.string "design_content_type"
-    t.bigint "design_file_size"
-    t.datetime "design_updated_at"
   end
 
   create_table "users", force: :cascade do |t|

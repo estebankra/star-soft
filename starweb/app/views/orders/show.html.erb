@@ -3,129 +3,155 @@
     Pedidos
   </h1>
   <ol class="breadcrumb">
-    <li><a href="#">Inicio</a></li>
-    <li><a href="#">Pedidos</a></li>
-    <li class="active">Editar</li>
+    <li><a href="">Pedidos</a></li>
+    <li><%= link_to "Index", orders_path %></li>
+    <li class="active">Ver</li>
   </ol>
 </div>
 
 <div id="page-inner">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalProduct">
-    Agregar producto
-  </button>
+  <% if current_user.is_secretary? %>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalProduct"> Agregar producto </button>
 
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalOrderDetail">
-    Agregar detalles
-  </button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalOrderDetail">Agregar detalles</button>
+
+  <%= link_to 'Editar', edit_order_path(@order), class: 'btn btn-primary' %>
+  <%end%>
 
   <div class="row">
-    <div class="col-md-12"> 
-      <p>
-        <p id="notice"><%= notice %></p>
-
+    <div class="col-md-12">
+      <div class="col-md-6"> 
         <p>
-          <strong>Deliver date:</strong>
-          <%= @order.deliver_date %>
-        </p>
+          <p id="notice"><%= notice %></p>
 
-        <p>
-          <strong>Client:</strong>
-          <%= @order.client.firstname %>
-          <%= @order.client.lastname %>
-          <%= @order.client.doc_ruc %>
-        </p>
+          <p>
+            <strong>Deliver date:</strong>
+            <%= @order.deliver_date %>
+          </p>
 
-        <p>
-          <strong>Course club:</strong>
-          <%= @order.course_club %>
-        </p>
+          <p>
+            <strong>Client:</strong>
+            <%= @order.client.firstname %>
+            <%= @order.client.lastname %>
+            <%= @order.client.doc_ruc %>
+          </p>
 
-        <p>
-          <strong>Logo:</strong>
-          <%= image_tag @order.logo.url(:thumb) %>
-        </p>
+          <p>
+            <strong>Course club:</strong>
+            <%= @order.course_club %>
+          </p>
 
-        <p>
-          <strong>State:</strong>
-          <%= @order.state %>
-        </p>
+          <p>
+            <strong>Logo:</strong>
+            <%= image_tag @order.logo.url(:thumb) %>
+          </p>
 
-        <p>
-          <strong>Notes:</strong>
-          <%= @order.notes %>
-        </p>
+          <p>
+            <strong>State:</strong>
+            <%= @order.state %>
+          </p>
 
+          <p>
+            <strong>Notes:</strong>
+            <%= @order.notes %>
+          </p>
+        </p>
+      </div>
+
+      <div class="col-md-6"> 
         <h4>Productos</h4>
+        <hr>
         <% @order.products.each do |product| %>
-        <%= product.name %>
-        <br>
-        <% end %>
-
-        <% if @order.has_products.empty? %>
+        <% if @order.products.empty? %>
         <p>No ha agregado ningún producto</p>
         <% else %>
-        <% @order.has_products.each do |hasProduct| %>
-        <%= hasProduct.specs_f %>
-        <%= hasProduct.specs_b %>
-        <%= hasProduct.quantity %>
-        <%= hasProduct.color %>
-        <%= hasProduct.design %>
-        <br>
-        <td><%= link_to 'Edit', edit_has_product_path(hasProduct) %></td>
-        <td><%= link_to 'Destroy', hasProduct, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>  
-        <% end %>
-
-        <h4>Detalles</h4>
-        <% if @order.order_details.empty? %>
-        <p>No ha agregado ningún detalle</p>
-        <% else %>
-        <% @order.order_details.each do |order_detail| %>
-        <%= order_detail.firstname %>
-        <%= order_detail.lastname %>
-        <%= order_detail.number %>
-        <%= order_detail.size %><br>
-        <td><%= link_to 'Destroy', order_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-        <% end %>
-
-        <!-- Modal -->
-        <div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLabel">Agregar producto</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <%= render 'form_has_product', has_product: @hasProduct %>
-              </div>
-            </div>
+        <div class="media">
+          <div class="media-left media-middle">
+            <a href="#">
+              <%= image_tag product.image.url(:thumb), class: 'media-object' %>
+            </a>
+          </div>
+          <div class="media-body">
+            <h5 class="media-heading"><%= product.name %></h5>
+            <% @order.has_products.each do |hasProduct| %>
+            <p><%= hasProduct.specs_f %></p>
+            <p><%= hasProduct.specs_b %></p>
+            <p><%= hasProduct.quantity %></p>
+            <p><%= hasProduct.color %></p>
+            <p><%= image_tag hasProduct.design.url(:thumb) %></p>
+            <%end%>
           </div>
         </div>
+        <hr>
+        <%end%>
 
-        <!-- Modal -->
-        <div class="modal fade" id="modalOrderDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLabel">Agregar detalles</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <%= render 'form_order_detail', order_detail: @order_detail %>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <%= link_to 'Edit', edit_order_path(@order) %>
       </div>
-      <!-- /. PAGE INNER  -->
+      <%end%>
+      <h4>Detalles</h4> 
+      <% @order.order_details.each do |order_detail| %>       
+      <% if @order.order_details.empty? %>
+      <p>No ha agregado ningún detalle</p>
+      <% else %>
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Número</th>
+              <th>Tamaño</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= order_detail.firstname %></td>
+              <td><%= order_detail.lastname %></td>
+              <td><%= order_detail.number %></td>
+              <td><%= order_detail.size %><br> 
+                <td><%= link_to '' , order_detail, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <%end%>
+      </div>
     </div>
-    <!-- /. PAGE WRAPPER  -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Agregar producto</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= render 'form_has_product', has_product: @hasProduct %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalOrderDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Agregar detalles</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= render 'form_order_detail', order_detail: @order_detail %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /. PAGE INNER  -->
   </div>
+  <!-- /. PAGE WRAPPER  -->
+</div>

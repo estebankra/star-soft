@@ -3,14 +3,15 @@
     Nuevo usuario
   </h1>
   <ol class="breadcrumb">
-    <li><a href="#">Usuarios</a></li>
+    <li><a href="">Usuarios</a></li>
+    <li><%= link_to "Index", users_index_path %></li>
     <li class="active">Nuevo</li>
   </ol> 
 </div>
 <div id="page-inner">
   <div class="row">
     <div class="col-md-12">
-      <h3>Enviar invitación</h3><br>
+      <h5>Enviar invitación</h5><br>
       <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 

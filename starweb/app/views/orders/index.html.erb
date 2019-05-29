@@ -21,7 +21,12 @@
             <div class="thumbnail">
               <div class="caption">
                 <h4><%= order.client.firstname %> <%= order.client.lastname %><br><%= order.client.doc_ruc %></h4>
-                <h5><%= link_to '', order, class: 'fas fa-eye' %> | <%= link_to '', edit_order_path(order), class: 'fas fa-edit' %></h5>
+                <h5>
+                  <%= link_to '', order, class: 'fas fa-eye' %>   
+                  <% if current_user.is_secretary? %>
+                    | <%= link_to '', edit_order_path(order), class: 'fas fa-edit' %>
+                  <%end%>
+                </h5>
 
                 <label><b>Fecha del pedido:</b> <br><%= order.created_at %></label><br>
                 <label><b>Entrega:</b> <br><%= order.deliver_date %></label><br>

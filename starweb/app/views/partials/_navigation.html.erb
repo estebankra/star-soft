@@ -27,13 +27,7 @@
 <nav class="navbar-default navbar-side" role="navigation">
   <div class="sidebar-collapse">
     <ul class="nav" id="main-menu">
-      <% if current_user.is_admin? %>
-      <li>
-        <%= link_to(raw("<i class='fa fa-file-alt'></i> Reportes"), '/reports/index', class: "waves-effect waves-dark") %>
-      </li>
-      <% end %>
-
-      <% if current_user.is_team? %>
+      <% if current_user.is_team? || current_user.is_admin? %>
       <li>
         <%= link_to(raw("<i class='fas fa-tasks '></i> Pedidos"), orders_path, class: "waves-effect waves-dark") %>
       </li>
@@ -45,11 +39,11 @@
       </li>
 
       <li>
-        <%= link_to(raw("<i class='fas fa-user-friends '></i> Clientes"), clients_path, class: "waves-effect waves-dark") %>
+        <%= link_to(raw("<i class='fas fa-tshirt '></i> Productos"), products_path, class: "waves-effect waves-dark") %>
       </li>
 
       <li>
-        <%= link_to(raw("<i class='fas fa-tshirt '></i> Productos"), products_path, class: "waves-effect waves-dark") %>
+        <%= link_to(raw("<i class='fas fa-user-friends '></i> Clientes"), clients_path, class: "waves-effect waves-dark") %>
       </li>
 
       <li>
@@ -63,6 +57,9 @@
       <% end %>
 
       <% if current_user.is_admin? %>
+        <li>
+          <%= link_to(raw("<i class='fa fa-file-alt'></i> Reportes"), '/reports/index', class: "waves-effect waves-dark") %>
+        </li>
         <li>
           <%= link_to(raw("<i class='fa fa-user'></i> Usuarios"), '/users/index', class: "waves-effect waves-dark") %>
         </li>

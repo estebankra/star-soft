@@ -12,30 +12,21 @@
   <% end %>
 
   <div class="field">
-    <%= form.hidden_field :order_id, value: @order.id %>
+    <%= form.label 'Nombre' %>
+    <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :firstname %>
-    <%= form.text_field :firstname %>
-  </div>
-
-  <div class="field">
-    <%= form.label :lastname %>
-    <%= form.text_field :lastname %>
-  </div>
-
-  <div class="field">
-    <%= form.label :number %>
+    <%= form.label 'Número' %>
     <%= form.number_field :number %>
   </div>
 
   <div class="field">
-    <%= form.label :size %>
+    <%= form.label 'Tamaño' %>
     <%= form.text_field :size %>
   </div>
-  
-  <div class="modal-footer">
+
+  <div class="actions">
     <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
