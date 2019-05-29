@@ -33,6 +33,12 @@ div .col-md-12 {
   padding: 10px;
 }
 
+@media (max-width: 1300px) {
+  .col-md-12 {
+    width: unset; 
+  }
+}
+
 .modal {
   box-shadow: none;
   background-color: unset;

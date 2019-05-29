@@ -1,7 +1,7 @@
 <div class="header"> 
-  <h1 class="page-header">
+  <h3 class="page-header">
     Iniciar sesión
-  </h1>
+  </h3>
 
 </div>
 
@@ -11,7 +11,6 @@
 
     <div class="col-md-12">
       <!--   Kitchen Sink -->
-      <div class="card-content">  
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
           <%= f.label :email %><br />
@@ -27,10 +26,7 @@
           <br><%= f.submit "Iniciar sesión", class: 'btn btn-primary' %>
         </div>
         <% end %>
-      </div>
       <!-- End  Kitchen Sink -->
-
-      <div class="clearBoth"><br/></div>
 
     </div>
     <!-- /. PAGE INNER  -->
