@@ -92,7 +92,7 @@
               <td><%= order_detail.name %></td>
               <td><%= order_detail.number %></td>
               <td><%= order_detail.size %><br> 
-                <td><%= link_to '' , order_detail, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>
+              <td style="width: 20px;"><%= link_to '' , order_detail, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>
               </tr>
               <% end %>
             </tbody>

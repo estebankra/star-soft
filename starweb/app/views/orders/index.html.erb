@@ -14,11 +14,10 @@
   <% end %>
   <div class="row">
     <div class="col-md-12">
-
       <div class="row">
         <% @orders.each do |order| %>
           <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
+            <div class="card">
               <div class="caption">
                 <h4><%= order.client.firstname %> <%= order.client.lastname %><br><%= order.client.doc_ruc %></h4>
                 <h5>

@@ -12,27 +12,15 @@
   <%= link_to 'Nuevo', new_sponsor_path, class: 'btn btn-primary' %>
   <div class="row">
     <div class="col-md-12">
-      <div class="row">
-        <div class="table-responsive">
-          <table class="table table-striped table-bordered table-hover">
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Imagen</th> 
-              </tr>
-            </thead>
-            <tbody>
-              <% @sponsors.each do |sponsor| %>
-              <tr>
-                <td><%= sponsor.name %></td>
-                <td><%= image_tag sponsor.image.url(:thumb) %></td>
-                <td style="width: 70px"><%= link_to '', edit_sponsor_path(sponsor), class: 'fas fa-edit' %> | <%= link_to '', sponsor, method: :delete, data: {  confirm: 'Estás seguro?' }, class: "fas fa-trash" %></td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
+      <% @sponsors.each do |sponsor| %>
+          <div class="col-md-3">
+            <h5><%= sponsor.name %></h5>
+            <%= link_to '', edit_sponsor_path(sponsor), class: 'fas fa-edit' %> | <%= link_to '', sponsor, method: :delete, data: {  confirm: 'Estás seguro?' }, class: "fas fa-trash" %>
+            <div class="thumbnail">
+              <%= image_tag sponsor.image.url(:thumb) %>
+            </div>
         </div>
-      </div>
+      <%end%>
     </div>
   </div>
 </div>

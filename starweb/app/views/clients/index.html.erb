@@ -24,8 +24,6 @@
               <th>Correo</th>
               <th>Ciudad</th>
               <th>País</th>
-              <th>Editar</th>
-              <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
@@ -39,8 +37,7 @@
               <td><%= client.mail %></td>
               <td><%= client.city %></td>
               <td><%= client.country %></td>
-              <td><%= link_to '', edit_client_path(client), class: 'fas fa-edit' %></td>
-              <td><%= link_to '' , client, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>
+              <td><%= link_to '', edit_client_path(client), class: 'fas fa-edit' %>  <%= link_to '' , client, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>
             </tr>
             <% end %>
           </tbody>
