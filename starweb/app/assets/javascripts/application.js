@@ -11,18 +11,8 @@
 // about supported directives.
 //
 
-//= require js/jquery-1.10.2.js
-//= require js/bootstrap.min.js
-//= require materialize/js/materialize.min.js
-//= require js/jquery.metisMenu.js
-//= require js/morris/raphael-2.1.0.min.js
-//= require js/morris/morris.js
-//= require js/easypiechart.js
-//= require js/easypiechart-data.js
-//= require js/Lightweight-Chart/jquery.chart.js
-//= require js/dataTables/jquery.dataTables.js
-//= require js/dataTables/dataTables.bootstrap.js
-//= require js/custom-scripts.js
+//= require jquery.min.js
+//= require bootstrap.min.js
 
 //= require rails-ujs
 //= require activestorage

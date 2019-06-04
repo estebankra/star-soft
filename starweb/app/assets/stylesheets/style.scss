@@ -1,0 +1,71 @@
+/* Color palette */
+$color-primary: #10455b;
+$color-secondary: #2aa1af;
+$color-tertiary: #e2f0f1;
+$color-quaternary: #ffffff;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Muli', sans-serif;
+  overflow-x: hidden;
+}
+
+.card {
+  text-align: center;
+  display: inline-block;
+  margin-bottom: 15px;
+  border: 1px solid #5f7c9a;
+}
+
+#logo {
+  width: 45px;
+  padding-right: 3px;
+}
+
+.bg-light, .sidebar-heading {
+  background-color: $color-tertiary !important;
+  height: 75px;
+}
+
+footer {
+  background-color: $color-tertiary;
+}
+
+#page-content-wrapper {
+  width: 100%;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  background-color: $color-primary;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+
+  .sidebar-heading {
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 20px !important;
+    padding: 2px;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .list-group {
+    text-align: center;
+    
+    .list-group-item {
+      background-color: $color-primary;
+      color: $color-quaternary;
+      border: none;
+
+      &:hover {
+        background-color: $color-secondary;
+      }
+    }
+  }
+}

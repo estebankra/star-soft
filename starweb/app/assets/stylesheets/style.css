@@ -1,0 +1,52 @@
+/* Color palette */
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  font-family: 'Muli', sans-serif;
+  overflow-x: hidden; }
+
+.card {
+  text-align: center;
+  display: inline-block;
+  margin-bottom: 15px;
+  border: 1px solid #5f7c9a; }
+
+#logo {
+  width: 45px;
+  padding-right: 3px; }
+
+.bg-light, .sidebar-heading {
+  background-color: #e2f0f1 !important;
+  height: 75px; }
+
+footer {
+  background-color: #e2f0f1; }
+
+#page-content-wrapper {
+  width: 100%; }
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  background-color: #10455b;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out; }
+  #sidebar-wrapper .sidebar-heading {
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 20px !important;
+    padding: 2px;
+    font-family: 'Raleway', sans-serif; }
+  #sidebar-wrapper .list-group {
+    text-align: center; }
+    #sidebar-wrapper .list-group .list-group-item {
+      background-color: #10455b;
+      color: #ffffff;
+      border: none; }
+      #sidebar-wrapper .list-group .list-group-item:hover {
+        background-color: #2aa1af; }
+
+/*# sourceMappingURL=style.css.map */
