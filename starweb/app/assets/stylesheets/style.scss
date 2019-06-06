@@ -1,6 +1,6 @@
 /* Color palette */
 $color-primary: #080813;
-$color-secondary:#eeeeee;
+$color-secondary:#777777;
 $color-tertiary: #994848;
 $color-quaternary: #ffffff;
 
@@ -18,10 +18,10 @@ body {
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: #000000 !important;
+  color: $color-quaternary !important;
 
   &:hover {
-    color: #695757 !important;
+    color: #e2dede !important;
   }
 
 }
@@ -33,9 +33,9 @@ body {
   border: 1px solid #5f7c9a;
 }
 
-.bg-light, .sidebar-heading {
+.bg-light {
   background-color: $color-secondary !important;
-  height: 80px;
+  height: 65px;
 }
 
 #page-content-wrapper {
@@ -85,4 +85,5 @@ body {
 
 footer {
   background-color: $color-secondary;
+  color: $color-quaternary;
 }

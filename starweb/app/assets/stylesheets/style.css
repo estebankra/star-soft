@@ -7,13 +7,13 @@ body {
   max-width: 330px;
   padding: 15px;
   margin: auto;
-  background-color: #eeeeee;
+  background-color: #777777;
   border-radius: 10px; }
 
 .navbar-light .navbar-nav .nav-link {
-  color: #000000 !important; }
+  color: #ffffff !important; }
   .navbar-light .navbar-nav .nav-link:hover {
-    color: #695757 !important; }
+    color: #e2dede !important; }
 
 .card {
   text-align: center;
@@ -21,9 +21,9 @@ body {
   margin-bottom: 15px;
   border: 1px solid #5f7c9a; }
 
-.bg-light, .sidebar-heading {
-  background-color: #eeeeee !important;
-  height: 80px; }
+.bg-light {
+  background-color: #777777 !important;
+  height: 65px; }
 
 #page-content-wrapper {
   width: 100%; }
@@ -60,6 +60,7 @@ body {
         background-color: #994848; }
 
 footer {
-  background-color: #eeeeee; }
+  background-color: #777777;
+  color: #ffffff; }
 
 /*# sourceMappingURL=style.css.map */
