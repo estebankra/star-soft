@@ -1,15 +1,17 @@
-<div class="header"> 
-  <h1 class="page-header">
-    Productos
-  </h1>
+<h1>Productos</h1>
+<nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li><a href="#">Productos</a></li>
-    <li class="active">Index</a></li>
-  </ol> 
+    <li class="breadcrumb-item"><a href="#">Productos</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Index</li>
+  </ol>
+</nav>
 </div>
+<hr>
 
-<div id="page-inner">
-  <%= link_to 'Nuevo', new_product_path, class: 'btn btn-primary' %>
+<% if current_user.is_secretary? %>
+<%= link_to 'Nuevo', new_product_path, class: 'btn btn-primary'%>
+<% end %>
+<!-- Content -->
   <div class="row">
     <% @products.each do |product| %>
     <div class="col-md-3 col-sm-5">
@@ -33,7 +35,6 @@
           <p><%= product.description %></p>
         </div>
       </div>
-    </div>
-    <% end %>
   </div>
+  <% end %>
 </div>

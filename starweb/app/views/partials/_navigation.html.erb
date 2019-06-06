@@ -1,7 +1,8 @@
+<% if user_signed_in?%>
 <!-- Sidebar -->
 <div class="border-right" id="sidebar-wrapper">
-  <div class="sidebar-heading"><i class="fas fa-futbol"></i><br>STARWEB</div>
-  <div class="list-group list-group-flush">
+  <div class="sidebar-heading"><i class="fab fa-stumbleupon-circle fa-3x"></i><br>StarWeb</div>
+  <div class="list-group list-group-flush mt-4">
     <%= link_to(raw("<i class='fas fa-tasks fa-lg '></i><br>Pedidos"), orders_path, class: "list-group-item list-group-item-action") %>
     <%= link_to(raw("<i class='fas fa-tshirt fa-lg '></i><br>Productos"), products_path, class: "list-group-item list-group-item-action") %>
     <%= link_to(raw("<i class='fas fa-user-friends fa-lg '></i><br>Clientes"), clients_path, class: "list-group-item list-group-item-action") %>
@@ -28,6 +29,6 @@
           </li>
       </div>
   </nav>
-
+<%end%>
   <div class="container-fluid p-4">
     <div class="mt-3">

@@ -1,7 +1,9 @@
 <!-- Content -->
-<div class="text-center">
+<div class="text-center mt-5">
   <div class="form-signin">
-    <h1>Iniciar sesión</h1>
+  <p>
+    <i class="fab fa-stumbleupon-circle fa-5x"></i>
+    <h1 id="login">STARWEB</h1>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
           <%= f.label :email %><br />
@@ -16,7 +18,8 @@
         <div class="actions">
           <br><%= f.submit "Iniciar sesión", class: 'btn btn-primary' %>
         </div>
-        <p class="mt-5 mb-3 text-muted">© 2017-2019</p>
+        <p class="mt-5 mb-3 text-muted">© StarWeb-2019</p>
       <% end %>
   </div>
+</div>
 </div>

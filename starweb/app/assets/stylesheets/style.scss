@@ -1,17 +1,11 @@
 /* Color palette */
-$color-primary: #590505;
-$color-secondary:#8C2B2B;
-$color-tertiary: #eeeeee;
+$color-primary: #080813;
+$color-secondary:#eeeeee;
+$color-tertiary: #994848;
 $color-quaternary: #ffffff;
-
-* {
-  margin: 0;
-  padding: 0;
-}
 
 body {
   font-family: 'Muli', sans-serif;
-  overflow-x: hidden;
 }
 
 .form-signin {
@@ -19,6 +13,17 @@ body {
   max-width: 330px;
   padding: 15px;
   margin: auto;
+  background-color: $color-secondary;
+  border-radius: 10px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #000000 !important;
+
+  &:hover {
+    color: #695757 !important;
+  }
+
 }
 
 .card {
@@ -29,19 +34,20 @@ body {
 }
 
 .bg-light, .sidebar-heading {
-  background-color: #eeeeee !important;
-  border-bottom: 0.001rem solid #d8d4d4;
-}
-
-footer {
-  background-color: $color-tertiary;
+  background-color: $color-secondary !important;
+  height: 80px;
 }
 
 #page-content-wrapper {
   width: 100%;
 }
 
+#login {
+  font-family: 'Raleway', sans-serif;
+}
+
 #sidebar-wrapper {
+  color: $color-tertiary;
   min-height: 100vh;
   background-color: $color-primary;
   -webkit-transition: margin .25s ease-out;
@@ -51,11 +57,13 @@ footer {
 
   .sidebar-heading {
     text-align: center;
-    font-size: 16px !important;
-    padding: 2px;
+    font-size: 20px !important;
+    padding: 10px;
+    height: 120px;
     font-family: 'Raleway', sans-serif;
     background-color: $color-primary !important;
     color: $color-quaternary;
+    border-bottom: 1px solid #ffffff;
   }
 
   .list-group {
@@ -69,8 +77,12 @@ footer {
       padding: 7px;
 
       &:hover {
-        background-color: $color-secondary;
+        background-color: $color-tertiary;
       }
     }
   }
+}
+
+footer {
+  background-color: $color-secondary;
 }
