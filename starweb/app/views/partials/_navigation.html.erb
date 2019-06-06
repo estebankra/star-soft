@@ -1,12 +1,12 @@
 <!-- Sidebar -->
 <div class="border-right" id="sidebar-wrapper">
-  <div class="sidebar-heading"><i class="fas fa-futbol"></i>STARWEB</div>
+  <div class="sidebar-heading"><i class="fas fa-futbol"></i><br>STARWEB</div>
   <div class="list-group list-group-flush">
-    <%= link_to(raw("<i class='fas fa-tasks fa-2x '></i><br>Pedidos"), orders_path, class: "list-group-item list-group-item-action") %>
-    <%= link_to(raw("<i class='fas fa-tshirt fa-2x '></i><br>Productos"), products_path, class: "list-group-item list-group-item-action") %>
-    <%= link_to(raw("<i class='fas fa-user-friends fa-2x '></i><br>Clientes"), clients_path, class: "list-group-item list-group-item-action") %>
-    <%= link_to(raw("<i class='fas fa-boxes fa-2x '></i><br>Insumos"), supplies_path, class: "list-group-item list-group-item-action") %>
-    <%= link_to(raw("<i class='fas fa-hands-helping fa-2x '></i><br>Auspiciantes"), sponsors_path, class: "list-group-item list-group-item-action") %>
+    <%= link_to(raw("<i class='fas fa-tasks fa-lg '></i><br>Pedidos"), orders_path, class: "list-group-item list-group-item-action") %>
+    <%= link_to(raw("<i class='fas fa-tshirt fa-lg '></i><br>Productos"), products_path, class: "list-group-item list-group-item-action") %>
+    <%= link_to(raw("<i class='fas fa-user-friends fa-lg '></i><br>Clientes"), clients_path, class: "list-group-item list-group-item-action") %>
+    <%= link_to(raw("<i class='fas fa-boxes fa-lg '></i><br>Insumos"), supplies_path, class: "list-group-item list-group-item-action") %>
+    <%= link_to(raw("<i class='fas fa-hands-helping fa-lg '></i><br>Auspiciantes"), sponsors_path, class: "list-group-item list-group-item-action") %>
   </div>
 </div>
 
@@ -14,18 +14,16 @@
 
 <!-- Page Content -->
 <div id="page-content-wrapper">
-
-  <nav class="navbar navbar-expand navbar-light bg-light">
+  <nav class="navbar navbar-expand navbar-light bg-light pt-1">
       <div class="nav navbar-nav ml-auto">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-user mr-2"></i> Admin
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Something else here</a>
+              <div class="dropdown-divider"></div>
+              <%= link_to(raw("<i class='fa fa-sign-out fa-fw'></i> Cerrar sesión"), destroy_user_session_path, method: :delete, class: "dropdown-item")%>
             </div>
           </li>
       </div>
