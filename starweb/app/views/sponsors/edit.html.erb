@@ -1,25 +1,16 @@
-<div class="header"> 
-  <h1 class="page-header">
-    Auspiciantes
-  </h1>
+<h1>Auspiciantes</h1>
+<nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li><%= link_to "Auspiciantes", sponsors_path %></li>
-    <li class="#">Editar</li>
-  </ol> 
+    <li class="breadcrumb-item"><a href="#">Auspiciantes</a></li>
+    <li class="breadcrumb-item"><%= link_to "Index", sponsors_path %></li>
+    <li class="breadcrumb-item active" aria-current="page">Editar</li>
+  </ol>
+</nav>
 </div>
+<hr>
 
-<div id="page-inner"> 
-  <div class="row">
-    <div class="col-md-12">
-      <p>
-        <%= render 'form', sponsor: @sponsor %><br>
-
-        <%= link_to 'Volver', sponsors_path %>
-      </p>
-
-      <div class="clearBoth"><br/></div>
-    </div>
-    <!-- /. PAGE INNER  -->
+<div class="row">
+  <div class="col-12">
+    <%= render 'form', sponsor: @sponsor %><br>
   </div>
-  <!-- /. PAGE WRAPPER  -->
 </div>

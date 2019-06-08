@@ -32,9 +32,9 @@
               <td><%= user.lastname %></td>
               <% if user.permission_level == '3' %>
               <td>Admin</td>
-              <% elsif user.permission_level == '2' %>
-              <td>Secretaria</td>
               <% elsif user.permission_level == '1' %>
+              <td>Secretaria</td>
+              <% elsif user.permission_level == '2' %>
               <td>Equipo de trabajo</td>
               <% else %>
               <td>No asignado</td>

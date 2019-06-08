@@ -14,57 +14,61 @@
 
   <div class="form-row">
     <div class="form-group col-md-2">
+      <label for="inputEmail4"><b>Cliente</b></label>
       <div class="input-group-prepend">
         <label class="input-group-text" for="inputGroupSelect01">Cliente</label>
         <%= form.collection_select :client_id, Client.all, :id, :firstname%><br>
       </div>
     </div>
 
-    <div class="form-group col-md-3">
-      <label for="inputEmail4">Fecha de entrega</label>
+    <div class="form-group col-md-5">
+      <label for="inputEmail4"><b>Fecha de entrega</b></label>
       <%= form.date_field :deliver_date, class: 'form-control' %>
     </div>
 
-    <div class="form-group col-md-3">
-      <label for="inputAddress">Nombre de Curso/Club</label>
+    <div class="form-group col-md-5">
+      <label for="inputAddress"><b>Nombre de Curso/Club</b></label>
       <%= form.text_field :course_club, class: 'form-control' %>
-    </div>
-
-    <div class="field">
-    <b><%= form.label 'Logo' %></b>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroupFileAddon01">Subir</span>
-      </div>
-      <div class="custom-file">
-        <%= form.file_field :logo, class: 'custom-file-input' %>
-        <label class="custom-file-label" for="inputGroupFile01">Elegir imagen</label>
-      </div>
     </div>
   </div>
   <hr>
-  
   <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Notas</label>
-      <%= form.text_field :notes %>
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputAddress">Nombre de Curso/Club</label>
-      <%= form.text_field :course_club, class: 'form-control' %>
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputAddress">Auspiciantes</label>
-      <% @sponsors.each do |sponsor| %>
-      <% if @sponsors.empty? %>
-        <p>No ha agregado ningún auspiciante</p>
-      <% else %>
-        <br><%= check_box_tag "sponsors[]", sponsor.id, @order.sponsors.include?(sponsor) %> <%= sponsor.name %>
-      <% end %>
-    <% end %>
+    <div class="col-6">
+      <div class="form-group col-md-12">
+        <label for="exampleFormControlFile1"><b>Logo</b></label>
+        <div class="custom-file">
+          <%= form.file_field :logo, class: 'custom-file-input' %>
+          <label class="custom-file-label" for="customFile">Choose file</label>
+        </div>
+      </div>
     </div>
   </div>
 
+  <div class="form-row">
+    <div class="col-12">
+      <div class="form-group col-md-12">
+        <label for="inputPassword4"><br><b>Notas</b></label>
+        <%= form.text_area :notes, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="form-group col-md-6">
+    <hr>
+    <h3>Auspiciantes</h3>
+    <% @sponsors.each do |sponsor| %>
+    <% if @sponsors.empty? %>
+      <p>No ha agregado ningún auspiciante</p>
+    <% else %>
+      <%= check_box_tag "sponsors[]", sponsor.id, @order.sponsors.include?(sponsor) %> <%= sponsor.name %><br>
+    <% end %>
+  <% end %>
+  </div>
+  </div>
+
+  <hr>
   <div class="actions">
     <%= form.submit "Agregar", class: 'btn btn-primary' %>
   </div>

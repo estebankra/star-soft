@@ -11,15 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label 'Nombre' %>
-    <%= form.text_field :name %>
+<div class="form-row">
+    <div class="form-group col-md-5">
+      <label for="inputEmail4"><b>Nombre</b></label>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label 'Logo' %>
-    <%= form.file_field :image, class: 'field' %>
-  </div><br>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="exampleFormControlFile1"><b>Logo</b></label>
+      <div class="custom-file">
+        <%= form.file_field :image, class: 'custom-file-input' %>
+        <label class="custom-file-label" for="customFile">Choose file</label>
+      </div>
+    </div>
+  </div>
+  
+  <hr>
 
   <div class="actions">
     <%= form.submit 'Guardar', class: 'btn btn-primary' %>

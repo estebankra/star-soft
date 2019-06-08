@@ -13,12 +13,13 @@
 <% end %>
 <!-- Content -->
 <div class="row">
-  <% if @supplies.empty? %>
-    <p>No ha agregado ningún insumo</p>
-  <% else %>
-    <% @supplies.each do |supply| %>
-      <div class="col-md-4">
+  <div class="col-md-4">
+    <% if @supplies.empty? %>
+      <p class="alert alert-warning">No ha agregado ningún insumo</p>
+    <% else %>
+      <% @supplies.each do |supply| %>
         <div class="card col-md-12">
+
           <%= image_tag supply.image.url(:thumb), class: 'media-object' %>
           <div class="card-body">
             <h5 class="card-title"><%= supply.name %></h5>

@@ -1,25 +1,17 @@
-<div class="header"> 
-  <h1 class="page-header">
-    Insumos
-  </h1>
+<h1>Insumos</h1>
+<nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li><%= link_to "Insumos", supplies_path %></li>
-    <li class="active">Nuevo</li>
-  </ol> 
+    <li class="breadcrumb-item"><a href="#">Insumos</a></li>
+    <li class="breadcrumb-item"><%= link_to "Index", supplies_path %></li>
+    <li class="breadcrumb-item active" aria-current="page">Nuevo</li>
+  </ol>
+</nav>
 </div>
+<hr>
 
-<div id="page-inner"> 
-  <div class="row">
-    <div class="col-md-12">
-      <p>
-        <%= render 'form', supply: @supply %><br>
 
-        <%= link_to 'Volver', supplies_path %>
-      </p>
-
-      <div class="clearBoth"><br/></div>
-    </div>
-    <!-- /. PAGE INNER  -->
+<div class="row">
+  <div class="col-12">
+    <%= render 'form', supply: @supply %><br>
   </div>
-  <!-- /. PAGE WRAPPER  -->
 </div>
