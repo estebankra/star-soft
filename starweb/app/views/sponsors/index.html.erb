@@ -1,26 +1,32 @@
-<div class="header"> 
-  <h1 class="page-header">
-    Auspiciantes
-  </h1>
+<h1>Auspiciantes</h1>
+<nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li><a href="#">Auspiciantes</a></li>
-    <li class="active">Index</a></li>
-  </ol> 
+    <li class="breadcrumb-item"><a href="#">Auspiciantes</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Index</li>
+  </ol>
+</nav>
 </div>
+<hr>
 
-<div id="page-inner">
+<% if current_user.is_secretary? %>
   <%= link_to 'Nuevo', new_sponsor_path, class: 'btn btn-primary' %>
+<% end %>
+
+<!-- Content -->
   <div class="row">
-    <div class="col-md-12">
-      <% @sponsors.each do |sponsor| %>
-          <div class="col-md-3">
-            <h5><%= sponsor.name %></h5>
-            <%= link_to '', edit_sponsor_path(sponsor), class: 'fas fa-edit' %> | <%= link_to '', sponsor, method: :delete, data: {  confirm: 'Estás seguro?' }, class: "fas fa-trash" %>
-            <div class="thumbnail">
-              <%= image_tag sponsor.image.url(:thumb) %>
-            </div>
+    <% @sponsors.each do |sponsor| %>
+    <div class="col-md-4 col-sm-5">
+      <div class="card col-md-12 p-2">
+        <div class="card-image">
+          <%= image_tag sponsor.image.url(:thumb) %>
         </div>
-      <%end%>
-    </div>
+        <div class="card-content">
+          <hr>
+          <h4 class="card-title"><%= sponsor.name %></h4>
+          <hr>
+          <%= link_to '', edit_sponsor_path(sponsor), class: 'fas fa-edit' %> | <%= link_to '', sponsor, method: :delete, data: {  confirm: 'Estás seguro?' }, class: "fas fa-trash" %>
+        </div>
+      </div>
   </div>
+  <% end %>
 </div>

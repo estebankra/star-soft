@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    @has_supplies = HasSupply.all
   end
 
   # GET /products/1

@@ -15,36 +15,32 @@
     <%= form.hidden_field :order_id, value: @order.id %>
   </div>
 
-  <div class="field">
-    <%= form.label 'Producto' %>
-    <%= form.collection_select :product_id, Product.all, :id, :name %><br>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inputGroupSelect01">Productos</label>
+    </div>
+    <%= form.collection_select :product_id, Product.all, :id, :name, class: 'custom-select' %>
   </div>
 
   <div class="field">
     <%= form.label 'Especificaciones frontal' %>
-    <%= form.text_area :specs_f %>
+    <%= form.text_area :specs_f, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label 'Especificaciones dorso' %>
-    <%= form.text_area :specs_b %>
+    <%= form.text_area :specs_b, class: 'form-control'%>
   </div>
 
   <div class="field">
     <%= form.label 'Cantidad' %>
-    <%= form.number_field :quantity %>
+    <%= form.number_field :quantity, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :color %>
-    <%= form.text_field :color %>
-  </div>
-
-  <div class="field">
-    <%= form.label 'Diseño' %>
-    <%= form.file_field :design, class: 'field' %>
-  </div>
-
+    <%= form.text_field :color, class: 'form-control' %>
+  </div><br>
   <div class="modal-footer">
     <%= form.submit 'Guardar', class: 'btn btn-primary' %>
   </div>  

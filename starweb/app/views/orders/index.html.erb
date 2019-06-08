@@ -15,7 +15,7 @@
 <div class="row">
   <% @orders.each do |order| %>
     <div class="col-md-4 col-sm-6">
-      <div class="card">
+      <div class="card pt-4">
         <div class="card-body">
           <h5 class="card-title">
             <%= order.client.firstname %> <%= order.client.lastname %><br><%= order.client.doc_ruc %>

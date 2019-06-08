@@ -11,41 +11,59 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label 'Fecha de entrega' %>
-    <%= form.date_field :deliver_date %>
+
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Cliente</label>
+        <%= form.collection_select :client_id, Client.all, :id, :firstname%><br>
+      </div>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="inputEmail4">Fecha de entrega</label>
+      <%= form.date_field :deliver_date, class: 'form-control' %>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="inputAddress">Nombre de Curso/Club</label>
+      <%= form.text_field :course_club, class: 'form-control' %>
+    </div>
+
+    <div class="field">
+    <b><%= form.label 'Logo' %></b>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroupFileAddon01">Subir</span>
+      </div>
+      <div class="custom-file">
+        <%= form.file_field :logo, class: 'custom-file-input' %>
+        <label class="custom-file-label" for="inputGroupFile01">Elegir imagen</label>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label 'Cliente' %>
-    <%= form.collection_select :client_id, Client.all, :id, :firstname %><br>
-  </div>
-
-  <div class="field">
-    <%= form.label 'Nombre de Curso/Club' %>
-    <%= form.text_field :course_club %>
-  </div>
-
-  <div class="field">
-    <%= form.label 'Logo' %>
-    <%= form.file_field :logo, class: 'field' %>
-  </div><br>
-
-  <div class="field">
-    <%= form.label 'Notas' %>
-    <%= form.text_field :notes %>
-  </div>
-
-  <div class="field">
-    <h4>Auspiciantes</h4>
-    <% @sponsors.each do |sponsor| %>
+  <hr>
+  
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Notas</label>
+      <%= form.text_field :notes %>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputAddress">Nombre de Curso/Club</label>
+      <%= form.text_field :course_club, class: 'form-control' %>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputAddress">Auspiciantes</label>
+      <% @sponsors.each do |sponsor| %>
       <% if @sponsors.empty? %>
         <p>No ha agregado ningún auspiciante</p>
       <% else %>
         <br><%= check_box_tag "sponsors[]", sponsor.id, @order.sponsors.include?(sponsor) %> <%= sponsor.name %>
       <% end %>
     <% end %>
-  </div><br>
+    </div>
+  </div>
 
   <div class="actions">
     <%= form.submit "Agregar", class: 'btn btn-primary' %>

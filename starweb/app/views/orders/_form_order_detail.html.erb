@@ -17,19 +17,19 @@
 
   <div class="field">
     <%= form.label 'Nombre' %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label 'Número' %>
-    <%= form.number_field :number %>
+    <%= form.number_field :number, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label 'Tamaño' %>
-    <%= form.text_field :size %>
+    <%= form.text_field :size, class: 'form-control' %>
   </div>
-
+  <hr>
   <div class="actions">
     <%= form.submit class: 'btn btn-primary' %>
   </div>

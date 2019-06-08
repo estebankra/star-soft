@@ -17,8 +17,8 @@
     <p>No ha agregado ningún insumo</p>
   <% else %>
     <% @supplies.each do |supply| %>
-      <div class="col-md-2">
-        <div class="card">
+      <div class="col-md-4">
+        <div class="card col-md-12">
           <%= image_tag supply.image.url(:thumb), class: 'media-object' %>
           <div class="card-body">
             <h5 class="card-title"><%= supply.name %></h5>

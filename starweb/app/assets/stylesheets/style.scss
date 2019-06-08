@@ -35,11 +35,19 @@ p {
   font-size: 15px;
 }
 
+.alert {
+  padding: .75rem .25rem;
+}
+
 .card {
   text-align: center;
   display: inline-block;
   margin-bottom: 15px;
   border: 1px solid #5f7c9a;
+}
+
+.card-body {
+  padding: 5px;
 }
 
 .bg-light {
