@@ -4,10 +4,16 @@
   <div class="sidebar-heading"><i class="fab fa-stumbleupon-circle fa-3x"></i><br>StarWeb</div>
   <div class="list-group list-group-flush mt-4">
     <%= link_to(raw("<i class='fas fa-tasks fa-lg '></i><br>Pedidos"), orders_path, class: "list-group-item list-group-item-action") %>
-    <%= link_to(raw("<i class='fas fa-tshirt fa-lg '></i><br>Productos"), products_path, class: "list-group-item list-group-item-action") %>
-    <%= link_to(raw("<i class='fas fa-user-friends fa-lg '></i><br>Clientes"), clients_path, class: "list-group-item list-group-item-action") %>
-    <%= link_to(raw("<i class='fas fa-boxes fa-lg '></i><br>Insumos"), supplies_path, class: "list-group-item list-group-item-action") %>
-    <%= link_to(raw("<i class='fas fa-hands-helping fa-lg '></i><br>Auspiciantes"), sponsors_path, class: "list-group-item list-group-item-action") %>
+    <% if current_user.is_secretary? %>
+      <%= link_to(raw("<i class='fas fa-tshirt fa-lg '></i><br>Productos"), products_path, class: "list-group-item list-group-item-action") %>
+      <%= link_to(raw("<i class='fas fa-user-friends fa-lg '></i><br>Clientes"), clients_path, class: "list-group-item list-group-item-action") %>
+      <%= link_to(raw("<i class='fas fa-boxes fa-lg '></i><br>Insumos"), supplies_path, class: "list-group-item list-group-item-action") %>
+      <%= link_to(raw("<i class='fas fa-hands-helping fa-lg '></i><br>Auspiciantes"), sponsors_path, class: "list-group-item list-group-item-action") %>
+    <%end%>
+    <% if current_user.is_admin? %>
+      <%= link_to(raw("<i class='fa fa-user fa-lg'></i><br>Usuarios"), '/users/index', class: "list-group-item list-group-item-action") %>
+      <%= link_to(raw("<i class='fas fa-chart-line fa-lg'></i><br>Reportes"), root_path, class: "list-group-item list-group-item-action") %>
+    <%end%>
   </div>
 </div>
 
@@ -19,7 +25,7 @@
       <div class="nav navbar-nav ml-auto">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-user mr-2"></i> Admin
+              <i class="fas fa-user mr-2"></i><%= current_user.email %>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Something else here</a>

@@ -1,28 +1,16 @@
-<div class="header"> 
-  <h1 class="page-header">
-    Clientes
-  </h1>
+<h1>Clientes</h1>
+<nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li><a href="">Clientes</a></li>
-    <li><%= link_to "Index", clients_path %></li>
-    <li class="active">Nuevo</li>
-  </ol> 
+    <li class="breadcrumb-item"><a href="#">Clientes</a></li>
+    <li class="breadcrumb-item"><%= link_to "Index", clients_path %></li>
+    <li class="breadcrumb-item active" aria-current="page">Nuevo</li>
+  </ol>
+</nav>
 </div>
+<hr>
 
-<div id="page-inner"> 
-  <div class="row">
-    <div class="col-md-12">
-      <p>
-
+<div class="row">
+  <div class="col-12">
        <%= render 'form', client: @client %><br>
-
-       <%= link_to 'Volver', clients_path %>
-     </p>
-
-     <div class="clearBoth"><br/></div>
-
-   </div>
-   <!-- /. PAGE INNER  -->
- </div>
- <!-- /. PAGE WRAPPER  -->
+  </div>
 </div>

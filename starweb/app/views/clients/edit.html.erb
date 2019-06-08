@@ -1,13 +1,14 @@
-<div class="header"> 
-  <h1 class="page-header">
-    Clientes
-  </h1>
+<h1>Clientes</h1>
+<nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li><a href="">Clientes</a></li>
-    <li><%= link_to "Index", clients_path %></li>
-    <li class="active">Editar</li>
-  </ol> 
+    <li class="breadcrumb-item"><a href="#">Clientes</a></li>
+    <li class="breadcrumb-item"><%= link_to "Index", clients_path %></li>
+    <li class="breadcrumb-item active" aria-current="page">Editar</li>
+  </ol>
+</nav>
 </div>
+<hr>
+
 
 <div id="page-inner"> 
   <div class="row">
@@ -15,8 +16,6 @@
       <p>
         
        <%= render 'form', client: @client %><br>
-
-       <%= link_to 'Volver', clients_path %>
 
      </p>
 

@@ -1,45 +1,35 @@
-<div class="header"> 
-  <h1 class="page-header">
-    Insumos
-  </h1>
+<h1>Insumos</h1>
+<nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li><a href="#">Insumos</a></li>
-    <li class="active">Index</a></li>
-  </ol> 
+    <li class="breadcrumb-item"><a href="#">Insumos</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Index</li>
+  </ol>
+</nav>
 </div>
+<hr>
 
-<div id="page-inner">
-  <%= link_to 'Nuevo', new_supply_path, class: 'btn btn-primary' %>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="row">
-        <% if @supplies.empty? %>
-          <p>No ha agregado ningún insumo</p>
-        <% else %>
-          <% @supplies.each do |supply| %>
-          <div class="col-md-6">
-            <div class="card">
-              <p>
-                <div class="media">
-                  <div class="media-left media-middle">
-                    <a href="#">
-                      <%= image_tag supply.image.url(:thumb), class: 'media-object' %>
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <h5 class="media-heading"><%= supply.name %></h5>
-                    <p><b>Stock:</b> <%= supply.stock %></p>
-                    <p><%= supply.description %></p>
-                    <p><%= link_to '', edit_supply_path(supply), class: 'fas fa-edit' %> | <%= link_to '', supply, method: :delete, data: {  confirm: 'Estás seguro?' }, class: "fas fa-trash" %></p>
-                  </div>
-                </div>
-                <hr>
-              </p>
-            </div>
+<% if current_user.is_secretary? %>
+<%= link_to 'Nuevo', new_supply_path, class: 'btn btn-primary'%>
+<% end %>
+<!-- Content -->
+<div class="row">
+  <% if @supplies.empty? %>
+    <p>No ha agregado ningún insumo</p>
+  <% else %>
+    <% @supplies.each do |supply| %>
+      <div class="col-md-2">
+        <div class="card">
+          <%= image_tag supply.image.url(:thumb), class: 'media-object' %>
+          <div class="card-body">
+            <h5 class="card-title"><%= supply.name %></h5>
+            <hr>
+            <p class="card-text">
+              <p><b>Stock:</b> <%= supply.stock %></p>
+              <p><%= supply.description %></p>
+              <p><%= link_to '', edit_supply_path(supply), class: 'fas fa-edit' %> | <%= link_to '', supply, method: :delete, data: {  confirm: 'Estás seguro?' }, class: "fas fa-trash" %></p>
           </div>
-          <%end%>
-        <%end%>
+        </div>
       </div>
-    </div>
-  </div>
+    <%end%>
+  <%end%>
 </div>

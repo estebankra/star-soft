@@ -1,26 +1,18 @@
-<div class="header">
-  <h1 class="page-header">
-    Pedidos
-  </h1>
+<h1>Pedidos</h1>
+<nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li><%= link_to "Pedidos", orders_path %></li>
-    <li class="#">Nuevo</li>
+    <li class="breadcrumb-item"><a href="#">Pedidos</a></li>
+        <li class="breadcrumb-item"><%= link_to "Index", orders_path %></li>
+    <li class="breadcrumb-item active" aria-current="page">Nuevo</li>
   </ol>
+</nav>
 </div>
+<hr>
 
-<div id="page-inner">
-  <div class="row">
-    <div class="col-md-12">
-      <p>
+<div class="row">
+  <div class="col-12">
+      <%= render 'form', order: @order %><br>
 
-        <%= render 'form', order: @order %><br>
-
-        <%= link_to 'Back', orders_path %>
-      </p>
-
-      <div class="clearBoth"><br/></div>
-    </div>
-    <!-- /. PAGE INNER  -->
+      <%= link_to 'Back', orders_path %>
   </div>
-  <!-- /. PAGE WRAPPER  -->
 </div>

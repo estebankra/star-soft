@@ -11,46 +11,44 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label 'Nombres' %>
-    <%= form.text_field :firstname %>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Nombres</label>
+      <%= form.text_field :firstname, class: 'form-control'%>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Apellidos</label>
+      <%= form.text_field :lastname, class: 'form-control' %>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputAddress">Documento - Ruc</label>
+      <%= form.text_field :doc_ruc, class: 'form-control'%>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputAddress">Telefóno</label>
+      <%= form.text_field :telephone, class: 'form-control'%>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label 'Apellidos' %>
-    <%= form.text_field :lastname %>
+  <hr>
+  <h5>Opcional</h5><br>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="inputAddress">Correo</label>
+      <%= form.text_field :mail, class: 'form-control'%>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="inputAddress">Ciudad</label>
+      <%= form.text_field :city, class: 'form-control' %>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="inputAddress">País</label>
+      <%= form.text_field :country, class: 'form-control' %>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="inputAddress">Nacimiento</label>
+      <%= form.date_field :date_nac, class: 'form-control'  %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label 'Documento / ruc' %>
-    <%= form.text_field :doc_ruc %>
-  </div>
-
-  <div class="field">
-    <%= form.label 'Telefóno' %>
-    <%= form.text_field :telephone %>
-  </div>
-
-  <div class="field">
-    <%= form.label 'Correo' %>
-    <%= form.text_field :mail %>
-  </div>
-
-  <div class="field">
-    <%= form.label 'Ciudad' %>
-    <%= form.text_field :city %>
-  </div>
-
-  <div class="field">
-    <%= form.label 'País' %>
-    <%= form.text_field :country %>
-  </div>
-
-  <div class="field">
-    <%= form.label 'Nacimiento' %>
-    <%= form.date_field :date_nac %>
-  </div><br>
-
   <div class="actions">
     <%= form.submit 'Guardar', class: 'btn btn-primary' %>
   </div>

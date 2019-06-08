@@ -12,27 +12,40 @@
   <% end %>
 
   <div class="field">
-    <%= form.label 'Nombre' %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label 'Precio' %>
-    <%= form.text_field :price %>
-  </div>
-
-  <div class="field">
-    <%= form.label 'Imagen' %>
-    <%= form.file_field :image, class: 'field' %>
+    <b><%= form.label 'Nombre' %></b>
+    <%= form.text_field :name, class: 'form-control' %>
   </div><br>
 
   <div class="field">
-    <%= form.label 'Descripción' %>
-    <%= form.text_field :description %>
+    <b><%= form.label 'Precio' %></b>
+    <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Gs.</span>
+    </div>
+    <%= form.text_field :price, class: 'form-control' %>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label 'Insumos necesarios'%>
+    <b><%= form.label 'Imagen' %></b>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+      </div>
+      <div class="custom-file">
+        <%= form.file_field :image, class: 'custom-file-input' %>
+        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <b><%= form.label 'Descripción' %></b>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div><br>
+
+  <div class="field">
+    <b><%= form.label 'Insumos necesarios'%></b>
     <% @supplies.each do |supply| %>
       <br><%= check_box_tag "supplies[]", supply.id, @product.supplies.include?(supply)  %> <%= supply.name %>
     <%end%>

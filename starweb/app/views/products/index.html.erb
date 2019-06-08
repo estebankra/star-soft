@@ -16,23 +16,47 @@
     <% @products.each do |product| %>
     <div class="col-md-3 col-sm-5">
       <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
+        <div class="card-image">
           <%= image_tag product.image.url(:medium)%>
         </div>
         <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4"><%= product.name %><i class="material-icons right">more_vert</i></span><br>
-          <p><label>Precio:</label>  <b><%= product.price %></b></p><br>
+          <hr>
+          <h3 class="card-title"><%= product.name %></h3>
+          <hr>
+          <p><label><b>Precio:</b></label> <%= product.price %></p>
+          <p><%= product.description %></p>
           <div class="list-group">
-            <%= link_to 'Insumos', supplies_path, class: 'list-group-item active' %>
+            <h5 class="list-group-item active">Insumos</h5>
             <% product.supplies.each do |supply|%>
-            <%= link_to supply.name, supply, class: 'list-group-item' %>
+              <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
+                <%= supply.name %>
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <%= image_tag supply.image.url(:thumb), class: 'media-object' %>
+                      <div class="card-body">
+                        <h5 class="card-title"><%= supply.name %></h5>
+                        <hr>
+                        <p class="card-text">
+                          <p><%= supply.description %></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <%end%>
           </div>
-          <p style="width: 70px"><%= link_to '', edit_product_path(product) , class: 'fas fa-edit' %> | <%= link_to '', product, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></p>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4"><%= product.name %><i class="material-icons right">close</i></span>
-          <p><%= product.description %></p>
+          <p><%= link_to '', edit_product_path(product) , class: 'fas fa-edit' %> | <%= link_to '', product, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></p>
         </div>
       </div>
   </div>

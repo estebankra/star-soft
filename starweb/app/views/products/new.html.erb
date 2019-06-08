@@ -1,26 +1,18 @@
-<div class="header"> 
-  <h1 class="page-header">
-    Productos
-  </h1>
+<h1>Productos</h1>
+<nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li><a href="">Productos</a></li>
-    <li><%= link_to "Index", products_path %></li>
-    <li class="active">Nuevo</li>
-  </ol> 
+    <li class="breadcrumb-item"><a href="#">Productos</a></li>
+        <li class="breadcrumb-item"><%= link_to "Index", products_path %></li>
+    <li class="breadcrumb-item active" aria-current="page">Nuevo</li>
+  </ol>
+</nav>
 </div>
+<hr>
 
-<div id="page-inner"> 
-  <div class="row">
-    <div class="col-md-12">
-      <p>
-        <%= render 'form', product: @product %><br>
+<div class="row">
+  <div class="col-12">
+    <%= render 'form', product: @product %><br>
 
-        <%= link_to 'Volver', products_path %>
-      </p>
-
-      <div class="clearBoth"><br/></div>
-    </div>
-    <!-- /. PAGE INNER  -->
+    <%= link_to 'Volver', products_path %>
   </div>
-  <!-- /. PAGE WRAPPER  -->
 </div>

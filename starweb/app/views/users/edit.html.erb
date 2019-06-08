@@ -1,28 +1,18 @@
-<div class="header"> 
-  <h1 class="page-header">
-    Editar Usuario
-  </h1>
+<h1>Usuarios</h1>
+<nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li><a href="">Usuarios</a></li>
-    <li><%= link_to "Index", users_index_path %></li>
-    <li class="active">Editar</li>
-  </ol> 
+    <li class="breadcrumb-item"><a href="#">Usuarios</a></li>
+        <li class="breadcrumb-item"><%= link_to "Index", users_index_path %></li>
+    <li class="breadcrumb-item active" aria-current="page">Editar</li>
+  </ol>
+</nav>
 </div>
+<hr>
 
-<div id="page-inner"> 
-  <div class="row">
-    <div class="col-md-12">
-          <p>
-			       <%= form_for @user, :url => { :action => :update } do |p| %>
-			       <%= render "form", p: p %><br>
-			       <% end %>
-
-			       <%= link_to 'Volver', users_index_path %>
-          </p>
-
-          <div class="clearBoth"><br/></div>
-    </div>
-    <!-- /. PAGE INNER  -->
+<div class="row">
+  <div class="col-12">
+    <%= form_for @user, :url => { :action => :update } do |p| %>
+    <%= render "form", p: p %><br>
+    <% end %>
   </div>
-  <!-- /. PAGE WRAPPER  -->
 </div>
