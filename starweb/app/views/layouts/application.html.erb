@@ -13,24 +13,25 @@
     <link href="https://fonts.googleapis.com/css?family=Muli|Raleway&display=swap" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
   <div class="d-flex" id="wrapper">
     <%= render "partials/navigation" %>
     <% unless notice.nil? %>
-          <div class="alert alert-success" role="alert">
+          <div class="alert login alert-success" role="alert">
             <p class="notice"><%= notice %></p>
           </div>
         <%end%>
         <% unless alert.nil? %>
-          <div class="alert alert-warning" role="alert">
+          <div class="alert alert-warning login" role="alert">
             <p class="alert"><%= alert %></p>
           </div>
         <%end%>
     <%= yield %>
     <%= render "partials/footer" %>
   </div>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </body>
 </html>

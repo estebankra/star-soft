@@ -7,13 +7,20 @@ body {
   max-width: 330px;
   padding: 15px;
   margin: auto;
-  background-color: #777777;
+  background-color: #d8d8d8;
   border-radius: 10px; }
 
 .navbar-light .navbar-nav .nav-link {
   color: #ffffff !important; }
   .navbar-light .navbar-nav .nav-link:hover {
     color: #e2dede !important; }
+
+p {
+  margin-top: 1rem; }
+
+.login {
+  padding: .10rem 1.25rem;
+  font-size: 15px; }
 
 .card {
   text-align: center;
@@ -22,8 +29,9 @@ body {
   border: 1px solid #5f7c9a; }
 
 .bg-light {
-  background-color: #777777 !important;
-  height: 65px; }
+  background-color: #4673a7 !important;
+  height: 65px;
+  box-shadow: 11px -12px 46px 2px rgba(0, 0, 0, 0.51); }
 
 #page-content-wrapper {
   width: 100%; }
@@ -33,34 +41,37 @@ body {
 
 #sidebar-wrapper {
   color: #994848;
+  border-right: 1px solid #d1d1d1 !important;
   min-height: 100vh;
-  background-color: #080813;
+  background-color: #5a6d80;
   -webkit-transition: margin .25s ease-out;
   -moz-transition: margin .25s ease-out;
   -o-transition: margin .25s ease-out;
-  transition: margin .25s ease-out; }
+  transition: margin .25s ease-out;
+  box-shadow: -37px 10px 91px 0px rgba(0, 0, 0, 0.75); }
   #sidebar-wrapper .sidebar-heading {
     text-align: center;
     font-size: 20px !important;
     padding: 10px;
     height: 120px;
     font-family: 'Raleway', sans-serif;
-    background-color: #080813 !important;
+    background-color: #5a6d80 !important;
     color: #ffffff;
-    border-bottom: 1px solid #ffffff; }
+    border-bottom: 1px solid #d1d1d1; }
   #sidebar-wrapper .list-group {
     text-align: center; }
     #sidebar-wrapper .list-group .list-group-item {
-      background-color: #080813;
+      background-color: #5a6d80;
       color: #ffffff;
       border: none;
       font-size: 14px;
       padding: 7px; }
       #sidebar-wrapper .list-group .list-group-item:hover {
-        background-color: #994848; }
+        background-color: #ffffff;
+        color: #485e74; }
 
 footer {
-  background-color: #777777;
+  background-color: #4673a7;
   color: #ffffff; }
 
 /*# sourceMappingURL=style.css.map */
