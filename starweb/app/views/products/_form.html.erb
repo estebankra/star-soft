@@ -45,9 +45,9 @@
   </div><br>
 
   <div class="field">
-    <b><%= form.label 'Insumos necesarios'%></b>
+    <h3><%= form.label 'Insumos necesarios'%></h3>
     <% @supplies.each do |supply| %>
-      <br><%= check_box_tag "supplies[]", supply.id, @product.supplies.include?(supply)  %> <%= supply.name %>
+      <%= check_box_tag "supplies[]", supply.id, @product.supplies.include?(supply)  %> <%= supply.name %><br>
     <%end%>
   </div>
   

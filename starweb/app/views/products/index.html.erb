@@ -9,58 +9,59 @@
 <hr>
 
 <% if current_user.is_secretary? %>
-<%= link_to 'Nuevo', new_product_path, class: 'btn btn-primary'%>
+  <%= link_to 'Nuevo', new_product_path, class: 'btn btn-primary'%>
 <% end %>
 <!-- Content -->
-  <div class="row">
+<div class="row">
     <% @products.each do |product| %>
-    <div class="col-md-3 col-sm-5">
-      <div class="card">
-        <div class="card-image">
-          <%= image_tag product.image.url(:medium)%>
-        </div>
-        <div class="card-content">
-          <hr>
-          <h3 class="card-title"><%= product.name %></h3>
-          <hr>
-          <p><h5><b>Precio</b></h5><%= product.price %></p>
-          <p><b>Descripción</b><br><%= product.description %></p>
-          <div class="list-group">
-            <h5 class="list-group-item active">Insumos</h5>
+      <div class="col-md-3 col-sm-5">
+        <div class="card col-md-12">
+          <div class="card-image">
+            <%= image_tag product.image.url(:thumb)%>
+          </div>
+          <div class="card-content">
+            <hr>
+            <h3 class="card-title"><%= product.name %></h3>
+            <hr>
+            <p><h5><b>Precio</b></h5><%= product.price %></p>
+            <p><b>Descripción</b><br><%= product.description %></p>
+            <div class="list-group">
+              <h5 class="list-group-item active">Insumos</h5>
               <% @has_supplies.each do |has_supply| %>
                 <% if has_supply.product.id == product.id %>
                   <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
                     <%= has_supply.supply.name %>
                   </button>
-
-                  <!-- Modal -->
-                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <%= image_tag has_supply.supply.image.url(:thumb), class: 'media-object' %>
-                          <div class="card-body">
-                            <h5 class="card-title"><%= has_supply.supply.name %></h5>
-                            <hr>
-                            <p class="card-text">
-                            <p><%= has_supply.supply.description %></p>
-                          </div>
+                <%end%>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <%= image_tag has_supply.supply.image.url(:thumb), class: 'media-object' %>
+                        <div class="card-body">
+                          <h5 class="card-title"><%= has_supply.supply.name %></h5>
+                          <hr>
+                          <p class="card-text">
+                          <p><%= has_supply.supply.description %></p>
                         </div>
                       </div>
                     </div>
                   </div>
-                <%end%>
+                </div>
+
               <%end%>
+            </div>
           </div>
           <p><%= link_to '', edit_product_path(product) , class: 'fas fa-edit' %> | <%= link_to '', product, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></p>
         </div>
       </div>
+    <% end %>
   </div>
-  <% end %>
 </div>

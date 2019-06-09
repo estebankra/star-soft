@@ -1,7 +1,11 @@
-<p>
-<h3><%= p.label 'Nivel de permisos' %></h3>
-<%= p.text_field :permission_level, class: "form-control" %>
-</p>
+
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Nivel de permisos</label>
+    </div>
+    <%= p.select :permission_level, options_for_select([['Secretaría', 1], ['Equipo de trabajo', 2]]), class: "custom-select" %>
+</div>
+
 <p>
 <%= p.submit "Guardar", class: 'btn btn-primary' %>
 </p>
