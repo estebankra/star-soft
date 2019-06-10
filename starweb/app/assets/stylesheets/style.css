@@ -26,13 +26,18 @@ p {
   padding: .75rem .25rem; }
 
 .card {
-  text-align: center;
   display: inline-block;
   margin-bottom: 15px;
   border: 1px solid #5f7c9a; }
 
 .card-body {
   padding: 5px; }
+  .card-body .fas {
+    font-size: 30px;
+    color: #ffffff;
+    text-decoration: none; }
+    .card-body .fas:hover {
+      opacity: 0.8; }
 
 .bg-light {
   background-color: #4673a7 !important;

@@ -21,9 +21,9 @@
       <% else %>
       <% @sponsors.each do |sponsor| %>
         <div class="col-md-4 col-sm-5">
-          <div class="card col-md-12 p-2">
+          <div class="card text-center col-md-12">
             <div class="card-image">
-              <%= image_tag sponsor.image.url(:thumb) %>
+              <%= image_tag sponsor.image.url(:mini)%>
             </div>
             <div class="card-content">
               <hr>

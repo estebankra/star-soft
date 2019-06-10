@@ -40,7 +40,6 @@ p {
 }
 
 .card {
-  text-align: center;
   display: inline-block;
   margin-bottom: 15px;
   border: 1px solid #5f7c9a;
@@ -48,6 +47,17 @@ p {
 
 .card-body {
   padding: 5px;
+
+    .fas {
+      font-size: 30px;
+      color: $color-quaternary;
+      text-decoration: none;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+    }
 }
 
 .bg-light {
