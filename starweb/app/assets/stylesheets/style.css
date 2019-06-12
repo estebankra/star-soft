@@ -28,16 +28,17 @@ p {
 .card {
   display: inline-block;
   margin-bottom: 15px;
-  border: 1px solid #5f7c9a; }
+  border: 1px solid #5f7c9a;
+  background-color: #f5f5f5;
+  }
 
 .card-body {
   padding: 5px; }
   .card-body .fas {
     font-size: 30px;
-    color: #ffffff;
     text-decoration: none; }
     .card-body .fas:hover {
-      opacity: 0.8; }
+      opacity: 0.7; }
 
 .bg-light {
   background-color: #4673a7 !important;

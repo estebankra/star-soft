@@ -21,8 +21,8 @@
     <% @orders.each do |order| %>
       <div class="col-md-4 col-sm-6">
         <% if order.state == 'Completado' %> 
-          <div class="card text-center text-dark bg-success pt-4 col-12">
-            <div class="card-body text-white">
+          <div class="card text-center text-dark pt-4 col-12">
+            <div class="card-body">
         <% elsif order.state == 'En proceso' %>
           <div class="card text-center text-dark bg-warning pt-4 col-12">
             <div class="card-body text-white">
@@ -35,38 +35,38 @@
               </h3>
             </div>
               <hr>
-              <div class="card-text text-white bg-light pt-2">
+              <div class="card-text pt-2">
                 <b>Fecha del pedido</b>
                 <br><%= order.created_at %></label>
               </div>
               <hr>
-              <div class="card-text text-white bg-light pt-2">
+              <div class="card-text pt-2">
                 <b>Entrega</b> <br><%= order.deliver_date %>
               </div>
               <hr>
-              <div class="card-text text-white bg-light pt-2">
+              <div class="card-text pt-2">
                 <b>Curso / Club</b><br><%= order.course_club %>
               </div>
               <hr>
                 <% if order.state == 'En espera' %>
                   <% if current_user.is_admin? or current_user.is_secretary? %>
-                    <p class='alert alert-danger'><%= order.state %></p>
+                    <p class='alert bg-danger text-white'><%= order.state %></p>
                   <% elsif current_user.is_team? %>
-                    <p class="alert alert-danger"><%= link_to order.state, orders_state_path(order) %></p>
+                    <p class="alert bg-danger text-white"><%= link_to order.state, orders_state_path(order) %></p>
                   <%end%>
 
                   <% elsif order.state == 'En proceso' %>
                     <% if current_user.is_admin? or current_user.is_secretary? %>
-                      <p class='alert alert-warning'><%= order.state %>
+                      <p class='alert bg-warning text-white'><%= order.state %>
                     <% elsif current_user.is_team? %></p>
-                      <p class="alert alert-warning"><%= link_to order.state, orders_state_path(order) %></p>
+                      <p class="alert bg-warning text-white"><%= link_to order.state, orders_state_path(order) %></p>
                     <%end%>
 
                     <% else order.state == 'Completado' %>
                       <% if current_user.is_admin? or current_user.is_secretary? %>
-                        <p class='alert alert-success'><%= order.state %></p>
+                        <p class='alert bg-success text-white'><%= order.state %></p>
                     <% elsif current_user.is_team? %>
-                      <p class="alert alert-success"><%= link_to order.state, orders_state_path(order) %></p>
+                      <p class="alert bg-success text-white"><%= link_to order.state, orders_state_path(order) %></p>
                     <%end%>
                   <% end %>
                 </li>
