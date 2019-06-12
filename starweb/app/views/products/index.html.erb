@@ -13,6 +13,11 @@
 <% end %>
 <!-- Content -->
 <div class="row">
+    <% if @products.empty? %>
+        <div class="col-md-4 col-sm-5">
+          <p class="alert alert-warning">No ha agregado ningún producto</p>
+        </div>
+    <% else %>
     <% @products.each do |product| %>
       <div class="col-md-4 col-sm-5">
         <div class="card text-center col-md-12">
@@ -58,10 +63,12 @@
 
               <%end%>
             </div>
-          </div>
+         
           <p><%= link_to '', edit_product_path(product) , class: 'fas fa-edit' %> | <%= link_to '', product, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></p>
+            </div>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <%end%>
+    <%end%>
   </div>
 </div>
