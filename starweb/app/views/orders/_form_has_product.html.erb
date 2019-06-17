@@ -1,47 +1,47 @@
 <%= form_with(model: has_product, local: true) do |form| %>
-  <% if has_product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(has_product.errors.count, "error") %> prohibited this has_product from being saved:</h2>
+<% if has_product.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(has_product.errors.count, "error") %> prohibited this has_product from being saved:</h2>
 
-      <ul>
-      <% has_product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% has_product.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= form.hidden_field :order_id, value: @order.id %>
+<div class="field">
+  <%= form.hidden_field :order_id, value: @order.id %>
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01">Producto</label>
   </div>
+  <%= form.collection_select :product_id, Product.all, :id, :name, class: 'custom-select' %>
+</div>
 
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Productos</label>
-    </div>
-    <%= form.collection_select :product_id, Product.all, :id, :name, class: 'custom-select' %>
-  </div>
+<div class="field">
+  <%= form.label 'Especificaciones frontal' %>
+  <%= form.text_area :specs_f, class: 'form-control' %>
+</div>
 
-  <div class="field">
-    <%= form.label 'Especificaciones frontal' %>
-    <%= form.text_area :specs_f, class: 'form-control' %>
-  </div>
+<div class="field">
+  <%= form.label 'Especificaciones dorso' %>
+  <%= form.text_area :specs_b, class: 'form-control'%>
+</div>
 
-  <div class="field">
-    <%= form.label 'Especificaciones dorso' %>
-    <%= form.text_area :specs_b, class: 'form-control'%>
-  </div>
+<div class="field">
+  <%= form.label 'Cantidad' %>
+  <%= form.number_field :quantity, class: 'form-control' %>
+</div>
 
-  <div class="field">
-    <%= form.label 'Cantidad' %>
-    <%= form.number_field :quantity, class: 'form-control' %>
-  </div>
-
-  <div class="field">
-    <%= form.label :color %>
-    <%= form.text_field :color, class: 'form-control' %>
-  </div><br>
-  <div class="modal-footer">
-    <%= form.submit 'Guardar', class: 'btn btn-primary' %>
-  </div>  
+<div class="field">
+  <%= form.label 'Notas' %>
+  <%= form.text_field :color, class: 'form-control' %>
+</div><br>
+<div class="modal-footer">
+  <%= form.submit 'Guardar', class: 'btn btn-primary' %>
+</div>  
 <% end %>

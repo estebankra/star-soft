@@ -14,26 +14,26 @@
 <!-- Content -->
 <div class="row">
   <% if @orders.empty? %>
-    <div class="col-md-4 col-sm-6">
-      <p class="alert alert-warning">No ha agregado ningún pedido</p>
-    </div>
+  <div class="col-md-4 col-sm-6">
+    <p class="alert alert-warning">No ha agregado ningún pedido</p>
+  </div>
   <%else%>
-    <% @orders.each do |order| %>
-      <div class="col-md-4 col-sm-6">
-        <% if order.state == 'Completado' %> 
-          <div class="card text-center text-dark pt-4 col-12">
-            <div class="card-body">
+  <% @orders.each do |order| %>
+  <div class="col-md-4 col-sm-6">
+    <% if order.state == 'Completado' %> 
+    <div class="card text-center text-dark pt-4 col-12">
+      <div class="card-body">
         <% elsif order.state == 'En proceso' %>
-          <div class="card text-center text-dark bg-warning pt-4 col-12">
-            <div class="card-body text-white">
-        <% else %>
-          <div class="card text-center text-dark bg-danger pt-4 col-12">
-            <div class="card-body text-white">     
-        <%end%>
-              <h3 class="card-title">
-                <%= order.client.firstname %> <%= order.client.lastname %><br><%= order.client.doc_ruc %>
-              </h3>
-            </div>
+        <div class="card text-center text-dark pt-4 col-12">
+          <div class="card-body">
+            <% else %>
+            <div class="card text-center text-dark pt-4 col-12">
+              <div class="card-body">     
+                <%end%>
+                <h3 class="card-title">
+                  <%= order.client.firstname %> <%= order.client.lastname %><br><%= order.client.doc_ruc %>
+                </h3>
+              </div>
               <hr>
               <div class="card-text pt-2">
                 <b>Fecha del pedido</b>
@@ -48,34 +48,34 @@
                 <b>Curso / Club</b><br><%= order.course_club %>
               </div>
               <hr>
-                <% if order.state == 'En espera' %>
-                  <% if current_user.is_admin? or current_user.is_secretary? %>
-                    <p class='alert bg-danger text-white'><%= order.state %></p>
-                  <% elsif current_user.is_team? %>
-                    <p class="alert bg-danger text-white"><%= link_to order.state, orders_state_path(order) %></p>
-                  <%end%>
+              <% if order.state == 'En espera' %>
+              <% if current_user.is_admin? or current_user.is_secretary? %>
+              <p class='alert bg-danger'><%= order.state %></p>
+              <% elsif current_user.is_team? %>
+              <p class="alert bg-danger"><%= link_to order.state, orders_state_path(order) %></p>
+              <%end%>
 
-                  <% elsif order.state == 'En proceso' %>
-                    <% if current_user.is_admin? or current_user.is_secretary? %>
-                      <p class='alert bg-warning text-white'><%= order.state %>
-                    <% elsif current_user.is_team? %></p>
-                      <p class="alert bg-warning text-white"><%= link_to order.state, orders_state_path(order) %></p>
-                    <%end%>
+              <% elsif order.state == 'En proceso' %>
+              <% if current_user.is_admin? or current_user.is_secretary? %>
+              <p class='alert bg-warning'><%= order.state %>
+                <% elsif current_user.is_team? %></p>
+                <p class="alert bg-warning"><%= link_to order.state, orders_state_path(order) %></p>
+                <%end%>
 
-                    <% else order.state == 'Completado' %>
-                      <% if current_user.is_admin? or current_user.is_secretary? %>
-                        <p class='alert bg-success text-white'><%= order.state %></p>
-                    <% elsif current_user.is_team? %>
-                      <p class="alert bg-success text-white"><%= link_to order.state, orders_state_path(order) %></p>
-                    <%end%>
-                  <% end %>
-                </li>
-              </ul>
-              <div class="card-body">
-                <%= link_to '', order, class: 'fas fa-eye mt-2' %>
-              </div>
+                <% else order.state == 'Completado' %>
+                <% if current_user.is_admin? or current_user.is_secretary? %>
+                <p class='alert bg-success'><%= order.state %></p>
+                <% elsif current_user.is_team? %>
+                <p class="alert bg-success"><%= link_to order.state, orders_state_path(order) %></p>
+                <%end%>
+                <% end %>
+              </li>
+            </ul>
+            <div class="card-body">
+              <%= link_to '', order, class: 'fas fa-eye mt-2' %>
             </div>
           </div>
-    <%end%>
-  <%end%>
-</div>
+        </div>
+        <%end%>
+        <%end%>
+      </div>

@@ -1,0 +1,21 @@
+<h1>Factura</h1>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Factura</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Nuevo</li>
+</ol>
+</nav>
+</div>
+<hr>
+<%= Date.today %><br>
+
+<%= @invoice.client.firstname %> <%= @invoice.client.lastname %><br>
+<%= @invoice.client.doc_ruc %><br>
+<%= @invoice.client.country %> <%= @invoice.client.city %><br>
+
+<% @invoice.has_products.each do |order_detail| %>   
+<%= order_detail.quantity %>
+<%= order_detail.product.name %>
+<%= order_detail.product.price %>
+
+<%end%>

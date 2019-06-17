@@ -11,42 +11,43 @@
 <div id="page-inner">
   <%= link_to 'Nuevo', new_client_path, class: 'btn btn-primary' %>
   <div class="row">
-    <div class="col-md-12">
-      <% if @clients.empty? %>
-        <p class="alert alert-warning">No ha agregado ningún cliente</p>
-      <% else %>
-        <div class="table-responsive">
-          <table class="table table-striped table-bordered table-hover">
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Doc/ruc</th>
-                <th>Telefóno</th>
-                <th>Nacimiento</th>
-                <th>Correo</th>
-                <th>Ciudad</th>
-                <th>País</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @clients.each do |client| %>
-              <tr>
-                <td><%= client.firstname %></td>
-                <td><%= client.lastname %></td>
-                <td><%= client.doc_ruc %></td>
-                <td><%= client.telephone %></td>
-                <td><%= client.date_nac %></td>
-                <td><%= client.mail %></td>
-                <td><%= client.city %></td>
-                <td><%= client.country %></td>
-                <td><%= link_to '', edit_client_path(client), class: 'fas fa-edit' %>  <%= link_to '' , client, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      <%end%>
+    <% if @clients.empty? %>
+    <div class="col-md-4 col-sm-6">
+      <p class="alert alert-warning">No ha agregado ningún pedido</p>
     </div>
+    <% else %>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Doc/ruc</th>
+            <th>Telefóno</th>
+            <th>Nacimiento</th>
+            <th>Correo</th>
+            <th>Ciudad</th>
+            <th>País</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @clients.each do |client| %>
+          <tr>
+            <td><%= client.firstname %></td>
+            <td><%= client.lastname %></td>
+            <td><%= client.doc_ruc %></td>
+            <td><%= client.telephone %></td>
+            <td><%= client.date_nac %></td>
+            <td><%= client.mail %></td>
+            <td><%= client.city %></td>
+            <td><%= client.country %></td>
+            <td><%= link_to '', edit_client_path(client), class: 'fas fa-edit' %>  <%= link_to '' , client, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%end%>
   </div>
+</div>
 </div>

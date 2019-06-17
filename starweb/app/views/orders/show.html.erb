@@ -2,7 +2,7 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="#">Pedidos</a></li>
-        <li class="breadcrumb-item"><%= link_to "Index", orders_path %></li>
+    <li class="breadcrumb-item"><%= link_to "Index", orders_path %></li>
     <li class="breadcrumb-item active" aria-current="page">Detalles</li>
   </ol>
 </nav>
@@ -15,6 +15,7 @@
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalOrderDetail">Agregar detalles</button>
 
   <%= link_to 'Editar', edit_order_path(@order), class: 'btn btn-light' %>
+  <%= link_to 'Facturar', invoices_new_path(@order),  class: 'btn btn-success' %>
   <%end%>
   <div class="row mt-4">
     <div class="col-md-6">
@@ -31,49 +32,49 @@
               </p>
               <p>
                 <% if @order.state == 'En espera' %>
-                  <p class='alert bg-danger text-white'><%= @order.state %></p>
+                <p class='alert bg-danger text-white'><%= @order.state %></p>
                 <% elsif @order.state == 'En proceso' %>
-                  <p class='alert bg-warning text-white'><%= @order.state %>
-                <% else @order.state == 'Completado' %>
+                <p class='alert bg-warning text-white'><%= @order.state %>
+                  <% else @order.state == 'Completado' %>
                   <p class='alert bg-success text-white'><%= @order.state %></p>
-                <%end%>
-              </p>
-              <p>
-                <b>Notas</b><br><%= @order.notes %>
-              </p>
+                  <%end%>
+                </p>
+                <p>
+                  <b>Notas</b><br><%= @order.notes %>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <div class="card text-center border-primary col-md-12">
+              <div class="card-body">
+                <h5 class="card-title mt-3"><b>Cliente</b></h5>
+                <hr>
+                <p class="card-text">
+                  <b>Nombre y Apellido</b><br><%= @order.client.firstname %>
+                  <%= @order.client.lastname %> 
+                </p>
+                <p class="card-text">
+                  <b>Documento - RUC</b><br>
+                  <%= @order.client.doc_ruc %>
+                </p>
+                <p class="card-text">
+                  <b>Curso / Club</b> <br><%= @order.course_club %>
+                </p>
+                <p class="card-text">
+                  <hr><b>Logo</b> <br><hr><%= image_tag @order.logo.url(:thumb), class: 'card-img'   %>
+                </p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-sm-12">
-          <div class="card text-center border-primary col-md-12">
-            <div class="card-body">
-              <h5 class="card-title mt-3"><b>Cliente</b></h5>
-              <hr>
-              <p class="card-text">
-                <b>Nombre y Apellido</b><br><%= @order.client.firstname %>
-                <%= @order.client.lastname %> 
-              </p>
-              <p class="card-text">
-                <b>Documento - RUC</b><br>
-                <%= @order.client.doc_ruc %>
-              </p>
-              <p class="card-text">
-                <b>Curso / Club</b> <br><%= @order.course_club %>
-              </p>
-              <p class="card-text">
-                <hr><b>Logo</b> <br><hr><%= image_tag @order.logo.url(:thumb), class: 'card-img'   %>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-       <div class="col-md-12">
-        <hr>
-          <h4>Detalles</h4>     
-          <% if @order.order_details.empty? %>
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+            <h4>Detalles</h4>     
+            <% if @order.order_details.empty? %>
             <p>No ha agregado ningún detalle</p>
-          <% else %>
+            <% else %>
             <div class="table-responsive">
               <table class="table table-striped table-bordered table-hover table-secondary">
                 <thead>
@@ -89,9 +90,9 @@
                     <td><%= order_detail.name %></td>
                     <td><%= order_detail.number %></td>
                     <td><%= order_detail.size %><br>
-                    <% if current_user.is_secretary? %>
+                      <% if current_user.is_secretary? %>
                       <td style="width: 20px;"><%= link_to '' , order_detail, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>
-                    <%end%>
+                      <%end%>
                     </tr>
                     <% end %>
                   </tbody>
@@ -99,75 +100,75 @@
               </div>
               <%end%>
             </div>
-        <br>
+            <br>
+          </div>
         </div>
-    </div>
 
-    <div class="col-md-6">
-      <h4>Productos</h4>
-      <hr>
-      <% @order.has_products.each do |hasProduct| %>
-      <% if @order.has_products.empty? %>
-      <p>No ha agregado ningún producto</p>
-      <% else %>
-      <div class="card border-primary col-md-12">
-        <div class="row no-gutters">
-          <div class="col-md-4 mt-4">
-            <%= image_tag hasProduct.product.image.url(:thumb), class: 'card-img' %>
+        <div class="col-md-6">
+          <h4>Productos</h4>
+          <hr>
+          <% @order.has_products.each do |hasProduct| %>
+          <% if @order.has_products.empty? %>
+          <p>No ha agregado ningún producto</p>
+          <% else %>
+          <div class="card border-primary col-md-12">
+            <div class="row no-gutters">
+              <div class="col-md-4 mt-4">
+                <%= image_tag hasProduct.product.image.url(:thumb), class: 'card-img' %>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h4 class="card-title mt-2"><b><%= hasProduct.product.name %></b></h4>
+                  <hr>
+                  <p class="card-text">
+                    <p><b>Frontal</b> <br><%= hasProduct.specs_f %></p>
+                    <p><b>Dorso</b> <br><%= hasProduct.specs_b %></p>
+                    <p><b>Cantidad</b> <br><%= hasProduct.quantity %></p>
+                    <p><b>Notas</b> <br><%= hasProduct.color %></p>
+                  </p>
+                </div>
+              </div>
+              <%end%>
+            </div>
           </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h4 class="card-title mt-2"><b><%= hasProduct.product.name %></b></h4>
-              <hr>
-              <p class="card-text">
-                <p><b>Frontal</b> <br><%= hasProduct.specs_f %></p>
-                <p><b>Dorso</b> <br><%= hasProduct.specs_b %></p>
-                <p><b>Cantidad</b> <br><%= hasProduct.quantity %></p>
-                <p><b>Color</b> <br><%= hasProduct.color %></p>
-            </p>
+          <%end%>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Agregar producto</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= render 'form_has_product', has_product: @hasProduct %>
+            </div>
           </div>
         </div>
-      <%end%>
       </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="modalOrderDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Agregar detalles</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= render 'form_order_detail', order_detail: @order_detail %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /. PAGE INNER  -->
     </div>
-    <%end%>
-    </div>
+    <!-- /. PAGE WRAPPER  -->
   </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Agregar producto</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <%= render 'form_has_product', has_product: @hasProduct %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="modalOrderDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Agregar detalles</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <%= render 'form_order_detail', order_detail: @order_detail %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /. PAGE INNER  -->
-  </div>
-  <!-- /. PAGE WRAPPER  -->
-</div>
