@@ -1,2 +1,37 @@
-<h1>Invoice#index</h1>
-<p>Find me in app/views/invoice/index.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<h1>Invoices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Counted credit</th>
+      <th>Order</th>
+      <th>Iva5</th>
+      <th>Iva10</th>
+      <th>Total</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td><%= invoice.date %></td>
+        <td><%= invoice.counted_credit %></td>
+        <td><%= invoice.order %></td>
+        <td><%= invoice.iva5 %></td>
+        <td><%= invoice.iva10 %></td>
+        <td><%= invoice.total %></td>
+        <td><%= link_to 'Show', invoice %></td>
+        <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
+        <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Invoice', new_invoice_path %>

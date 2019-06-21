@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2019-06-18
+  counted_credit: false
+  order: one
+  iva5: 
+  iva10: 
+  total: 
+
+two:
+  date: 2019-06-18
+  counted_credit: false
+  order: two
+  iva5: 
+  iva10: 
+  total: 

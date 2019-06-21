@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :invoices
   get 'invoice/index'
   get 'invoice/new/:id', to: 'invoices#new', as: 'invoices_new'
 
