@@ -3,7 +3,7 @@ class Client < ApplicationRecord
 
 	def self.search(term)
 		if term
-		  where("CONCAT_WS(firstname, ' ', lastname, ' ', doc_ruc)  LIKE ?", "%#{term}%").order('id DESC')
+		  where("CONCAT_WS(' ', firstname, lastname, doc_ruc)  LIKE ?", "%#{term}%").order('id DESC')
 		else
 		  order('id DESC')
 		end

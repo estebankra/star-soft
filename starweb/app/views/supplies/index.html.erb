@@ -8,9 +8,20 @@
 </div>
 <hr>
 
-<% if current_user.is_secretary? %>
-<%= link_to 'Nuevo', new_supply_path, class: 'btn btn-primary'%>
-<% end %>
+<div class="row mb-2">
+  <!-- New client -->
+  <div class="col">
+    <%= link_to 'Nuevo', new_supply_path, class: 'btn btn-primary' %>
+  </div>
+  <!-- Search -->
+  <div class="mr-3">
+    <%= form_tag(supplies_path, method: :get, class: 'form-inline') do %>
+      <%= text_field_tag :term, params[:term], class: 'form-control mr-sm-2', autofocus: true %>
+      <%= submit_tag 'Search', search: nil, class: 'btn btn-outline-success my-2 my-sm-0' %>
+    <% end %>
+  </div>
+</div>
+
 <!-- Content -->
 <div class="row">
   <% if @supplies.empty? %>

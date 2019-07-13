@@ -10,14 +10,14 @@
 
 <div class="row mb-2">
   <!-- New client -->
-  <div class="col-1">
+  <div class="col">
     <%= link_to 'Nuevo', new_product_path, class: 'btn btn-primary' %>
   </div>
-  <div class="col-3">
-    <!-- Search -->
+  <!-- Search -->
+  <div class="mr-3">
     <%= form_tag(products_path, method: :get, class: 'form-inline') do %>
       <%= text_field_tag :term, params[:term], class: 'form-control mr-sm-2', autofocus: true %>
-      <%= submit_tag 'Search', name: nil, class: 'btn btn-outline-success my-2 my-sm-0' %>
+      <%= submit_tag 'Search', search: nil, class: 'btn btn-outline-success my-2 my-sm-0' %>
     <% end %>
   </div>
 </div>
