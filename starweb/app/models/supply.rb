@@ -6,7 +6,7 @@ class Supply < ApplicationRecord
 
 	def self.search(term)
 		if term
-			where("name LIKE ?", "%#{term}%").order('id DESC')
+			where("name ILIKE ?", "%#{term}%").order('id DESC')
 		else
 			order('id DESC')
 		end
