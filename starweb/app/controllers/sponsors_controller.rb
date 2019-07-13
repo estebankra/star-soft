@@ -5,7 +5,7 @@ class SponsorsController < ApplicationController
   # GET /sponsors
   # GET /sponsors.json
   def index
-    @sponsors = Sponsor.all
+    @sponsors = Sponsor.search(params[:term])
   end
 
   # GET /sponsors/1
@@ -70,6 +70,6 @@ class SponsorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sponsor_params
-      params.require(:sponsor).permit(:name, :image)
+      params.require(:sponsor).permit(:name, :image, :term)
     end
 end
