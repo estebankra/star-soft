@@ -9,7 +9,22 @@
 <hr>
 
 <div id="page-inner">
-  <%= link_to 'Nuevo', new_client_path, class: 'btn btn-primary' %>
+
+  <div class="row mb-2">
+    <!-- New client -->
+    <div class="col-1">
+      <%= link_to 'Nuevo', new_client_path, class: 'btn btn-primary' %>
+    </div>
+    <div class="col-3">
+      <!-- Search -->
+      <%= form_tag(clients_path, method: :get, class: 'form-inline') do %>
+        <%= text_field_tag :term, params[:term], class: 'form-control mr-sm-2', autofocus: true %>
+        <%= submit_tag 'Search', firstname: nil, class: 'btn btn-outline-success my-2 my-sm-0' %>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Table -->
   <div class="row">
     <% if @clients.empty? %>
     <div class="col-md-4 col-sm-6">
@@ -49,5 +64,5 @@
     </div>
     <%end%>
   </div>
-</div>
+  </div>
 </div>
