@@ -29,7 +29,7 @@
   <div class="row">
       <% if @sponsors.empty? %>
         <div class="col-md-4 col-sm-5">
-          <p class="alert alert-warning">No ha agregado ningún auspiciante</p>
+          <p class="alert alert-warning">No ha encontrado ningún auspiciante</p>
         </div>
       <% else %>
       <% @sponsors.each do |sponsor| %>
@@ -49,4 +49,10 @@
       <%end%>
     <%end%>
   </div>
+  <!-- Pagination -->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+    <%= will_paginate @sponsors, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+    </ul>
+  </nav>
 </div>

@@ -28,7 +28,7 @@
   <div class="row">
     <% if @clients.empty? %>
     <div class="col-md-4 col-sm-6">
-      <p class="alert alert-warning">No ha agregado ningún pedido</p>
+      <p class="alert alert-warning">No ha encontrado ningún cliente</p>
     </div>
     <% else %>
     <div class="table-responsive">
@@ -62,7 +62,16 @@
         </tbody>
       </table>
     </div>
+
     <%end%>
   </div>
+
+  <!-- Pagination -->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+    <%= will_paginate @clients, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+    </ul>
+  </nav>
+  
   </div>
 </div>

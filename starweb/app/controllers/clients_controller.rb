@@ -5,7 +5,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.search(params[:term])
+    @clients = Client.paginate(page: params[:page]).search(params[:term])
   end
 
   # GET /clients/1
