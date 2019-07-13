@@ -1,81 +1,91 @@
-<h1>Pedidos</h1>
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">Pedidos</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Index</li>
-  </ol>
-</nav>
+  <h1>Pedidos</h1>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Pedidos</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Index</li>
+    </ol>
+  </nav>
 </div>
 <hr>
 
 <% if current_user.is_secretary? %>
-<%= link_to 'Nuevo', new_order_path, class: 'btn btn-primary'%>
+  <%= link_to 'Nuevo', new_order_path, class: 'btn btn-primary'%>
 <% end %>
 <!-- Content -->
 <div class="row">
   <% if @orders.empty? %>
-  <div class="col-md-4 col-sm-6">
-    <p class="alert alert-warning">No ha agregado ningún pedido</p>
-  </div>
+    <div class="col-md-4 col-sm-6">
+      <p class="alert alert-warning">No ha agregado ningún pedido</p>
+    </div>
   <%else%>
-  <% @orders.each do |order| %>
-  <div class="col-md-4 col-sm-6">
-    <% if order.state == 'Completado' %> 
-    <div class="card text-center text-dark pt-4 col-12">
-      <div class="card-body">
-        <% elsif order.state == 'En proceso' %>
-        <div class="card text-center text-dark pt-4 col-12">
-          <div class="card-body">
-            <% else %>
-            <div class="card text-center text-dark pt-4 col-12">
-              <div class="card-body">     
-                <%end%>
-                <h3 class="card-title">
-                  <%= order.client.firstname %> <%= order.client.lastname %><br><%= order.client.doc_ruc %>
-                </h3>
-              </div>
-              <hr>
-              <div class="card-text pt-2">
-                <b>Fecha del pedido</b>
-                <br><%= order.created_at %></label>
-              </div>
-              <hr>
-              <div class="card-text pt-2">
-                <b>Entrega</b> <br><%= order.deliver_date %>
-              </div>
-              <hr>
-              <div class="card-text pt-2">
-                <b>Curso / Club</b><br><%= order.course_club %>
-              </div>
-              <hr>
-              <% if order.state == 'En espera' %>
-              <% if current_user.is_admin? or current_user.is_secretary? %>
-              <p class='alert bg-danger'><%= order.state %></p>
-              <% elsif current_user.is_team? %>
-              <p class="alert bg-danger"><%= link_to order.state, orders_state_path(order) %></p>
-              <%end%>
-
-              <% elsif order.state == 'En proceso' %>
-              <% if current_user.is_admin? or current_user.is_secretary? %>
-              <p class='alert bg-warning'><%= order.state %>
-                <% elsif current_user.is_team? %></p>
-                <p class="alert bg-warning"><%= link_to order.state, orders_state_path(order) %></p>
-                <%end%>
-
-                <% else order.state == 'Completado' %>
-                <% if current_user.is_admin? or current_user.is_secretary? %>
-                <p class='alert bg-success'><%= order.state %></p>
-                <% elsif current_user.is_team? %>
-                <p class="alert bg-success"><%= link_to order.state, orders_state_path(order) %></p>
-                <%end%>
-                <% end %>
-              </li>
-            </ul>
+    <% @orders.each do |order| %>
+    <div class="col-md-4 col-sm-6">
+      <% if order.state == 'Completado' %> 
+      <div class="card text-center text-dark pt-4 col-12">
+        <div class="card-body">
+          <% elsif order.state == 'En proceso' %>
+          <div class="card text-center text-dark pt-4 col-12">
             <div class="card-body">
-              <%= link_to '', order, class: 'fas fa-eye mt-2' %>
+              <% else %>
+              <div class="card text-center text-dark pt-4 col-12">
+                <div class="card-body">     
+                  <%end%>
+                  <h3 class="card-title">
+                    <%= order.client.firstname %> <%= order.client.lastname %><br><%= order.client.doc_ruc %>
+                  </h3>
+                </div>
+                <hr>
+                <div class="card-text pt-2">
+                  <b>Fecha del pedido</b>
+                  <br><%= order.created_at %></label>
+                </div>
+                <hr>
+                <div class="card-text pt-2">
+                  <b>Entrega</b> <br><%= order.deliver_date %>
+                </div>
+                <hr>
+                <div class="card-text pt-2">
+                  <b>Curso / Club</b><br><%= order.course_club %>
+                </div>
+                <hr>
+                <% if order.state == 'En espera' %>
+                  <% if current_user.is_admin? or current_user.is_secretary? %>
+                    <p class='alert bg-danger text-white'><%= order.state %></p>
+                  <% elsif current_user.is_team? %>
+                    <p class="alert bg-danger text-white"><%= link_to order.state, orders_state_path(order) %></p>
+                  <%end%>
+
+                <% elsif order.state == 'En proceso' %>
+                  <% if current_user.is_admin? or current_user.is_secretary? %>
+                    <p class='alert bg-warning text-white'><%= order.state %>
+                  <% elsif current_user.is_team? %></p>
+                    <p class="alert bg-warning text-white"><%= link_to order.state, orders_state_path(order) %></p>
+                  <%end%>
+
+                  <% else order.state == 'Completado' %>
+                    <% if current_user.is_admin? or current_user.is_secretary? %>
+                      <p class='alert bg-success'><%= order.state %></p>
+                  <% elsif current_user.is_team? %>
+                      <p class="alert bg-success"><%= link_to order.state, orders_state_path(order) %></p>
+                    <%end%>
+                  <% end %>
+                </li>
+              </ul>
+              <div class="card-body">
+                <%= link_to '', order, class: 'fas fa-eye mt-2' %>
+              </div>
             </div>
           </div>
+          <%end%>
+          <%end%>
         </div>
-        <%end%>
-        <%end%>
       </div>
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+      <%= will_paginate @clients, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+      </ul>
+    </nav>
+  </div>
+</div>
