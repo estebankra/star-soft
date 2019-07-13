@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.search(params[:term])
     @has_supplies = HasSupply.all
   end
 
@@ -76,6 +76,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :price, :image, :description, :supplies)
+      params.require(:product).permit(:name, :price, :image, :description, :supplies, :term)
     end
 end
