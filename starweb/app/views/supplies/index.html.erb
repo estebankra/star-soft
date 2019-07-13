@@ -46,4 +46,11 @@
       </div>
     <%end%>
   <%end%>
+  </div>
+  <!-- Pagination -->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+    <%= will_paginate @clients, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+    </ul>
+  </nav>
 </div>
