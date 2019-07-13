@@ -8,11 +8,24 @@
 </div>
 <hr>
 
-<% if current_user.is_secretary? %>
-  <%= link_to 'Nuevo', new_sponsor_path, class: 'btn btn-primary' %>
-<% end %>
+<div id="page-inner">
 
-<!-- Content -->
+  <div class="row mb-2">
+    <!-- New sponsor -->
+    <div class="col">
+      <%= link_to 'Nuevo', new_sponsor_path, class: 'btn btn-primary' %>
+    </div>
+    <!-- Search -->
+    <div class="mr-3">
+      <%= form_tag(sponsors_path, method: :get, class: 'form-inline') do %>
+        <%= text_field_tag :term, params[:term], class: 'form-control mr-sm-2', autofocus: true %>
+        <%= submit_tag 'Search', search: nil, class: 'btn btn-outline-success my-2 my-sm-0' %>
+      <% end %>
+    </div>
+  </div>
+
+
+  <!-- Content -->
   <div class="row">
       <% if @sponsors.empty? %>
         <div class="col-md-4 col-sm-5">

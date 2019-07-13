@@ -5,7 +5,7 @@ class SuppliesController < ApplicationController
   # GET /supplies
   # GET /supplies.json
   def index
-    @supplies = Supply.all
+    @supplies = Supply.search(params[:term])
   end
 
   # GET /supplies/1
@@ -70,6 +70,6 @@ class SuppliesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def supply_params
-      params.require(:supply).permit(:name, :image, :stock, :description)
+      params.require(:supply).permit(:name, :image, :stock, :description, :term)
     end
 end
