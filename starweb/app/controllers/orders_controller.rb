@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to @order, notice: 'Order successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -64,13 +64,13 @@ class OrdersController < ApplicationController
 
   def state
     @order = Order.find(params[:id])
-    if @order.state == 'En espera'
-      @order.state = 'En proceso'
+    @order.state = if @order.state == 'En espera'
+      'En proceso'
     elsif @order.state == 'En proceso'
-      @order.state = 'Completado'
-    else 
-      @order.state = 'En espera'
-    end
+      'Completado'
+    else
+      'En espera'
+     end
 
     if @order.save
       redirect_to orders_path
@@ -89,13 +89,14 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def order_params
-      params.require(:order).permit(:deliver_date, :client_id, :course_club, :logo, :state, :notes, :sponsors)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def order_params
+    params.require(:order).permit(:deliver_date, :client_id, :course_club, :logo, :state, :notes, :sponsors)
+  end
 end

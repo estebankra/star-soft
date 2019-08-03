@@ -33,7 +33,7 @@
   <%else%>
     <% @orders.each do |order| %>
     <div class="col-md-4 col-sm-6">
-      <% if order.state == 'Completado' %> 
+      <% if order.state == 'Completado' %>
       <div class="card text-center text-dark pt-4 col-12">
         <div class="card-body">
           <% elsif order.state == 'En proceso' %>
@@ -41,7 +41,7 @@
             <div class="card-body">
               <% else %>
               <div class="card text-center text-dark pt-4 col-12">
-                <div class="card-body">     
+                <div class="card-body">
                   <%end%>
                   <h3 class="card-title">
                     <%= order.client.firstname %> <%= order.client.lastname %><br><%= order.client.doc_ruc %>

@@ -12,7 +12,7 @@
 <% end %>
 
 <div class="field">
-  <%= form.hidden_field :order_id, value: @order.id %>
+  <%= form.hidden_field :order_id, value: order.id %>
 </div>
 
 <div class="input-group mb-3">
@@ -43,5 +43,5 @@
 </div><br>
 <div class="modal-footer">
   <%= form.submit 'Guardar', class: 'btn btn-primary' %>
-</div>  
+</div>
 <% end %>

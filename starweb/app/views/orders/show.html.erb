@@ -52,7 +52,7 @@
                 <hr>
                 <p class="card-text">
                   <b>Nombre y Apellido</b><br><%= @order.client.firstname %>
-                  <%= @order.client.lastname %> 
+                  <%= @order.client.lastname %>
                 </p>
                 <p class="card-text">
                   <b>Documento - RUC</b><br>
@@ -71,7 +71,7 @@
         <div class="row">
           <div class="col-md-12">
             <hr>
-            <h4>Detalles</h4>     
+            <h4>Detalles</h4>
             <% if @order.order_details.empty? %>
             <p>No ha agregado ningún detalle</p>
             <% else %>
@@ -85,7 +85,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% @order.order_details.each do |order_detail| %>   
+                  <% @order.order_details.each do |order_detail| %>
                   <tr>
                     <td><%= order_detail.name %></td>
                     <td><%= order_detail.number %></td>
@@ -146,7 +146,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <%= render 'form_has_product', has_product: @hasProduct %>
+              <%= render 'form_has_product', has_product: @hasProduct, order: @order %>
             </div>
           </div>
         </div>
@@ -163,7 +163,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <%= render 'form_order_detail', order_detail: @order_detail %>
+              <%= render 'form_order_detail', order_detail: @order_detail, order: @order %>
             </div>
           </div>
         </div>

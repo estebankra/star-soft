@@ -10,8 +10,7 @@ class QuotationsController < ApplicationController
 
   # GET /quotations/1
   # GET /quotations/1.json
-  def show
-  end
+  def show; end
 
   # GET /quotations/new
   def new
@@ -19,8 +18,7 @@ class QuotationsController < ApplicationController
   end
 
   # GET /quotations/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /quotations
   # POST /quotations.json
@@ -63,13 +61,14 @@ class QuotationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_quotation
-      @quotation = Quotation.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def quotation_params
-      params.require(:quotation).permit(:currency_id, :purchase, :sale)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_quotation
+    @quotation = Quotation.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def quotation_params
+    params.require(:quotation).permit(:currency_id, :purchase, :sale)
+  end
 end

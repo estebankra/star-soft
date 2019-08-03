@@ -8,13 +8,12 @@ Rails.application.routes.draw do
   resources :order_details
   resources :info_details
   resources :orders
-  
   get 'users/index'
   get 'users/edit/:id', to: 'users#edit', as: 'users_edit'
   patch 'users/edit/:id', to: 'users#update', as: 'users_update'
   get 'users/destroy/:id', to: 'users#destroy', as: 'users_destroy'
 
-  resources :currencies
+  resources :currencies, except: [:show]
   resources :quotations
   resources :clients
   resources :products

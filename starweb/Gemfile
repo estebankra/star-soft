@@ -53,7 +53,8 @@ gem 'rails-i18n', '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
 gem 'kaminari'
 # Theme for pagination
 gem 'bootstrap4-kaminari-views'
-
+# Rails best practices
+gem 'rails_best_practices'
 # Bullet N+1
 gem 'bullet', group: 'development'
 

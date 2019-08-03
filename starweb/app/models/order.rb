@@ -27,11 +27,11 @@ class Order < ApplicationRecord
     else
       @sponsors.each do |sponsor_id|
         HasSponsor.create(order_id: self.id, sponsor_id: sponsor_id )
-      end  
+      end
     end
   end
 
-  def clear_sponsors 
+  def clear_sponsors
     HasSponsor.all.each do | hasSponsor |
       if hasSponsor.order_id == self.id
         HasSponsor.destroy(hasSponsor.id)

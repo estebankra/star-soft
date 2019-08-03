@@ -31,13 +31,4 @@ class Product < ApplicationRecord
       end
     end
   end
-  
-  # For search
-  def self.search(term)
-		if term
-		  where("name ILIKE ?", "%#{term}%").order('id DESC')
-		else
-		  order('id DESC')
-		end
-	end
 end

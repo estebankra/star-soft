@@ -11,9 +11,7 @@ class UsersController < ApplicationController
   def update
     user= User.find(params[:id])
     user.permission_level = params[:user][:permission_level]
-    
     user.save
-    
     redirect_to users_index_path
   end
 
