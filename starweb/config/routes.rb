@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :sponsors
   resources :colors
   devise_for :users
+  resources :users, only: [:index]
+
 
   get 'reports/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

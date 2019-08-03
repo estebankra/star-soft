@@ -5,7 +5,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.search(params[:term]).page params[:page]
+    @q = Product.ransack(params[:q])
+    @products = @q.result.page params[:page]
     @has_supplies = HasSupply.all
   end
 

@@ -5,7 +5,8 @@ class SponsorsController < ApplicationController
   # GET /sponsors
   # GET /sponsors.json
   def index
-    @sponsors = Sponsor.search(params[:term]).page params[:page]
+    @q = Sponsor.ransack(params[:q])
+    @sponsors = @q.result.page params[:page]
   end
 
   # GET /sponsors/1
