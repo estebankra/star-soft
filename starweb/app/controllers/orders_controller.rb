@@ -7,6 +7,9 @@ class OrdersController < ApplicationController
   def index
     # Paginate 15 orders per page
     @orders = Order.includes(:client).page params[:page]
+    if params[:state].present?
+      @orders = @orders.where("state = ?", params[:state])
+    end
   end
 
   # GET /orders/1
