@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    # Paginate 15 orders per page
+    # Paginate
     @orders = Order.includes(:client).page params[:page]
     if params[:state].present?
       @orders = @orders.where("state = ?", params[:state])

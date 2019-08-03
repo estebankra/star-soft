@@ -8,9 +8,22 @@
 </div>
 <hr>
 
-<% if current_user.is_secretary? %>
-  <%= link_to 'Nuevo', new_order_path, class: 'btn btn-primary'%>
-<% end %>
+<div class="row mb-2">
+  <!-- New client -->
+  <div class="col">
+    <% if current_user.is_secretary? %>
+      <%= link_to 'Nuevo', new_order_path, class: 'btn btn-primary'%>
+    <% end %>
+  </div>
+  <!-- Filter by states-->
+  <div class="mr-3">
+    <%= form_tag(orders_path, method: :get, class: 'form-inline') do %>
+    <%= select_tag :state, options_from_collection_for_select(Order.all, "state", "state", params[:state]), prompt: "Todos", class: "form-control" %>
+      <%= submit_tag 'Filtrar', search: nil, class: 'btn btn-outline-success my-2 my-sm-0' %>
+    <% end %>
+  </div>
+</div>
+
 <!-- Content -->
 <div class="row">
   <% if @orders.empty? %>
