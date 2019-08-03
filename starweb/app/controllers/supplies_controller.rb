@@ -5,7 +5,7 @@ class SuppliesController < ApplicationController
   # GET /supplies
   # GET /supplies.json
   def index
-    @supplies = Supply.paginate(page: params[:page], per_page: 15).search(params[:term])
+    @supplies = Supply.search(params[:term]).page params[:page]
   end
 
   # GET /supplies/1
