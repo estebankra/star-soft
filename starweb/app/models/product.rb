@@ -3,7 +3,6 @@ class Product < ApplicationRecord
 	# belongs_to :color
   has_many :has_supplies
   has_many :supplies, through: :has_supplies
-
   has_many :orders, through: :has_products
 
 

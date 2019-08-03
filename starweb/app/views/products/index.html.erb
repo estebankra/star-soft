@@ -81,10 +81,6 @@
       <%end%>
     <%end%>
   </div>
-    <!-- Pagination -->
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-    <%= will_paginate @products, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
-    </ul>
-  </nav>
+  <!-- Pagination -->
+  <%= render 'partials/pagination', paginate: @products%>
 </div>
