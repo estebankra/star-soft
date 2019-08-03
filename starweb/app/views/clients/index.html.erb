@@ -16,10 +16,11 @@
       <%= link_to 'Nuevo', new_client_path, class: 'btn btn-primary' %>
     </div>
     <!-- Search -->
-    <div class="mr-3">
-      <%= form_tag(clients_path, method: :get, class: 'form-inline') do %>
-        <%= text_field_tag :term, params[:term], class: 'form-control mr-sm-2', autofocus: true %>
-        <%= submit_tag 'Search', search: nil, class: 'btn btn-outline-success my-2 my-sm-0' %>
+    <div class="mr-3 form-inline">
+      <%= search_form_for @q do |f| %>
+        <%= f.search_field :firstname_or_lastname_or_doc_ruc_or_telephone_or_mail_or_city_or_country_cont, class: 'form-control mr-sm-2', autofocus: true %>
+
+        <%= f.submit class: 'btn btn-outline-success my-2 my-sm-0' %>
       <% end %>
     </div>
   </div>
@@ -68,6 +69,5 @@
 
   <!-- Pagination -->
   <%= render 'partials/pagination', paginate: @clients%>
-  
   </div>
 </div>

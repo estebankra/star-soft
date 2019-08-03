@@ -66,7 +66,6 @@ Rails.application.configure do
     Bullet.bullet_logger = true
     Bullet.console = true
     Bullet.growl = false
-    Bullet.rails_logger = true
   end
 
   # mailer config
@@ -77,13 +76,13 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default :charset => "utf-8"
   ActionMailer::Base.smtp_settings =
-   { 
-     :address => "smtp.gmail.com",
-     :port => 587,
-     :authentication => :plain,
-     :domain => 'mail.google.com',
-     :user_name => 'mail',
-     :password => 'pass',
-     :enable_starttls_auto => true
-   }
+    {
+      :address => "smtp.gmail.com",
+      :port => 587,
+      :authentication => :plain,
+      :domain => 'mail.google.com',
+      :user_name => 'mail',
+      :password => 'pass',
+      :enable_starttls_auto => true
+    }
 end

@@ -28,34 +28,32 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
+# For registration by email
 gem 'devise_invitable'
-
+# jquery
 gem 'jquery-rails'
-
-#IMG
+# IMG
 gem 'paperclip'
-
-#Boostrap
+# Boostrap
 # Use SCSS for stylesheets
 gem "bootstrap-sass", ">= 3.4.1"
 gem 'autoprefixer-rails'
-
-#Users
+# Authentication
 gem 'devise'
-
-#Avoid polling
+# Avoid polling
 gem 'wdm', '~> 0.1.0' if Gem.win_platform?
-
-#Messages spanish
+# Messages spanish
 gem 'rails-i18n', '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
-
 # For pagination
 gem 'kaminari'
 # Theme for pagination
 gem 'bootstrap4-kaminari-views'
-
+# Rails best practices
+gem 'rails_best_practices'
 # Bullet N+1
 gem 'bullet', group: 'development'
+# For search
+gem 'ransack', github: 'activerecord-hackery/ransack'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

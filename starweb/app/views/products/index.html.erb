@@ -14,12 +14,7 @@
     <%= link_to 'Nuevo', new_product_path, class: 'btn btn-primary' %>
   </div>
   <!-- Search -->
-  <div class="mr-3">
-    <%= form_tag(products_path, method: :get, class: 'form-inline') do %>
-      <%= text_field_tag :term, params[:term], class: 'form-control mr-sm-2', autofocus: true %>
-      <%= submit_tag 'Search', search: nil, class: 'btn btn-outline-success my-2 my-sm-0' %>
-    <% end %>
-  </div>
+  <%= render 'partials/search_by_name', q: @q %>
 </div>
 <!-- Content -->
 <div class="row">
@@ -70,10 +65,8 @@
                     </div>
                   </div>
                 </div>
-
               <%end%>
             </div>
-         
           <p><%= link_to '', edit_product_path(product) , class: 'fas fa-edit' %> | <%= link_to '', product, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></p>
             </div>
           </div>

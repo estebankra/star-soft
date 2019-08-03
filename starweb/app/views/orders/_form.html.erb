@@ -28,8 +28,6 @@
     <%= form.text_field :course_club, class: 'form-control' %>
   </div><br>
 
-
-
   <div class="field">
     <b><%= form.label 'Logo' %></b>
     <div class="input-group mb-3">
@@ -50,13 +48,11 @@
 
   <div class="field">
     <h3><%= form.label 'Auspiciantes'%></h3>
-    <% @sponsors.each do |sponsor| %>
-      <%= check_box_tag "sponsors[]", sponsor.id, @order.sponsors.include?(sponsor) %> <%= sponsor.name %><br>
+    <% sponsors.each do |sponsor| %>
+      <%= check_box_tag "sponsors[]", sponsor.id, order.sponsors.include?(sponsor) %> <%= sponsor.name %><br>
     <%end%>
   </div>
-  
   <br>
-
   <div class="actions">
     <%= form.submit 'Guardar', class: 'btn btn-primary' %>
   </div>

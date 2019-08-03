@@ -1,4 +1,4 @@
-<div class="header"> 
+<div class="header">
   <h1 class="page-header">
     Colores
   </h1>
@@ -6,24 +6,20 @@
     <li><a href="#">Inicio</a></li>
     <li><a href="#">Moneda</a></li>
     <li class="active">Editar</li>
-  </ol> 
+  </ol>
 </div>
 
-<div id="page-inner"> 
+<div id="page-inner">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-content"> 
+        <div class="card-content">
           <p>
             <h3>Editar Moneda</h3><br>
-
 			       <%= render 'form', currency: @currency %><br>
-
 			       <%= link_to 'Volver', currencies_path %>
           </p>
-
           <div class="clearBoth"><br/></div>
-
         </div>
       </div>
     </div>

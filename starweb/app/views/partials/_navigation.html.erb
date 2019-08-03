@@ -5,7 +5,7 @@
   <div class="list-group list-group-flush mt-4">
     <% if current_user.is_admin? %>
       <%= link_to(raw("<i class='fas fa-chart-line fa-lg'></i><br>Reportes"), '/reports/index', class: "list-group-item list-group-item-action") %>
-      <%= link_to(raw("<i class='fa fa-user fa-lg'></i><br>Usuarios"), '/users/index', class: "list-group-item list-group-item-action") %>  
+      <%= link_to(raw("<i class='fa fa-user fa-lg'></i><br>Usuarios"), '/users/index', class: "list-group-item list-group-item-action") %>
     <%end%>
     <%= link_to(raw("<i class='fas fa-tasks fa-lg '></i><br>Pedidos"), orders_path, class: "list-group-item list-group-item-action") %>
     <% if current_user.is_secretary? %>
@@ -28,9 +28,8 @@
               <i class="fas fa-user mr-2"></i><%= current_user.email %>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Something else here</a>
               <div class="dropdown-divider"></div>
-              <%= link_to(raw("<i class='fa fa-sign-out fa-fw'></i> Cerrar sesión"), destroy_user_session_path, method: :delete, class: "dropdown-item")%>
+              <%= link_to('Cerrar sesión', destroy_user_session_path, method: :delete, class: "dropdown-item")%>
             </div>
           </li>
       </div>

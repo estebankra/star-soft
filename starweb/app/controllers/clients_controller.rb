@@ -5,7 +5,8 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.search(params[:term]).page params[:page]
+    @q = Client.ransack(params[:q])
+    @clients = @q.result.page params[:page]
   end
 
   # GET /clients/1

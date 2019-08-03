@@ -5,13 +5,13 @@ class SuppliesController < ApplicationController
   # GET /supplies
   # GET /supplies.json
   def index
-    @supplies = Supply.search(params[:term]).page params[:page]
+    @q = Supply.ransack(params[:q])
+    @supplies = @q.result.page params[:page]
   end
 
   # GET /supplies/1
   # GET /supplies/1.json
-  def show
-  end
+  def show; end
 
   # GET /supplies/new
   def new
@@ -19,8 +19,7 @@ class SuppliesController < ApplicationController
   end
 
   # GET /supplies/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /supplies
   # POST /supplies.json
