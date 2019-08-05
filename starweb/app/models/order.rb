@@ -1,5 +1,8 @@
 class Order < ApplicationRecord
   belongs_to :client
+
+  delegate :firstname, :lastname, :doc_ruc, to: :client, prefix: true
+
   has_many :has_sponsors
   has_many :sponsors, through: :has_sponsors
   has_many :has_products

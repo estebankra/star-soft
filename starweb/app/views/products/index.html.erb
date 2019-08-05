@@ -40,7 +40,7 @@
               <% @has_supplies.each do |has_supply| %>
                 <% if has_supply.product.id == product.id %>
                   <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
-                    <%= has_supply.supply.name %>
+                    <%= has_supply.supply_name %>
                   </button>
                 <%end%>
                 <!-- Modal -->
@@ -54,12 +54,12 @@
                         </button>
                       </div>
                       <div class="modal-body">
-                        <%= image_tag has_supply.supply.image.url(:thumb), class: 'media-object' %>
+                        <%= image_tag has_supply.supply_image.url(:thumb), class: 'media-object' %>
                         <div class="card-body">
-                          <h5 class="card-title"><%= has_supply.supply.name %></h5>
+                          <h5 class="card-title"><%= has_supply.supply_name %></h5>
                           <hr>
                           <p class="card-text">
-                          <p><%= has_supply.supply.description %></p>
+                          <p><%= has_supply.supply_description %></p>
                         </div>
                       </div>
                     </div>
