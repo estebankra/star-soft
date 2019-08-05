@@ -56,6 +56,9 @@ gem 'bullet', group: 'development'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 # For invoices
 gem 'invoicing'
+# For pdf generator
+gem 'prawn'
+gem 'prawn-table'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
