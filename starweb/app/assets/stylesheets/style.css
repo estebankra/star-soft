@@ -87,4 +87,12 @@ footer {
   color: #ffffff;
   height: 50px; }
 
+.select2-container--default .select2-selection--single{
+  height: 100% !important;
+}
+
+#select2-e1-container {
+  line-height: 40px !important;
+}
+
 /*# sourceMappingURL=style.css.map */

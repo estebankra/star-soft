@@ -54,11 +54,16 @@ gem 'rails_best_practices'
 gem 'bullet', group: 'development'
 # For search
 gem 'ransack', github: 'activerecord-hackery/ransack'
+<<<<<<< HEAD
 # For invoices
 gem 'invoicing'
 # For pdf generator
 gem 'prawn'
 gem 'prawn-table'
+=======
+# For search in orders
+gem "select2-rails"
+>>>>>>> development
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
