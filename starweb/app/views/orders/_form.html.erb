@@ -1,4 +1,7 @@
 <%= form_with(model: order, local: true) do |form| %>
+  <script>
+      $(document).ready(function() { $("#e1").select2(); });
+  </script>
   <% if order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -14,8 +17,8 @@
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <label class="input-group-text" for="inputGroupSelect01">Cliente</label>
+      <%= form.select :client_id, Client.all.collect {|p| [ "#{p.firstname} #{p.lastname} #{p.doc_ruc}", p.id ] }, {prompt: 'Selecciona el Cliente'}, class: 'form-control', id: 'e1' %>
     </div>
-    <%= form.collection_select :client_id, Client.all, :id, :firstname , class: 'custom-select' %>
   </div>
 
   <div class="field">
