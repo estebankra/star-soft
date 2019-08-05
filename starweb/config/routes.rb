@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  resources :invoices
-  get 'invoice/index'
-  get 'invoice/new/:id', to: 'invoices#new', as: 'invoices_new'
-
   resources :has_products
   get 'orders/state/:id', to: 'orders#state', as: 'orders_state'
   resources :order_details
@@ -22,6 +18,7 @@ Rails.application.routes.draw do
   resources :colors
   devise_for :users
   resources :users, only: [:index]
+  resources :invoices, only: [:index]
 
 
   get 'reports/index'
