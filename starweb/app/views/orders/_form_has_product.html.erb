@@ -1,4 +1,7 @@
 <%= form_with(model: has_product, local: true) do |form| %>
+  <script>
+      $(document).ready(function() { $("#e1").select2(); });
+  </script>
 <% if has_product.errors.any? %>
 <div id="error_explanation">
   <h2><%= pluralize(has_product.errors.count, "error") %> prohibited this has_product from being saved:</h2>
@@ -18,9 +21,10 @@
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Producto</label>
+    <%= form.select :product_id, Product.all.collect {|p| [ "#{p.name} #{p.price}", p.id ] }, {prompt: 'Selecciona el producto'}, class: 'form-control', id: 'e1' %>
   </div>
-  <%= form.collection_select :product_id, Product.all, :id, :name, class: 'custom-select' %>
 </div>
+
 
 <div class="field">
   <%= form.label 'Especificaciones frontal' %>
