@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_18_195714) do
+ActiveRecord::Schema.define(version: 2019_08_05_121207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,16 +79,51 @@ ActiveRecord::Schema.define(version: 2019_06_18_195714) do
     t.index ["supply_id"], name: "index_has_supplies_on_supply_id"
   end
 
-  create_table "invoices", force: :cascade do |t|
-    t.date "date"
-    t.boolean "counted_credit"
-    t.bigint "order_id"
-    t.decimal "iva5"
-    t.decimal "iva10"
-    t.decimal "total"
+  create_table "invoicing_ledger_items", force: :cascade do |t|
+    t.bigint "sender_id"
+    t.bigint "recipient_id"
+    t.string "type"
+    t.datetime "issue_date"
+    t.string "currency", limit: 3, null: false
+    t.decimal "total_amount", precision: 20, scale: 4
+    t.decimal "tax_amount", precision: 20, scale: 4
+    t.string "status", limit: 20
+    t.string "identifier", limit: 50
+    t.string "description"
+    t.datetime "period_start"
+    t.datetime "period_end"
+    t.string "uuid", limit: 40
+    t.datetime "due_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_invoices_on_order_id"
+    t.index ["recipient_id"], name: "index_invoicing_ledger_items_on_recipient_id"
+    t.index ["sender_id"], name: "index_invoicing_ledger_items_on_sender_id"
+  end
+
+  create_table "invoicing_line_items", force: :cascade do |t|
+    t.bigint "ledger_item_id"
+    t.string "type"
+    t.decimal "net_amount", precision: 20, scale: 4
+    t.decimal "tax_amount", precision: 20, scale: 4
+    t.string "description"
+    t.string "uuid", limit: 40
+    t.datetime "tax_point"
+    t.decimal "quantity", precision: 20, scale: 4
+    t.integer "creator_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ledger_item_id"], name: "index_invoicing_line_items_on_ledger_item_id"
+  end
+
+  create_table "invoicing_tax_rates", force: :cascade do |t|
+    t.string "description"
+    t.decimal "rate", precision: 20, scale: 4
+    t.datetime "valid_from", null: false
+    t.datetime "valid_until"
+    t.integer "replaced_by_id"
+    t.boolean "is_default"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "order_details", force: :cascade do |t|
@@ -208,7 +243,6 @@ ActiveRecord::Schema.define(version: 2019_06_18_195714) do
   add_foreign_key "has_sponsors", "sponsors"
   add_foreign_key "has_supplies", "products"
   add_foreign_key "has_supplies", "supplies"
-  add_foreign_key "invoices", "orders"
   add_foreign_key "orders", "clients"
   add_foreign_key "quotations", "currencies"
 end
