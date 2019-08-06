@@ -1,4 +1,4 @@
-<%= form_with(model: product, local: true) do |form| %>
+<%= simple_form_for product, defaults: { label_html: { class: 'font-weight-bold' } } do |form| %>
   <% if product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -11,38 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <b><%= form.label 'Nombre' %></b>
-    <%= form.text_field :name, class: 'form-control' %>
-  </div><br>
+  <%= form.input :name, label: 'Nombre' %>
+  <%= form.input :price, label: 'Precio' %>
 
-  <div class="field">
-    <b><%= form.label 'Precio' %></b>
-    <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text">Gs.</span>
-    </div>
-    <%= form.text_field :price, class: 'form-control' %>
-    </div>
-  </div>
+  <%= form.label 'Imagen', class: 'font-weight-bold' %>
+  <div class="custom-file">
+    <%= form.file_field :image, class: 'custom-file-input' %>
+    <label class="custom-file-label" for="inputGroupFile01">Seleccionar imagen</label>
+  </div> <p></p>
 
-  <div class="field">
-    <b><%= form.label 'Imagen' %></b>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-      </div>
-      <div class="custom-file">
-        <%= form.file_field :image, class: 'custom-file-input' %>
-        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-      </div>
-    </div>
-  </div>
-
-  <div class="field">
-    <b><%= form.label 'Descripción' %></b>
-    <%= form.text_area :description, class: 'form-control' %>
-  </div><br>
+  <%= form.input :description, label: 'Descripción', as: :text %>
 
   <div class="field">
     <h3><%= form.label 'Insumos necesarios'%></h3>
