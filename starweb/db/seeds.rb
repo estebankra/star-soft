@@ -49,7 +49,7 @@ Supply.all.each { |suply| suply.image = File.open(Dir['app/assets/images/*.jpg']
 # Create 30 products
 30.times do
   Product.transaction do
-    product = Product.create! :name =>  Faker::Commerce.product_name, :price => Faker::Commerce.price(range: 5.000..350.000),
+    product = Product.create! :name =>  Faker::Commerce.product_name, :price => Faker::Commerce.price(range: 5000..350000),
                               :description => Faker::Lorem.paragraph
   end
 end

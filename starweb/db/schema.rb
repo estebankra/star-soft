@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 2019_08_05_121207) do
     t.string "description"
     t.string "uuid", limit: 40
     t.datetime "tax_point"
-    t.decimal "quantity", precision: 20, scale: 4
+    t.integer "quantity"
     t.integer "creator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(version: 2019_08_05_121207) do
     t.string "course_club"
     t.string "logo"
     t.string "state", default: "En espera"
+    t.integer "paid", default: 0
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

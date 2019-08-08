@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   patch 'users/edit/:id', to: 'users#update', as: 'users_update'
   get 'users/destroy/:id', to: 'users#destroy', as: 'users_destroy'
   get 'orders/invoice/:id', to: 'orders#invoice'
+  get 'orders/half/:id', to: 'orders#half'
   get 'orders/pay/:id', to: 'orders#pay'
   resources :currencies, except: [:show]
   resources :quotations

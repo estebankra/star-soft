@@ -10,13 +10,17 @@
 <hr>
 <div id="page-inner">
   <% if current_user.is_secretary? %>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalProduct"> Agregar producto </button>
+    <% if @order.paid == 0 %>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalProduct"> Agregar producto </button>
+    <% end %>
 
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalOrderDetail">Agregar detalles</button>
-
-    <a type="button" class="btn btn-primary" href="/orders/invoice/<%=@order.id%>">Facturar</a>
-
-    <%= link_to 'Editar', edit_order_path(@order), class: 'btn btn-light' %>
+    <% if @order.paid == 2 %>
+      <button class="btn btn-success" disabled>Pagado</button>
+    <% elsif !@order.products.empty? %>
+      <a type="button" class="btn btn-primary" href="/orders/invoice/<%=@order.id%>">Facturar</a>
+    <% end %>
+    <%= link_to 'Editar', edit_order_path(@order), class: 'btn btn-link' %>
   <%end%>
   <div class="row mt-4">
     <div class="col-md-6">

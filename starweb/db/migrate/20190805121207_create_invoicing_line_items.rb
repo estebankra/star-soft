@@ -11,7 +11,7 @@ class CreateInvoicingLineItems < ActiveRecord::Migration[5.2]
       t.string   :description
       t.string   :uuid, limit: 40
       t.datetime :tax_point
-      t.decimal  :quantity, precision: 20, scale: 4
+      t.integer  :quantity
       t.integer  :creator_id
 
       t.timestamps

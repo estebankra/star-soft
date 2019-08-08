@@ -21,18 +21,14 @@
           <th>Client</th>
           <th>Fecha</th>
           <th>Moneda</th>
-          <th>Total IVA</th>
-          <th>Total</th>
         </tr>
         </thead>
         <tbody>
     <% @invoices.each do |invoice| %>
         <tr>
           <td><%= invoice.recipient.firstname %></td>
-          <td><%= invoice.issue_date %></td>
+          <td><%= invoice.created_at %></td>
           <td><%= invoice.currency %></td>
-          <td><%= invoice.tax_amount %></td>
-          <td><%= invoice.total_amount %></td>
           <td><a class="fas fa-eye mt-2" href="/invoices/<%=invoice.id%>"></a></td>
         </tr>
       <% end %>

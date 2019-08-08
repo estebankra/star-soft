@@ -95,4 +95,26 @@ footer {
   line-height: 40px !important;
 }
 
+@media print {
+  body {
+    font-family: Consolas;
+  }
+
+  #sidebar-wrapper {
+    display:none !important;
+  }
+
+  .mt-3 {
+    display: none;
+  }
+
+  hr {
+    display: none;
+  }
+
+  #buttons {
+    display: none;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -51,7 +51,7 @@ gem 'bootstrap4-kaminari-views'
 # Rails best practices
 gem 'rails_best_practices'
 # Bullet N+1
-gem 'bullet', group: 'development'
+# gem 'bullet', group: 'development'
 # For search
 gem 'ransack', github: 'activerecord-hackery/ransack'
 # For generate random data

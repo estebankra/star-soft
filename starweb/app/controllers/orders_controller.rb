@@ -93,20 +93,38 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  # For print an invoice
+  def print
+
+  end
+
+  # When a client pay 50% of an order
+  def half
+    @order = Order.find(params[:id])
+    @order.paid = 1
+    @order.save
+
+    redirect_to @order
+  end
+
   def pay
     @order = Order.find(params[:id])
-
-    invoice = EndUserInvoice.new(sender: current_user, recipient: @order.client, currency: 'USD')
+    invoice = EndUserInvoice.new(sender: current_user, recipient: @order.client, currency: 'GS', total_amount: 0)
 
     @order.has_products.each do |hasProduct|
       invoice.line_items.build(description: hasProduct.product.name,
-                               net_amount: hasProduct.product.price, tax_amount: 1.3, quantity: hasProduct.quantity)
+                               net_amount: hasProduct.product.price, quantity: hasProduct.quantity)
     end
 
     invoice.save
 
-    pdf_creator = Invoicing::LedgerItem::PdfGenerator.new(invoice)
-    pdf_file = pdf_creator.render Rails.root.join('pdf')
+    @order.paid = 2
+
+    @order.save
+
+    redirect_to @order
+    #pdf_creator = Invoicing::LedgerItem::PdfGenerator.new(invoice)
+    #pdf_file = pdf_creator.render Rails.root.join('pdf')
   end
 
   private
