@@ -1,0 +1,60 @@
+<h1>Factura</h1>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Pedidos</a></li>
+    <li class="breadcrumb-item"><a href="#">Index</a></li>
+    <li class="breadcrumb-item active"><a href="#">Detalles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Pagar</li>
+  </ol>
+</nav>
+</div>
+<hr>
+
+
+<div class="row">
+  <div class="col-6">
+    <p><b>Billed to:</b> <%= "#{@order.client.firstname} #{@order.client.lastname}" %></p>
+  </div>
+  <div class="col-6">
+    <p><b>Invoice date:</b> <%= Date.current %></p>
+    <p><b>Invoice No:</b> 1</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <h5>Invoice Summary</h5>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Cantidad</th>
+        <th scope="col" style="width: 60%">Descripcion</th>
+        <th scope="col">Precio unitario</th>
+        <th scope="col">Precio total</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% total = 0 %>
+      <% @order.has_products.each do |hasProduct| %>
+        <% total += hasProduct.quantity * hasProduct.product.price %>
+        <tr>
+          <th scope="row"><%= hasProduct.quantity %></th>
+          <th scope="row"><%= hasProduct.product.name %></th>
+          <th scope="row"><%= hasProduct.product.price %></th>
+          <th scope="row"><%= hasProduct.quantity * hasProduct.product.price %></th>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <hr>
+    <div class="row">
+      <div class="col-10">
+      </div>
+      <div class="col-2">
+        <p><b>SubTotal:</b> <%= total %></b>
+        <p><b>Tax:</b> <%= total %></b>
+        <p><b>50%:</b> <%= total / 2 %></b>
+        <p><b>Total:</b> <%= total %></b>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  require 'invoicing/ledger_item/pdf_generator'
 
   # GET /orders
   # GET /orders.json
@@ -86,6 +87,26 @@ class OrdersController < ApplicationController
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def invoice
+    @order = Order.find(params[:id])
+  end
+
+  def pay
+    @order = Order.find(params[:id])
+
+    invoice = EndUserInvoice.new(sender: current_user, recipient: @order.client, currency: 'USD')
+
+    @order.has_products.each do |hasProduct|
+      invoice.line_items.build(description: hasProduct.product.name,
+                               net_amount: hasProduct.product.price, tax_amount: 1.3, quantity: hasProduct.quantity)
+    end
+
+    invoice.save
+
+    pdf_creator = Invoicing::LedgerItem::PdfGenerator.new(invoice)
+    pdf_file = pdf_creator.render Rails.root.join('pdf')
   end
 
   private
