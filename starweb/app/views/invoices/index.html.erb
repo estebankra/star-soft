@@ -33,7 +33,7 @@
           <td><%= invoice.currency %></td>
           <td><%= invoice.tax_amount %></td>
           <td><%= invoice.total_amount %></td>
-
+          <td><a class="fas fa-eye mt-2" href="/invoices/<%=invoice.id%>"></a></td>
         </tr>
       <% end %>
       </tbody>

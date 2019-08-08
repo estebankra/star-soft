@@ -6,4 +6,8 @@ class InvoicesController < ApplicationController
   def index
     @invoices = InvoicingLedgerItem.all
   end
+
+  def show
+    @invoice = InvoicingLedgerItem.find(params[:id])
+  end
 end

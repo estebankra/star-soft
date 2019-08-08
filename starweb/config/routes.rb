@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :colors
   devise_for :users
   resources :users, only: [:index]
-  resources :invoices, only: [:index]
+  resources :invoices, only: [:index, :show]
 
 
   get 'reports/index'
