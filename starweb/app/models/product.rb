@@ -1,13 +1,13 @@
 class Product < ApplicationRecord
-  # belongs_to :supply
+  belongs_to :supply
   has_many :has_supplies
   has_many :supplies, through: :has_supplies
   has_many :orders, through: :has_products
 
   before_update :clear_supplies
   before_destroy :clear_supplies
-  # after_create :save_supplies
-  # after_update :save_supplies
+  after_create :save_supplies
+  after_update :save_supplies
 
   # Validation
   validates :name, :description, presence: true

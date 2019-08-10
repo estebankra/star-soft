@@ -116,6 +116,35 @@ p {
 
 footer {
   background-color: #465666;
-  color: $color-quaternary;
-  height: 50px;
+  color: #ffffff;
+  height: 50px; }
+
+.select2-container--default .select2-selection--single{
+  height: 100% !important;
+}
+
+#select2-e1-container {
+  line-height: 40px !important;
+}
+
+@media print {
+  body {
+    font-family: Consolas;
+  }
+
+  #sidebar-wrapper {
+    display:none !important;
+  }
+
+  .mt-3 {
+    display: none;
+  }
+
+  hr {
+    display: none;
+  }
+
+  #buttons {
+    display: none;
+  }
 }

@@ -35,8 +35,10 @@ gem 'jquery-rails'
 # IMG
 gem 'paperclip'
 # Boostrap
+gem 'bootstrap', '~> 4.3.1'
+# JQuery
+gem 'jquery-rails'
 # Use SCSS for stylesheets
-gem "bootstrap-sass", ">= 3.4.1"
 gem 'autoprefixer-rails'
 # Authentication
 gem 'devise'
@@ -68,6 +70,8 @@ gem 'prawn-table'
 # For search in orders
 gem "select2-rails"
 
+# Errors messages in spanish
+gem 'rails-i18n', '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
