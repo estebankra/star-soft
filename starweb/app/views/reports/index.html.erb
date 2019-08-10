@@ -14,7 +14,7 @@
     <div class="card border-dark mb-3 col-12">
       <div class="card-header"><h4>Total</h4></div>
       <div class="card-body text-dark">
-        <p class="card-text"><h1>Gs. <%= @clients_count %></h1></p>
+        <p class="card-text"><h1>Gs. <%= number_with_delimiter(@invoices_total.total_amount, :delimiter => ',') %></h1></p>
       </div>
     </div>
   </div>
@@ -95,7 +95,7 @@
       <div class="card-header"><h4>Más frecuente</h4></div>
       <div class="card-body text-success">
         <p class="card-text"><h1>
-        <%= @client_first.firstname %> <%= @client_first.lastname %>
+        <%= @client_first.first_name %> <%= @client_first.last_name %>
       </div>
     </div>
   </div>

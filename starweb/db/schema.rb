@@ -16,12 +16,12 @@ ActiveRecord::Schema.define(version: 2019_08_05_121207) do
   enable_extension "plpgsql"
 
   create_table "clients", force: :cascade do |t|
-    t.string "firstname"
-    t.string "lastname"
+    t.string "first_name"
+    t.string "last_name"
     t.string "doc_ruc"
-    t.string "telephone"
+    t.integer "phone"
     t.date "date_nac"
-    t.string "mail"
+    t.string "email"
     t.string "city"
     t.string "country"
     t.datetime "created_at", null: false
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 2019_08_05_121207) do
     t.string "description"
     t.string "uuid", limit: 40
     t.datetime "tax_point"
-    t.decimal "quantity", precision: 20, scale: 4
+    t.integer "quantity"
     t.integer "creator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(version: 2019_08_05_121207) do
     t.string "course_club"
     t.string "logo"
     t.string "state", default: "En espera"
+    t.integer "paid", default: 0
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -208,10 +209,10 @@ ActiveRecord::Schema.define(version: 2019_08_05_121207) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "firstname"
-    t.string "lastname"
+    t.string "first_name"
+    t.string "last_name"
     t.date "birth"
-    t.string "docnum"
+    t.string "doc_num"
     t.string "address"
     t.string "city"
     t.string "country"

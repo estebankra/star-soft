@@ -1,12 +1,12 @@
 class CreateClients < ActiveRecord::Migration[5.2]
   def change
     create_table :clients do |t|
-      t.string :firstname
-      t.string :lastname
+      t.string :first_name
+      t.string :last_name
       t.string :doc_ruc
-      t.string :telephone
+      t.integer :phone
       t.date :date_nac
-      t.string :mail
+      t.string :email
       t.string :city
       t.string :country
 

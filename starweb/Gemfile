@@ -30,13 +30,13 @@ gem 'jbuilder', '~> 2.5'
 
 # For registration by email
 gem 'devise_invitable'
-# jquery
-gem 'jquery-rails'
 # IMG
 gem 'paperclip'
 # Boostrap
+gem 'bootstrap', '~> 4.3.1'
+# JQuery
+gem 'jquery-rails'
 # Use SCSS for stylesheets
-gem "bootstrap-sass", ">= 3.4.1"
 gem 'autoprefixer-rails'
 # Authentication
 gem 'devise'
@@ -51,11 +51,15 @@ gem 'bootstrap4-kaminari-views'
 # Rails best practices
 gem 'rails_best_practices'
 # Bullet N+1
-gem 'bullet', group: 'development'
+# gem 'bullet', group: 'development'
 # For search
 gem 'ransack', github: 'activerecord-hackery/ransack'
 # For generate random data
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+# Simple form
+gem 'simple_form'
+
+gem 'country_select', '~> 4.0'
 
 # For invoices
 gem 'invoicing'
@@ -66,6 +70,8 @@ gem 'prawn-table'
 # For search in orders
 gem "select2-rails"
 
+# Errors messages in spanish
+gem 'rails-i18n', '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

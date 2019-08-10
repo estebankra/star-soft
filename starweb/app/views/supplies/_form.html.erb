@@ -1,46 +1,14 @@
-<%= form_with(model: supply, local: true) do |form| %>
-  <% if supply.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(supply.errors.count, "error") %> prohibited this supply from being saved:</h2>
+<%= simple_form_for supply, defaults: { label_html: { class: 'font-weight-bold' } } do |form| %>
+  <%= form.error_notification %>
 
-      <ul>
-      <% supply.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= form.input :name, label: 'Nombre' %>
 
-  <div class="form-row">
-    <div class="form-group col-md-5">
-      <label for="inputEmail4"><b>Nombre</b></label>
-          <%= form.text_field :name, class: 'form-control' %>
-    </div>
+  <%= form.input :stock %>
 
-    <div class="form-group col-md-5">
-      <label for="inputAddress"><b>Stock</b></label>
-          <%= form.text_field :stock, class: 'form-control' %>
-    </div>
-  </div>
-  <hr>
-  <div class="form-row">
-    <div class="form-group col-md-12">
-      <label for="exampleFormControlFile1"><b>Imagen</b></label>
-      <div class="custom-file">
-        <%= form.file_field :image, class: 'custom-file-input' %>
-        <label class="custom-file-label" for="customFile">Choose file</label>
-      </div>
-    </div>
-  </div>
+  <%= form.input :image, label: 'Imagen' %>
 
-  <div class="form-row">
-    <div class="form-group col-md-12">
-      <label for="inputPassword4"><br><b>Descripción</b></label>
-      <%= form.text_area :description, class: 'form-control' %>
-    </div>
-  </div>
-  <hr>
-  <div class="actions">
-    <%= form.submit "Guardar", class: 'btn btn-primary' %>
-  </div>
+  <%= form.input :description, label: 'Descripción', as: :text %>
+
+  <%= form.submit 'Guardar', class: 'btn btn-primary' %>
+
 <% end %>

@@ -33,7 +33,7 @@
             <hr>
             <h3 class="card-title"><%= product.name %></h3>
             <hr>
-            <p><h5><b>Precio</b></h5><%= product.price %></p>
+            <p><h5><b>Precio</b></h5>GS. <%= number_with_delimiter(product.price, :delimiter => ',') %></p>
             <p><b>Descripción</b><br><%= product.description %></p>
             <div class="list-group">
               <h5 class="list-group-item active">Insumos</h5>

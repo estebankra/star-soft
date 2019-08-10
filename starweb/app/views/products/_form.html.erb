@@ -1,57 +1,19 @@
-<%= form_with(model: product, local: true) do |form| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<%= simple_form_for product, defaults: { label_html: { class: 'font-weight-bold' } } do |form| %>
+  <%= form.error_notification %>
 
-      <ul>
-      <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <b><%= form.label 'Nombre' %></b>
-    <%= form.text_field :name, class: 'form-control' %>
-  </div><br>
-
-  <div class="field">
-    <b><%= form.label 'Precio' %></b>
-    <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text">Gs.</span>
-    </div>
-    <%= form.text_field :price, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="field">
-    <b><%= form.label 'Imagen' %></b>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-      </div>
-      <div class="custom-file">
-        <%= form.file_field :image, class: 'custom-file-input' %>
-        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-      </div>
-    </div>
-  </div>
-
-  <div class="field">
-    <b><%= form.label 'Descripción' %></b>
-    <%= form.text_area :description, class: 'form-control' %>
-  </div><br>
+  <%= form.input :name, label: 'Nombre' %>
+  <%= form.input :price, label: 'Precio' %>
+  <%= form.input :image, label: 'Imagen' %>
+  <%= form.input :description, label: 'Descripción', as: :text %>
 
   <div class="field">
     <h3><%= form.label 'Insumos necesarios'%></h3>
-    <% supplies.each do |supply| %>
+    <% Supply.all.each do |supply| %>
       <%= check_box_tag "supplies[]", supply.id, product.supplies.include?(supply)  %> <%= supply.name %><br>
     <%end%>
   </div>
   <br>
-  <div class="actions">
-    <%= form.submit 'Guardar', class: 'btn btn-primary' %>
-  </div>
+
+  <%= form.submit 'Guardar', class: 'btn btn-primary' %>
+
 <% end %>

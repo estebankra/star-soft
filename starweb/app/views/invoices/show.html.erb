@@ -1,0 +1,59 @@
+<h1>Detalles de la factura</h1>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Pedidos</a></li>
+    <li class="breadcrumb-item"><a href="#">Index</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Detalles</li>
+  </ol>
+</nav>
+</div>
+<hr>
+
+
+<div class="row">
+  <div class="col-9">
+    <h5><b>Cliente:</b> <%= "#{@invoice.recipient.first_name} #{@invoice.recipient.last_name}" %></h5>
+  </div>
+  <div class="col-3">
+    <h5><b>Fecha:</b> <%= @invoice.created_at %></h5>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-12">
+    <h5>Invoice Summary</h5>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Cantidad</th>
+        <th scope="col" style="width: 60%">Descripcion</th>
+        <th scope="col">Precio unitario</th>
+        <th scope="col">Precio total</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% total = 0 %>
+      <% @invoice.line_items.each do |hasProduct| %>
+        <% total += hasProduct.quantity * hasProduct.net_amount %>
+        <tr>
+          <th scope="row"><%= hasProduct.quantity %></th>
+          <th scope="row"><%= hasProduct.description %></th>
+          <th scope="row"><%= number_with_delimiter(hasProduct.net_amount, :delimiter => ',') %></th>
+          <th scope="row"><%= number_with_delimiter(hasProduct.quantity * hasProduct.net_amount, :delimiter => ',') %></th>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <hr>
+    <div class="row">
+      <div class="col-10">
+      </div>
+      <div class="col-2">
+        <p><b>SubTotal:</b> <%= number_with_delimiter(total, :delimiter => ',') %></b>
+        <p><b>Tax:</b> <%= number_with_delimiter(total, :delimiter => ',') %></b>
+        <p><b>50%:</b> <%= number_with_delimiter(total, :delimiter => ',') %></b>
+        <p><b>Total:</b> <%= number_with_delimiter(total, :delimiter => ',') %></b>
+      </div>
+    </div>
+  </div>
+</div>

@@ -18,7 +18,7 @@
   <!-- Filter by states-->
   <div class="mr-3">
     <%= form_tag(orders_path, method: :get, class: 'form-inline') do %>
-    <%= select_tag :state, options_from_collection_for_select(Order.all, "state", "state", params[:state]), prompt: "Todos", class: "form-control" %>
+    <%= select_tag :state, options_for_select(["En espera", "Completado", "En proceso"]), prompt: "Todos", class: "form-control" %>
       <%= submit_tag 'Filtrar', search: nil, class: 'btn btn-outline-success my-2 my-sm-0' %>
     <% end %>
   </div>
@@ -44,7 +44,7 @@
                 <div class="card-body">
                   <%end%>
                   <h3 class="card-title">
-                    <%= order.client_firstname %> <%= order.client_lastname %><br><%= order.client_doc_ruc %>
+                    <%= order.client_first_name %> <%= order.client_last_name %><br><%= order.client_doc_ruc %>
                   </h3>
                 </div>
                 <hr>

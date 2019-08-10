@@ -18,7 +18,7 @@
     <!-- Search -->
     <div class="mr-3 form-inline">
       <%= search_form_for @q do |f| %>
-        <%= f.search_field :firstname_or_lastname_or_doc_ruc_or_telephone_or_mail_or_city_or_country_cont, class: 'form-control mr-sm-2', autofocus: true %>
+        <%= f.search_field :first_name_or_last_name_or_doc_ruc_or_phone_or_email_or_city_or_country_cont, class: 'form-control mr-sm-2', autofocus: true %>
 
         <%= f.submit class: 'btn btn-outline-success my-2 my-sm-0' %>
       <% end %>
@@ -49,12 +49,12 @@
         <tbody>
           <% @clients.each do |client| %>
           <tr>
-            <td><%= client.firstname %></td>
-            <td><%= client.lastname %></td>
+            <td><%= client.first_name %></td>
+            <td><%= client.last_name %></td>
             <td><%= client.doc_ruc %></td>
-            <td><%= client.telephone %></td>
+            <td><%= client.phone %></td>
             <td><%= client.date_nac %></td>
-            <td><%= client.mail %></td>
+            <td><%= client.email %></td>
             <td><%= client.city %></td>
             <td><%= client.country %></td>
             <td><%= link_to '', edit_client_path(client), class: 'fas fa-edit' %>  <%= link_to '' , client, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>

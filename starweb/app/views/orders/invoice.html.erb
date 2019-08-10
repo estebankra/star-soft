@@ -1,0 +1,92 @@
+<h1>Factura</h1>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Pedidos</a></li>
+    <li class="breadcrumb-item"><a href="#">Index</a></li>
+    <li class="breadcrumb-item active"><a href="#">Detalles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Pagar</li>
+  </ol>
+</nav>
+</div>
+<hr>
+
+<div class="row">
+  <div class="col-6">
+    <p><b>Billed to:</b> <%= "#{@order.client.first_name} #{@order.client.last_name}" %></p>
+  </div>
+  <div class="col-6">
+    <p><b>Invoice date:</b> <%= Date.current %></p>
+    <p><b>Invoice No:</b> 1</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <h5>Detalle</h5>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Cantidad</th>
+        <th scope="col" style="width: 60%">Descripción</th>
+        <th scope="col">Precio unitario</th>
+        <th scope="col">Precio total</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% total = 0 %>
+      <% @order.has_products.each do |hasProduct| %>
+        <% total += hasProduct.quantity * hasProduct.product.price %>
+        <tr>
+          <th scope="row"><%= hasProduct.quantity %></th>
+          <th scope="row"><%= hasProduct.product.name %></th>
+          <th scope="row"><%= number_with_delimiter(hasProduct.product.price, :delimiter => ',') %></th>
+          <th scope="row"><%= number_with_delimiter(hasProduct.quantity * hasProduct.product.price, :delimiter => ',') %></th>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <hr>
+    <div class="row">
+      <div class="col-10">
+      </div>
+      <div class="col-2">
+        <p><b>SubTotal:</b> <%= number_with_delimiter(total, :delimiter => ',') %></b>
+        <p><b>IVA 10%:</b> <%= number_with_delimiter(total, :delimiter => ',') %></b>
+        <p><b>50%:</b> <%= number_with_delimiter(total / 2 , :delimiter => ',') %></b>
+        <p><b>Total:</b> <%= number_with_delimiter(total, :delimiter => ',') %></b>
+      </div>
+    </div>
+    <hr>
+    <div class="row" id="buttons">
+    <div class="col-9">
+    </div>
+    <div class="col-3">
+      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalProduct"> Imprimir (Ctrl + P) </button>
+      <% if @order.paid == 0 %>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalProduct"> Cobrar 50% </button>
+      <% else %>
+        <button type="button" class="btn btn-primary" disabled data-toggle="modal" data-target="#modalProduct"> Cobrar 50% </button>
+      <% end %>
+      <a type="button" class="btn btn-primary"  onclick="return confirm('Estás seguro?')" href="/orders/pay/<%=@order.id%>"> Facturar </a>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cobrar 50%</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h2>Gs. <%= number_with_delimiter(total / 2 , :delimiter => ',') %></h2>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-success" href="/orders/half/<%=@order.id%>">Cobrar</a>
+      </div>
+    </div>
+  </div>
+</div>
