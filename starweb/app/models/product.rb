@@ -3,15 +3,16 @@ class Product < ApplicationRecord
   has_many :supplies, through: :has_supplies
   has_many :orders, through: :has_products
 
+  # Validation
+  validates :name, :price, :image, presence: true
+  validates :price, numericality: true
+  validates :description, length: { maximum: 300 }
+
   before_update :clear_supplies
   before_destroy :clear_supplies
   after_create :save_supplies
   after_update :save_supplies
 
-  # Validation
-  validates :name, :description, presence: true
-  validates :price, presence: true
-  validates :description, length: { minimum: 40 }
 
   has_attached_file :image, styles: { medium: '600x300', thumb: '300x150', mini: '200x100' }
   validates_attachment_content_type :image, content_type: %r{\Aimage/.*\Z}
@@ -19,8 +20,10 @@ class Product < ApplicationRecord
   attr_writer :supplies
 
   def save_supplies
-    @supplies.each do |supply_id|
-      HasSupply.create(supply_id: supply_id, product_id: self.id )
+    if @supplies
+      @supplies.each do |supply_id|
+        HasSupply.create(supply_id: supply_id, product_id: self.id )
+      end
     end
   end
 

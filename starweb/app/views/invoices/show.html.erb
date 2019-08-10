@@ -12,7 +12,7 @@
 
 <div class="row">
   <div class="col-9">
-    <h5><b>Cliente:</b> <%= "#{@invoice.recipient.firstname} #{@invoice.recipient.lastname}" %></h5>
+    <h5><b>Cliente:</b> <%= "#{@invoice.recipient.first_name} #{@invoice.recipient.last_name}" %></h5>
   </div>
   <div class="col-3">
     <h5><b>Fecha:</b> <%= @invoice.created_at %></h5>

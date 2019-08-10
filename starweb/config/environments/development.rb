@@ -75,14 +75,16 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default :charset => "utf-8"
+
   ActionMailer::Base.smtp_settings =
     {
-      :address => "smtp.gmail.com",
+      :address =>"smtp.gmail.com",
       :port => 587,
-      :authentication => :plain,
-      :domain => 'mail.google.com',
-      :user_name => 'mail',
-      :password => 'pass',
-      :enable_starttls_auto => true
+      :domain => "gmail.com",
+      :user_name => "....@gmail.com",
+      :password => "***********",
+      :authentication => 'plain',
+      :enable_starttls_auto => true,
+      :openssl_verify_mode => 'none'
     }
 end

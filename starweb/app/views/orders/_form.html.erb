@@ -1,18 +1,9 @@
-<%= form_with(model: order, local: true) do |form| %>
+<%= simple_form_for order, defaults: { label_html: { class: 'font-weight-bold' } } do |form| %>
   <script>
       $(document).ready(function() { $("#e1").select2(); });
   </script>
-  <% if order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
-      <ul>
-        <% order.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= form.error_notification %>
 
   <div class="input-group mb-3">
     <div class="input-group-prepend">
@@ -21,42 +12,19 @@
     </div>
   </div>
 
-  <div class="field">
-    <b><%= form.label 'Fecha de entrega' %></b>
-    <%= form.date_field :deliver_date, class: 'form-control' %>
-  </div><br>
+  <%= form.input :deliver_date, label: 'Fecha de entrega' %>
 
-  <div class="field">
-    <b><%= form.label 'Curso / Club' %></b>
-    <%= form.text_field :course_club, class: 'form-control' %>
-  </div><br>
+  <%= form.input :course_club, label: 'Curso - Club' %>
 
-  <div class="field">
-    <b><%= form.label 'Logo' %></b>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-      </div>
-      <div class="custom-file">
-        <%= form.file_field :logo, class: 'custom-file-input' %>
-        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-      </div>
-    </div>
-  </div>
+  <%= form.input :logo, label: 'Logo' %>
 
-  <div class="field">
-    <b><%= form.label 'Notas' %></b>
-    <%= form.text_area :notes, class: 'form-control' %>
-  </div><br>
+  <%= form.input :notes, label: 'Notas', as: :text %>
 
-  <div class="field">
-    <h3><%= form.label 'Auspiciantes'%></h3>
-    <% sponsors.each do |sponsor| %>
-      <%= check_box_tag "sponsors[]", sponsor.id, order.sponsors.include?(sponsor) %> <%= sponsor.name %><br>
-    <%end%>
-  </div>
-  <br>
-  <div class="actions">
-    <%= form.submit 'Guardar', class: 'btn btn-primary' %>
-  </div>
+  <h3><%= form.label 'Auspiciantes'%></h3>
+  <% Sponsor.all.each do |sponsor| %>
+    <%= check_box_tag "sponsors[]", sponsor.id, order.sponsors.include?(sponsor) %> <%= sponsor.name %><br>
+  <%end%>
+
+  <%= form.submit 'Guardar', class: 'btn btn-primary' %>
+
 <% end %>

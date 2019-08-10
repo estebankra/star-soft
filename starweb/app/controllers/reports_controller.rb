@@ -7,6 +7,7 @@ class ReportsController < ApplicationController
     @orders_wait = Order.where(:state => 'En espera').count
     @orders_in_process = Order.where(:state => 'En proceso').count
     @clients_count = Client.count
+    @invoices_total = InvoicingLedgerItem.first
     clients_frequents = Order.group(:client_id).count
     @client_first = Client.find(clients_frequents.first[0])
     @secretary_users = User.where(:permission_level => '1').count

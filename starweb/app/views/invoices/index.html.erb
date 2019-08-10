@@ -26,7 +26,7 @@
         <tbody>
     <% @invoices.each do |invoice| %>
         <tr>
-          <td><%= invoice.recipient.firstname %></td>
+          <td><%= invoice.recipient.first_name %></td>
           <td><%= invoice.created_at %></td>
           <td><%= invoice.currency %></td>
           <td><a class="fas fa-eye mt-2" href="/invoices/<%=invoice.id%>"></a></td>

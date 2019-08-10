@@ -1,8 +1,7 @@
 class Order < ApplicationRecord
+  # Relations
   belongs_to :client
-
-  delegate :firstname, :lastname, :doc_ruc, to: :client, prefix: true
-
+  delegate :first_name, :last_name, :doc_ruc, to: :client, prefix: true
   has_many :has_sponsors
   has_many :sponsors, through: :has_sponsors
   has_many :has_products
@@ -10,6 +9,10 @@ class Order < ApplicationRecord
   has_many :has_details
   has_many :order_details, through: :has_details
 
+  # Validations
+  validates :course_club, :logo, :deliver_date, presence: true
+  validates :course_club, length: { maximum: 50 }
+  validates :notes, length: { maximum: 300 }
 
   # Sponsors
   before_update :clear_sponsors

@@ -1,35 +1,19 @@
 <%= simple_form_for product, defaults: { label_html: { class: 'font-weight-bold' } } do |form| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
-      <ul>
-      <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= form.error_notification %>
 
   <%= form.input :name, label: 'Nombre' %>
   <%= form.input :price, label: 'Precio' %>
-
-  <%= form.label 'Imagen', class: 'font-weight-bold' %>
-  <div class="custom-file">
-    <%= form.file_field :image, class: 'custom-file-input' %>
-    <label class="custom-file-label" for="inputGroupFile01">Seleccionar imagen</label>
-  </div> <p></p>
-
+  <%= form.input :image, label: 'Imagen' %>
   <%= form.input :description, label: 'Descripción', as: :text %>
 
   <div class="field">
     <h3><%= form.label 'Insumos necesarios'%></h3>
-    <% supplies.each do |supply| %>
+    <% Supply.all.each do |supply| %>
       <%= check_box_tag "supplies[]", supply.id, product.supplies.include?(supply)  %> <%= supply.name %><br>
     <%end%>
   </div>
   <br>
-  <div class="actions">
-    <%= form.submit 'Guardar', class: 'btn btn-primary' %>
-  </div>
+
+  <%= form.submit 'Guardar', class: 'btn btn-primary' %>
+
 <% end %>

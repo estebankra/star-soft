@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2019_08_05_121207) do
     t.string "first_name"
     t.string "last_name"
     t.string "doc_ruc"
-    t.string "phone"
+    t.integer "phone"
     t.date "date_nac"
     t.string "email"
     t.string "city"
