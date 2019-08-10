@@ -1,34 +1,10 @@
-<%= form_with(model: sponsor, local: true) do |form| %>
-  <% if sponsor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(sponsor.errors.count, "error") %> prohibited this sponsor from being saved:</h2>
+<%= simple_form_for sponsor, defaults: { label_html: { class: 'font-weight-bold' } } do |form| %>
+  <%= form.error_notification %>
 
-      <ul>
-      <% sponsor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= form.input :name, label: 'Nombre' %>
 
-<div class="form-row">
-    <div class="form-group col-md-5">
-      <label for="inputEmail4"><b>Nombre</b></label>
-      <%= form.text_field :name, class: 'form-control' %>
-    </div>
-  </div>
+  <%= form.input :image, label: 'Imagen' %>
 
-  <div class="form-row">
-    <div class="form-group col-md-12">
-      <label for="exampleFormControlFile1"><b>Logo</b></label>
-      <div class="custom-file">
-        <%= form.file_field :image, class: 'custom-file-input' %>
-        <label class="custom-file-label" for="customFile">Choose file</label>
-      </div>
-    </div>
-  </div>
-  <hr>
-  <div class="actions">
-    <%= form.submit 'Guardar', class: 'btn btn-primary' %>
-  </div>
+  <%= form.submit 'Guardar', class: 'btn btn-primary' %>
+
 <% end %>

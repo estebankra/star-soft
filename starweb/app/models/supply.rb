@@ -6,6 +6,6 @@ class Supply < ApplicationRecord
 
 	# Validation
 	validates :name, :image, :stock,  presence: true
-	validates :name, length: { in: 3..25 }
+	validates :name, length: { in: 3..50 }
 	validates :description, length: { maximum: 200 }
 end

@@ -1,5 +1,4 @@
 class Product < ApplicationRecord
-  belongs_to :supply
   has_many :has_supplies
   has_many :supplies, through: :has_supplies
   has_many :orders, through: :has_products

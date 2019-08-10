@@ -35,8 +35,8 @@
             <% @users.each do |user| %>
             <tr>
               <td><%= user.email %></td>
-              <td><%= user.firstname %></td>
-              <td><%= user.lastname %></td>
+              <td><%= user.first_name %></td>
+              <td><%= user.last_name %></td>
               <% if user.permission_level == '3' %>
               <td>Admin</td>
               <% elsif user.permission_level == '1' %>

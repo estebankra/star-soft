@@ -1,55 +1,37 @@
-  <%= form_with(model: client, local: true) do |form| %>
-  <% if client.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
-
-      <ul>
-      <% client.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= simple_form_for client, defaults: { label_html: { class: 'font-weight-bold' } } do |form| %>
+  <%= form.error_notification %>
 
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Nombres</label>
-      <%= form.text_field :firstname, class: 'form-control'%>
+      <%= form.input :first_name, label: 'Nombres' %>
     </div>
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Apellidos</label>
-      <%= form.text_field :lastname, class: 'form-control' %>
+      <%= form.input :last_name, label: 'Apellidos' %>
     </div>
     <div class="form-group col-md-6">
-      <label for="inputAddress">Documento - Ruc</label>
-      <%= form.text_field :doc_ruc, class: 'form-control'%>
+      <%= form.input :doc_ruc, label: 'Documento - RUC' %>
     </div>
     <div class="form-group col-md-6">
-      <label for="inputAddress">Telefóno</label>
-      <%= form.text_field :telephone, class: 'form-control'%>
+      <%= form.input :phone, label: 'Telefóno' %>
     </div>
   </div>
+
   <hr>
+
   <h5>Opcional</h5><br>
   <div class="form-row">
     <div class="form-group col-md-3">
-      <label for="inputAddress">Correo</label>
-      <%= form.text_field :mail, class: 'form-control'%>
+      <%= form.input :email, label: 'Correo', input_html: { autocomplete: 'email' } %>
     </div>
     <div class="form-group col-md-3">
-      <label for="inputAddress">Ciudad</label>
-      <%= form.text_field :city, class: 'form-control' %>
+      <%= form.input :city, label: 'Ciudad' %>
     </div>
     <div class="form-group col-md-3">
-      <label for="inputAddress">País</label>
-      <%= form.text_field :country, class: 'form-control' %>
+      <%= form.input :country, label: 'País', selected: "PY" %>
     </div>
     <div class="form-group col-md-3">
-      <label for="inputAddress">Nacimiento</label>
-      <%= form.date_field :date_nac, class: 'form-control'  %>
+      <%= form.input :date_nac, label: 'Fecha de nacimiento' %>
     </div>
   </div>
-  <div class="actions">
-    <%= form.submit 'Guardar', class: 'btn btn-primary' %>
-  </div>
+  <%= form.submit 'Guardar', class: 'btn btn-primary' %>
 <% end %>

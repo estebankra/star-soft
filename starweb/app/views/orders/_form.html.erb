@@ -17,7 +17,7 @@
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <label class="input-group-text" for="inputGroupSelect01">Cliente</label>
-      <%= form.select :client_id, Client.all.collect {|p| [ "#{p.firstname} #{p.lastname} #{p.doc_ruc}", p.id ] }, {prompt: 'Selecciona el Cliente'}, class: 'form-control', id: 'e1' %>
+      <%= form.select :client_id, Client.all.collect {|p| [ "#{p.first_name} #{p.last_name} #{p.doc_ruc}", p.id ] }, {prompt: 'Selecciona el Cliente'}, class: 'form-control', id: 'e1' %>
     </div>
   </div>
 
