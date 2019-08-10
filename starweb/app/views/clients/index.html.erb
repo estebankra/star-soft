@@ -17,57 +17,15 @@
     </div>
     <!-- Search -->
     <div class="mr-3 form-inline">
-      <%= search_form_for @q do |f| %>
-        <%= f.search_field :first_name_or_last_name_or_doc_ruc_or_phone_or_email_or_city_or_country_cont, class: 'form-control mr-sm-2', autofocus: true %>
+      <%= search_form_for @q, remote: true do |f| %>
+        <%= f.search_field :first_name_or_last_name_or_doc_ruc_or_email_or_city_or_country_cont, class: 'form-control mr-sm-2', autofocus: true %>
 
         <%= f.submit class: 'btn btn-outline-success my-2 my-sm-0' %>
       <% end %>
     </div>
   </div>
 
-  <!-- Table -->
-  <div class="row">
-    <% if @clients.empty? %>
-    <div class="col-md-4 col-sm-6">
-      <p class="alert alert-warning">No ha encontrado ningún cliente</p>
-    </div>
-    <% else %>
-    <div class="table-responsive">
-      <table class="table table-striped table-bordered table-hover">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Doc/ruc</th>
-            <th>Telefóno</th>
-            <th>Nacimiento</th>
-            <th>Correo</th>
-            <th>Ciudad</th>
-            <th>País</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @clients.each do |client| %>
-          <tr>
-            <td><%= client.first_name %></td>
-            <td><%= client.last_name %></td>
-            <td><%= client.doc_ruc %></td>
-            <td><%= client.phone %></td>
-            <td><%= client.date_nac %></td>
-            <td><%= client.email %></td>
-            <td><%= client.city %></td>
-            <td><%= client.country %></td>
-            <td><%= link_to '', edit_client_path(client), class: 'fas fa-edit' %>  <%= link_to '' , client, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-
-    <%end%>
-  </div>
-
-  <!-- Pagination -->
-  <%= render 'partials/pagination', paginate: @clients%>
+  <div id="list-clients">
+    <%= render 'list_clients', clients: @clients%>
   </div>
 </div>
