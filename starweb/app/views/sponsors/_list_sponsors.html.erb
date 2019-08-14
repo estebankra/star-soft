@@ -1,0 +1,26 @@
+<!-- Content -->
+<div class="row">
+  <% if @sponsors.empty? %>
+    <div class="col-md-4 col-sm-5">
+      <p class="alert alert-warning">No ha encontrado ningún auspiciante</p>
+    </div>
+  <% else %>
+    <% @sponsors.each do |sponsor| %>
+      <div class="col-md-4 col-sm-5">
+        <div class="card text-center col-md-12">
+          <div class="card-image">
+            <%= image_tag sponsor.image.url(:mini)%>
+          </div>
+          <div class="card-content">
+            <hr>
+            <h4 class="card-title"><%= sponsor.name %></h4>
+            <hr>
+            <%= link_to '', edit_sponsor_path(sponsor), class: 'fas fa-edit' %> | <%= link_to '', sponsor, method: :delete, data: {  confirm: 'Estás seguro?' }, class: "fas fa-trash" %>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  <%end%>
+</div>
+<!-- Pagination -->
+<%= render 'partials/pagination', paginate: @sponsors%>
