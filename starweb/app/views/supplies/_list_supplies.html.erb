@@ -1,0 +1,25 @@
+<!-- Content -->
+<div class="row">
+  <% if @supplies.empty? %>
+    <div class="col-md-4">
+      <p class="alert alert-warning">No ha agregado ningún insumo</p>
+    </div>
+  <% else %>
+    <% @supplies.each do |supply| %>
+      <div class="col-md-4">
+        <div class="card text-center col-12">
+          <div class="card-body">
+            <%= image_tag supply.image.url(:mini) %>
+            <hr>
+            <h4 class="card-title"><b><%= supply.name %></b></h4>
+            <hr>
+            <p class="card-text">
+            <p><b>Stock</b><br><%= supply.stock %></p>
+            <p><b>Descripción</b><br><%= supply.description %></p>
+          </div>
+          <p><%= link_to '', edit_supply_path(supply), class: 'fas fa-edit' %> | <%= link_to '', supply, method: :delete, data: {  confirm: 'Estás seguro?' }, class: "fas fa-trash" %></p>
+        </div>
+      </div>
+    <%end%>
+  <%end%>
+</div>
