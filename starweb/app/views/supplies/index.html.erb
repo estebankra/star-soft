@@ -8,17 +8,16 @@
 </div>
 <hr>
 
-<div class="row mb-2">
-  <!-- New supply -->
-  <div class="col">
-    <%= link_to 'Nuevo', new_supply_path, class: 'btn btn-primary' %>
+  <div class="row mb-2">
+    <!-- New supply -->
+    <div class="col">
+      <%= link_to 'Nuevo', new_supply_path, class: 'btn btn-primary' %>
+    </div>
+    <!-- Search -->
+    <%= render 'partials/search_by_name', q: @q %>
   </div>
-  <!-- Search -->
-  <%= render 'partials/search_by_name', q: @q %>
-</div>
   <div id="list_supplies">
     <%= render 'list_supplies' %>
   </div>
-  <!-- Pagination -->
-  <%= render 'partials/pagination', paginate: @supplies%>
+
 </div>
