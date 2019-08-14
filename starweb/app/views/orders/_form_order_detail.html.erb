@@ -1,4 +1,4 @@
-<%= simple_form_for order_detail, defaults: { label_html: { class: 'font-weight-bold' } } do |form| %>
+<%= simple_form_for order_detail, defaults: { label_html: { class: 'font-weight-bold' } }, remote: true do |form| %>
   <%= form.error_notification %>
 
   <%= form.hidden_field :order_id, value: order.id %>
@@ -7,7 +7,7 @@
 
   <%= form.input :number, label: 'Número' %>
 
-  <%= form.input :size, label: 'Tamaño' %>
+  <%= form.input :size, collection: %w(XS S M X L XL XXL), label: 'Tamaño' %>
 
   <%= form.submit 'Guardar', class: 'btn btn-primary' %>
 
