@@ -8,7 +8,7 @@ class Product < ApplicationRecord
   validates :price, numericality: true
   validates :description, length: { maximum: 300 }
 
-  before_update :clear_supplies
+  # before_update :clear_supplies
   before_destroy :clear_supplies
   after_create :save_supplies
   after_update :save_supplies
@@ -20,9 +20,18 @@ class Product < ApplicationRecord
   attr_writer :supplies
 
   def save_supplies
-    if @supplies
+    if @supplies.nil?
+      return
+    else
       @supplies.each do |supply_id|
-        HasSupply.create(supply_id: supply_id, product_id: self.id )
+        exists = false
+        self.supplies.each do |product_supply|
+          id = product_supply.id
+          exists = true if Integer(supply_id) == Integer(id)
+        end
+        if exists == false
+          HasSupply.create(supply_id: supply_id, product_id: self.id )
+        end
       end
     end
   end

@@ -81,7 +81,7 @@
             <p>No ha agregado ningún detalle</p>
             <% else %>
             <div class="table-responsive">
-              <table class="table table-striped table-bordered table-hover table-secondary">
+              <table class="table table-striped table-bordered table-hover">
                 <thead>
                   <tr>
                     <th>Nombre</th>
@@ -140,7 +140,27 @@
         </div>
       </div>
 
-      <!-- Modal -->
+
+      <h4>Auspiciantes</h4>
+      <hr>
+      <div class="row ml-1">
+        <% @order.sponsors.each do |sponsor| %>
+          <div class="card mb-3 ml-1 col-3">
+            <div class="row no-gutters">
+              <div class="col-md-2">
+                <%= image_tag sponsor.image.url(:original), class: 'card-img' %>
+              </div>
+              <div class="col-md-10">
+                <div class="card-body">
+                  <h4 class="card-title"><%= sponsor.name %></h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      </div>
+
+  <!-- Modal -->
       <div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -173,7 +193,7 @@
           </div>
         </div>
       </div>
-      <!-- /. PAGE INNER  -->
+  <!-- /. PAGE INNER  -->
     </div>
     <!-- /. PAGE WRAPPER  -->
   </div>

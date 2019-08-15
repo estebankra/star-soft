@@ -6,14 +6,40 @@
   <%= form.input :image, label: 'Imagen' %>
   <%= form.input :description, label: 'Descripción', as: :text %>
 
-  <div class="field">
-    <h3><%= form.label 'Insumos necesarios'%></h3>
+  <h3><%= form.label 'Insumos necesarios'%></h3>
+  <select class="multiple-supplies" name="supplies[]" multiple="multiple">
     <% Supply.all.each do |supply| %>
-      <%= check_box_tag "supplies[]", supply.id, product.supplies.include?(supply)  %> <%= supply.name %><br>
+      <option value="<%= supply.id %>"><%= supply.name %></option>
+    <%end%>
+  </select>
+  <br><br>
+
+  <div class="row ml-1">
+    <% @product.supplies.each do |supply| %>
+      <div class="card mb-3 ml-1 col-3">
+        <div class="row no-gutters">
+          <div class="col-md-2">
+            <%= image_tag supply.image.url(:original), class: 'card-img' %>
+          </div>
+          <div class="col-md-10">
+            <div class="card-body">
+              <h4 class="card-title"><%= supply.name %></h4>
+            </div>
+          </div>
+        </div>
+      </div>
     <%end%>
   </div>
+
   <br>
 
   <%= form.submit 'Guardar', class: 'btn btn-primary' %>
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+          $("#e1").select2();
+          $('.multiple-supplies').select2();
+      });
+  </script>
 
 <% end %>
