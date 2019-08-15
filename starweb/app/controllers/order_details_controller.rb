@@ -55,9 +55,16 @@ class OrderDetailsController < ApplicationController
   # DELETE /order_details/1
   # DELETE /order_details/1.json
   def destroy
+    order = nil
+    HasDetail.all.each do | hasDetail |
+      if hasDetail.order_detail.id == @order_detail.id
+        order = hasDetail.order
+      end
+    end
     @order_detail.destroy
+
     respond_to do |format|
-      format.html {redirect_to @order, notice: 'Order detail was successfully destroyed.'}
+      format.html {redirect_to order, notice: 'Order detail was successfully destroyed.'}
       format.json {head :no_content}
     end
   end
