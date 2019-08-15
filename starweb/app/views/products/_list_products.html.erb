@@ -1,0 +1,61 @@
+<!-- Content -->
+<div class="row">
+  <% if @products.empty? %>
+    <div class="col-md-4 col-sm-5">
+      <p class="alert alert-warning">No ha encontrado ningún producto</p>
+    </div>
+  <% else %>
+    <% @products.each do |product| %>
+      <div class="col-md-4 col-sm-5">
+        <div class="card text-center col-md-12">
+          <div class="card-image">
+            <%= image_tag product.image.url(:mini) %>
+          </div>
+          <div class="card-content">
+            <hr>
+            <h3 class="card-title"><%= product.name %></h3>
+            <hr>
+            <p><h5><b>Precio</b></h5>GS. <%= number_with_delimiter(product.price, :delimiter => ',') %></p>
+            <p><b>Descripción</b><br><%= product.description %></p>
+            <div class="list-group">
+              <h5 class="list-group-item active">Insumos</h5>
+              <% @has_supplies.each do |has_supply| %>
+                <% if has_supply.product.id == product.id %>
+                  <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
+                    <%= has_supply.supply_name %>
+                  </button>
+                <%end%>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <%= image_tag has_supply.supply_image.url(:thumb), class: 'media-object' %>
+                        <div class="card-body">
+                          <h5 class="card-title"><%= has_supply.supply_name %></h5>
+                          <hr>
+                          <p class="card-text">
+                          <p><%= has_supply.supply_description %></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <%end%>
+            </div>
+            <p><%= link_to '', edit_product_path(product) , class: 'fas fa-edit' %> | <%= link_to '', product, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></p>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  <%end%>
+</div>
+
+<!-- Pagination -->
+<%= render 'partials/pagination', paginate: @products%>
