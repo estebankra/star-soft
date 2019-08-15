@@ -124,6 +124,9 @@
               <div class="col-md-8">
                 <div class="card-body">
                   <h4 class="card-title mt-2"><b><%= hasProduct.product_name %></b></h4>
+                  <% if @order.paid == 0 %>
+                      <%= link_to '' , hasProduct, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-times-circle ml-3" %>
+                  <% end %>
                   <hr>
                   <p class="card-text">
                     <p><b>Frontal</b> <br><%= hasProduct.specs_f %></p>
@@ -144,15 +147,24 @@
       <h4>Auspiciantes</h4>
       <hr>
       <div class="row ml-1">
-        <% @order.sponsors.each do |sponsor| %>
+        <% @order.has_sponsors.each do |hasSponsor| %>
           <div class="card mb-3 ml-1 col-3">
             <div class="row no-gutters">
               <div class="col-md-2">
-                <%= image_tag sponsor.image.url(:original), class: 'card-img' %>
+                <%= image_tag hasSponsor.sponsor.image.url(:original), class: 'card-img' %>
               </div>
               <div class="col-md-10">
-                <div class="card-body">
-                  <h4 class="card-title"><%= sponsor.name %></h4>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-10">
+                        <h4 class="card-title"><%= hasSponsor.sponsor.name %></h4>
+                      </div>
+                      <div class="col-2">
+                        <% if current_user.is_secretary? %>
+                          <p><%= link_to '' , hasSponsor, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-times-circle fa-10x"  %></p>
+                        <%end%>
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>

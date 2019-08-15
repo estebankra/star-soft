@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :has_products
+  resources :has_sponsors
   get 'orders/state/:id', to: 'orders#state', as: 'orders_state'
   resources :order_details
   resources :info_details

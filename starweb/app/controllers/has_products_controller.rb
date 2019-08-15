@@ -29,7 +29,7 @@ class HasProductsController < ApplicationController
 
     respond_to do |format|
       if @has_product.save
-        format.html { redirect_to @order, notice: 'Has product was successfully created.' }
+        format.html { redirect_to @order, notice: 'El producto se asigno al pedido correctamente' }
         format.json { render :show, status: :created, location: @has_product }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class HasProductsController < ApplicationController
   def update
     respond_to do |format|
       if @has_product.update(has_product_params)
-        format.html { redirect_to @has_product, notice: 'Has product was successfully updated.' }
+        format.html { redirect_to @has_product, notice: 'El producto en el pedido se actualizo correctamente' }
         format.json { render :show, status: :ok, location: @has_product }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class HasProductsController < ApplicationController
     @order = Order.find(@has_product.order_id)
     @has_product.destroy
     respond_to do |format|
-      format.html { redirect_to @order, notice: 'Has product was successfully destroyed.' }
+      format.html { redirect_to @order, notice: 'El producto se retiro del pedido correctamente.' }
       format.json { head :no_content }
     end
   end

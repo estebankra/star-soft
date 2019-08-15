@@ -53,6 +53,16 @@ class SponsorsController < ApplicationController
     end
   end
 
+  def delete_relation
+    order = nil
+    HasDetail.all.each do | hasDetail |
+      if hasDetail.order_detail.id == @order_detail.id
+        order = hasDetail.order
+      end
+    end
+    @order_detail.destroy
+  end
+
   # DELETE /sponsors/1
   # DELETE /sponsors/1.json
   def destroy
