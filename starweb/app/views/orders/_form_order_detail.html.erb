@@ -3,11 +3,15 @@
 
   <%= form.hidden_field :order_id, value: order.id %>
 
-  <%= form.input :name, label: 'Nombre' %>
+  <%= form.input :name, label: 'Nombre/s' %>
 
-  <%= form.input :number, label: 'Número' %>
+  <%= form.input :number, label: 'Número/s' %>
 
   <%= form.input :size, collection: %w(XS S M X L XL XXL), label: 'Tamaño' %>
+
+  <%= form.input :quantity, label: 'Cantidad', input_html: {value: form.object.quantity || '1'} %>
+
+  <%= form.input :notes, label: 'Notas', as: :text %>
 
   <%= form.submit 'Guardar', class: 'btn btn-primary' %>
 

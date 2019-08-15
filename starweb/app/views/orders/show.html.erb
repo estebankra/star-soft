@@ -78,7 +78,7 @@
             <hr>
             <h4>Detalles</h4>
             <% if @order.order_details.empty? %>
-            <p>No ha agregado ningún detalle</p>
+            <p class="alert alert-warning">No ha agregado ningún detalle</p>
             <% else %>
             <div class="table-responsive">
               <table class="table table-striped table-bordered table-hover">
@@ -112,16 +112,16 @@
         <div class="col-md-6">
           <h4>Productos</h4>
           <hr>
-          <% @order.has_products.each do |hasProduct| %>
           <% if @order.has_products.empty? %>
-          <p>No ha agregado ningún producto</p>
+            <p class="alert alert-warning">No ha agregado ningún producto</p>
           <% else %>
+          <% @order.has_products.each do |hasProduct| %>
           <div class="card border-primary col-md-12">
             <div class="row no-gutters">
               <div class="col-md-4 mt-4">
                 <%= image_tag hasProduct.product_image.url(:thumb), class: 'card-img' %>
               </div>
-              <div class="col-md-8">
+              <div class="col-md-6 ml-3">
                 <div class="card-body">
                   <h4 class="card-title mt-2"><b><%= hasProduct.product_name %></b></h4>
                   <% if @order.paid == 0 %>
@@ -133,6 +133,14 @@
                     <p><b>Dorso</b> <br><%= hasProduct.specs_b %></p>
                     <p><b>Cantidad</b> <br><%= hasProduct.quantity %></p>
                     <p><b>Notas</b> <br><%= hasProduct.color %></p>
+                    <p><b>Insumos</b> <br>
+                      <% if hasProduct.product.supplies.empty? %>
+                        <p class="alert alert-warning">No ha asignado ningún insumo</p>
+                      <% else %>
+                      <% hasProduct.product.supplies.each do |has_supply| %>
+                        <%= has_supply.name %></p>
+                      <% end %>
+                      <% end %>
                   </p>
                 </div>
               </div>
@@ -143,10 +151,14 @@
         </div>
       </div>
 
+      <br>
 
       <h4>Auspiciantes</h4>
       <hr>
       <div class="row ml-1">
+        <% if @order.has_sponsors.empty? %>
+          <p class="alert alert-warning">No ha asignado ningún auspiciante</p>
+        <% else %>
         <% @order.has_sponsors.each do |hasSponsor| %>
           <div class="card mb-3 ml-1 col-3">
             <div class="row no-gutters">
@@ -169,6 +181,7 @@
               </div>
             </div>
           </div>
+        <%end%>
         <%end%>
       </div>
 
