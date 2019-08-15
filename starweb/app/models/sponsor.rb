@@ -6,5 +6,5 @@ class Sponsor < ApplicationRecord
 
   # Validation
   validates :name, :image,  presence: true
-  validates :name, length: { in: 2..40 }
+  validates :name, length: { in: 2..100 }
 end

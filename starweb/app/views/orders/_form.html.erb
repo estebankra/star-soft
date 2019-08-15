@@ -1,8 +1,4 @@
 <%= simple_form_for order, defaults: { label_html: { class: 'font-weight-bold' } } do |form| %>
-  <script>
-      $(document).ready(function() { $("#e1").select2(); });
-  </script>
-
   <%= form.error_notification %>
 
   <div class="input-group mb-3">
@@ -21,10 +17,45 @@
   <%= form.input :notes, label: 'Notas', as: :text %>
 
   <h3><%= form.label 'Auspiciantes'%></h3>
-  <% Sponsor.all.each do |sponsor| %>
-    <%= check_box_tag "sponsors[]", sponsor.id, order.sponsors.include?(sponsor) %> <%= sponsor.name %><br>
-  <%end%>
+  <select class="multiple-sponsors" name="sponsors[]" multiple="multiple">
+
+    <ul class="select2-selection__rendered">
+      <li class="select2-selection__choice" title="Gorgeous Rubber Wallet">
+      <span class="select2-selection__choice__remove" role="presentation">×</span>Gorgeous Rubber Wallet</li>
+    </ul>
+
+    <% Sponsor.all.each do |sponsor| %>
+      <option value="<%= sponsor.id %>"><%= sponsor.name %></option>
+    <%end%>
+  </select>
+  <br><br>
+
+  <div class="row ml-1">
+    <% @order.sponsors.each do |sponsor| %>
+      <div class="card mb-3 ml-1 col-3">
+        <div class="row no-gutters">
+          <div class="col-md-2">
+            <%= image_tag sponsor.image.url(:original), class: 'card-img' %>
+          </div>
+          <div class="col-md-10">
+            <div class="card-body">
+              <h4 class="card-title"><%= sponsor.name %></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+
+  <br>
 
   <%= form.submit 'Guardar', class: 'btn btn-primary' %>
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+          $("#e1").select2();
+          $('.multiple-sponsors').select2();
+      });
+  </script>
 
 <% end %>

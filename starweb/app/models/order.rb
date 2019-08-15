@@ -15,7 +15,7 @@ class Order < ApplicationRecord
   validates :notes, length: { maximum: 300 }
 
   # Sponsors
-  before_update :clear_sponsors
+  # before_update :clear_sponsors
   before_destroy :clear_sponsors
   after_create :save_sponsors
   after_update :save_sponsors
@@ -32,16 +32,21 @@ class Order < ApplicationRecord
       return
     else
       @sponsors.each do |sponsor_id|
-        HasSponsor.create(order_id: self.id, sponsor_id: sponsor_id )
+        exists = false
+        self.sponsors.each do |order_sponsor|
+          id = order_sponsor.id
+          exists = true if Integer(sponsor_id) == Integer(id)
+        end
+        if exists == false
+          HasSponsor.create(order_id: self.id, sponsor_id: sponsor_id )
+        end
       end
     end
   end
 
   def clear_sponsors
     HasSponsor.all.each do | hasSponsor |
-      if hasSponsor.order_id == self.id
-        HasSponsor.destroy(hasSponsor.id)
-      end
+      HasSponsor.destroy(hasSponsor.id) if hasSponsor.order_id == self.id
     end
   end
 end
