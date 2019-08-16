@@ -115,38 +115,38 @@
           <% if @order.has_products.empty? %>
             <p class="alert alert-warning">No ha agregado ningún producto</p>
           <% else %>
-          <% @order.has_products.each do |hasProduct| %>
-          <div class="card border-primary col-md-12">
-            <div class="row no-gutters">
-              <div class="col-md-4 mt-4">
-                <%= image_tag hasProduct.product_image.url(:thumb), class: 'card-img' %>
-              </div>
-              <div class="col-md-6 ml-3">
-                <div class="card-body">
-                  <h4 class="card-title mt-2"><b><%= hasProduct.product_name %></b></h4>
-                  <% if @order.paid == 0 %>
-                      <%= link_to '' , hasProduct, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-times-circle ml-3" %>
-                  <% end %>
-                  <hr>
-                  <p class="card-text">
-                    <p><b>Frontal</b> <br><%= hasProduct.specs_f %></p>
-                    <p><b>Dorso</b> <br><%= hasProduct.specs_b %></p>
-                    <p><b>Cantidad</b> <br><%= hasProduct.quantity %></p>
-                    <p><b>Notas</b> <br><%= hasProduct.color %></p>
-                    <p><b>Insumos</b> <br>
-                      <% if hasProduct.product.supplies.empty? %>
-                        <p class="alert alert-warning">No ha asignado ningún insumo</p>
-                      <% else %>
-                      <% hasProduct.product.supplies.each do |has_supply| %>
-                        <%= has_supply.name %></p>
-                      <% end %>
-                      <% end %>
-                  </p>
+            <% @order.has_products.each do |hasProduct| %>
+              <div class="card border-primary col-md-12">
+                <div class="row no-gutters">
+                    <div class="col-md-4 mt-4">
+                      <%= image_tag hasProduct.product_image.url(:thumb), class: 'card-img' %>
+                    </div>
+                    <div class="col-md-6 ml-3">
+                      <div class="card-body">
+                        <h4 class="card-title mt-2"><b><%= hasProduct.product_name %></b></h4>
+                        <% if @order.paid == 0 %>
+                            <%= link_to '' , hasProduct, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-times-circle ml-3" %>
+                        <% end %>
+                        <hr>
+                        <p class="card-text">
+                          <p><b>Frontal</b> <br><%= hasProduct.specs_f %></p>
+                          <p><b>Dorso</b> <br><%= hasProduct.specs_b %></p>
+                          <p><b>Cantidad</b> <br><%= hasProduct.quantity %></p>
+                          <p><b>Notas</b> <br><%= hasProduct.color %></p>
+                          <p><b>Insumos</b> <br>
+                            <% if hasProduct.product.supplies.empty? %>
+                              <p class="alert alert-warning">No ha asignado ningún insumo</p>
+                            <% else %>
+                            <% hasProduct.product.supplies.each do |has_supply| %>
+                              <%= has_supply.name %></p>
+                            <% end %>
+                            <% end %>
+                        </p>
+                      </div>
+                    </div>
                 </div>
               </div>
-              <%end%>
-            </div>
-          </div>
+            <%end%>
           <%end%>
         </div>
       </div>
@@ -185,7 +185,7 @@
         <%end%>
       </div>
 
-  <!-- Modal -->
+      <!-- Modal -->
       <div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">

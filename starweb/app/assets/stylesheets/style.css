@@ -93,19 +93,12 @@ footer {
   line-height: 40px !important; }
 
 @media print {
-  body {
-    font-family: Consolas; }
+    body {
+        font-family: Consolas;
+    }
 
-  #sidebar-wrapper {
-    display: none !important; }
-
-  .mt-3 {
-    display: none; }
-
-  hr {
-    display: none; }
-
-  #buttons {
-    display: none; } }
-
+    #sidebar-wrapper, .mt-3, hr, #buttons, b, thead  {
+        display:none !important;
+    }
+}
 /*# sourceMappingURL=style.css.map */

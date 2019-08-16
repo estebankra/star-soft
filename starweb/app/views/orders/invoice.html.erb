@@ -11,24 +11,52 @@
 <hr>
 
 <div class="row">
-  <div class="col-6">
-    <p><b>Billed to:</b> <%= "#{@order.client.first_name} #{@order.client.last_name}" %></p>
+  <div class="col-9">
+    <h6><b>FECHA,</b> <%= I18n.l(Date.today, format: '%d %B %Y').upcase %></h6>
   </div>
-  <div class="col-6">
-    <p><b>Invoice date:</b> <%= Date.current %></p>
-    <p><b>Invoice No:</b> 1</p>
+  <div class="col-3">
+    <h6><b>CONDICIONES DE VENTA:</b>  <i class="fas fa-times ml-3"></i> <b>CONTADO</b></h6>
   </div>
 </div>
+
+<hr>
+
+<div class="row">
+  <div class="col-9">
+    <h6><b>NOMBRE O RAZÓN SOCIAL:</b> <%= "#{@order.client.first_name} #{@order.client.last_name}".upcase %></h6>
+  </div>
+  <div class="col-3">
+    <h6><b>CI o RUC:</b> <%= "#{@order.client.doc_ruc}" %></h6>
+  </div>
+</div>
+
+<hr>
+
+<h6><b>DIRECCIÓN:</b> <%= "#{@order.client.city}, #{@order.client.country}".upcase %></h6>
+
+<br>
+
 <div class="row">
   <div class="col-12">
-    <h5>Detalle</h5>
-    <table class="table">
+    <table class="table table-sm text-center table-borderless">
       <thead>
       <tr>
-        <th scope="col">Cantidad</th>
-        <th scope="col" style="width: 60%">Descripción</th>
-        <th scope="col">Precio unitario</th>
-        <th scope="col">Precio total</th>
+        <th scope="col"></th>
+        <th scope="col" style="width: 50%"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col">VALOR DE VENTA</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <thead>
+      <tr>
+        <th scope="col">CANT.</th>
+        <th scope="col" style="width: 50%">CLASE DE MERCADERIAS Y/O SERVICIOS</th>
+        <th scope="col">PRECIO<BR>UNITARIO</th>
+        <th scope="col">EXENTAS</th>
+        <th scope="col">5%</th>
+        <th scope="col">10%</th>
       </tr>
       </thead>
       <tbody>
@@ -36,23 +64,39 @@
       <% @order.has_products.each do |hasProduct| %>
         <% total += hasProduct.quantity * hasProduct.product.price %>
         <tr>
-          <th scope="row"><%= hasProduct.quantity %></th>
+          <th scope="row"><%= hasProduct.quantity %></th scope="row">
           <th scope="row"><%= hasProduct.product.name %></th>
           <th scope="row"><%= number_with_delimiter(hasProduct.product.price, :delimiter => ',') %></th>
-          <th scope="row"><%= number_with_delimiter(hasProduct.quantity * hasProduct.product.price, :delimiter => ',') %></th>
+          <th scope="row"></th>
+          <th scope="row"></th>
+          <th scope="row"><%= number_with_delimiter(hasProduct.quantity * hasProduct.product.price , :delimiter => ',') %></th>
         </tr>
       <% end %>
       </tbody>
     </table>
+    <br>
     <hr>
     <div class="row">
-      <div class="col-10">
+      <div class="col-9 pl-5">
+        <p id="total_string"><b>TOTAL A PAGAR GS.</b></p>
       </div>
-      <div class="col-2">
-        <p><b>SubTotal:</b> <%= number_with_delimiter(total, :delimiter => ',') %></b>
-        <p><b>IVA 10%:</b> <%= number_with_delimiter(total, :delimiter => ',') %></b>
-        <p><b>50%:</b> <%= number_with_delimiter(total / 2 , :delimiter => ',') %></b>
-        <p><b>Total:</b> <%= number_with_delimiter(total, :delimiter => ',') %></b>
+      <div class="col-3 pl-5">
+        <p><b>TOTAL:</b> <%= number_with_delimiter(total, :delimiter => ',') %></br></p>
+      </div>
+    </div>
+    <hr>
+    <div class="row text-center">
+      <div class="col-3">
+        <p><b>LIQUIDACION DEL IVA:</b></p>
+      </div>
+      <div class="col-1">
+        <p><b>5%</b> <%= number_with_delimiter(total, :delimiter => ',') %></br></p>
+      </div>
+      <div class="col-3">
+        <p><b>10%:</b> <%= number_with_delimiter(total / 2 , :delimiter => ',') %></b></p>
+      </div>
+      <div class="col-5">
+        <p><b>TOTAL IVA:</b> <%= number_with_delimiter(total, :delimiter => ',') %></b></p>
       </div>
     </div>
     <hr>
@@ -60,12 +104,12 @@
     <div class="col-9">
     </div>
     <div class="col-3">
-      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalProduct"> Imprimir (Ctrl + P) </button>
       <% if @order.paid == 0 %>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalProduct"> Cobrar 50% </button>
+        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalProduct"> Cobrar 50% </button>
       <% else %>
-        <button type="button" class="btn btn-primary" disabled data-toggle="modal" data-target="#modalProduct"> Cobrar 50% </button>
+        <button type="button" class="btn btn-link" disabled data-toggle="modal" data-target="#modalProduct"> Cobrar 50% </button>
       <% end %>
+      <button type="button" class="btn btn-info" data-toggle="modal" disabled data-target="#modalProduct"> Imprimir (Ctrl + P) </button>
       <a type="button" class="btn btn-primary"  onclick="return confirm('Estás seguro?')" href="/orders/pay/<%=@order.id%>"> Facturar </a>
     </div>
   </div>
@@ -90,3 +134,10 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        let result = numeroALetras(<%= total %>);
+        document.getElementById('total_string').innerHTML='<b>TOTAL A PAGAR GS.</b> ' + result;
+    });
+</script>

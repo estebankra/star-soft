@@ -127,24 +127,18 @@ footer {
   line-height: 40px !important;
 }
 
+
 @media print {
-  body {
-    font-family: Consolas;
+  html, body {
+    font-family: Sans-Serif;
+    font-size: 13px;
   }
 
-  #sidebar-wrapper {
+  #sidebar-wrapper, .mt-3, hr, #buttons, b, thead  {
     display:none !important;
   }
 
-  .mt-3 {
-    display: none;
-  }
-
-  hr {
-    display: none;
-  }
-
-  #buttons {
-    display: none;
+  th {
+    font-weight: normal !important;
   }
 }
