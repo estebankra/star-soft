@@ -121,10 +121,15 @@ footer {
 
 .select2-container--default .select2-selection--single{
   height: 100% !important;
+  width: 350px;
 }
 
 #select2-e1-container {
   line-height: 40px !important;
+}
+
+#second-invoice {
+  display: none;
 }
 
 
@@ -134,8 +139,20 @@ footer {
     font-size: 13px;
   }
 
+  .table {
+    margin-bottom: 10rem;
+  }
+
   #sidebar-wrapper, .mt-3, hr, #buttons, b, thead  {
     display:none !important;
+  }
+
+  #first-invoice {
+    margin-bottom: 300px;
+  }
+
+  #second-invoice {
+    display: initial;
   }
 
   th {

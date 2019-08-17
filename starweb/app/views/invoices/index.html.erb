@@ -18,17 +18,21 @@
       <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr>
-          <th>Client</th>
+          <th>Cliente</th>
           <th>Fecha</th>
-          <th>Moneda</th>
+          <th>Total</th>
         </tr>
         </thead>
         <tbody>
     <% @invoices.each do |invoice| %>
         <tr>
-          <td><%= invoice.recipient.first_name %></td>
-          <td><%= invoice.created_at %></td>
-          <td><%= invoice.currency %></td>
+          <td><%= "#{invoice.recipient.first_name} #{invoice.recipient.last_name}" %></td>
+          <td><%= I18n.l(invoice.created_at, format: '%d de %B de %Y').upcase %></td>
+          <% total = 0 %>
+          <% invoice.line_items.each do |item| %>
+            <% total += item.quantity * item.net_amount %>
+          <% end %>
+          <td>GS. <%= number_with_delimiter(total, :delimiter => ',') %></td>
           <td><a class="fas fa-eye mt-2" href="/invoices/<%=invoice.id%>"></a></td>
         </tr>
       <% end %>

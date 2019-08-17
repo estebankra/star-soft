@@ -98,23 +98,19 @@ class OrdersController < ApplicationController
 
   end
 
-  # When a client pay 50% of an order
-  def half
-    @order = Order.find(params[:id])
-    @order.paid = 1
-    @order.save
-
-    redirect_to @order
-  end
-
   def pay
     @order = Order.find(params[:id])
-    invoice = EndUserInvoice.new(sender: current_user, recipient: @order.client, currency: 'GS', total_amount: 0)
+    invoice = EndUserInvoice.new(sender: current_user, recipient: @order.client, currency: 'GS', status: 'paid out' )
+
+    total = 0
 
     @order.has_products.each do |hasProduct|
       invoice.line_items.build(description: hasProduct.product.name,
-                               net_amount: hasProduct.product.price, quantity: hasProduct.quantity)
+                               net_amount: hasProduct.product.price, quantity: hasProduct.quantity, tax_amount: 0)
+      total += hasProduct.product.price * hasProduct.quantity
     end
+
+    invoice.total_amount = 0
 
     invoice.save
 

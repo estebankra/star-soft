@@ -18,7 +18,7 @@
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Producto</label>
-    <%= form.select :product_id, Product.all.collect {|p| [ "#{p.name} #{p.price}", p.id ] }, {prompt: 'Selecciona el producto'}, class: 'form-control', id: 'e3' %>
+    <%= form.select :product_id, Product.all.collect {|p| [ "#{p.name} -- GS. #{number_with_delimiter(p.price, :delimiter => ',')}", p.id ] }, {prompt: 'Selecciona el producto'}, class: 'form-control', id: 'e3' %>
   </div>
 </div>
 
