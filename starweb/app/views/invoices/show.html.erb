@@ -9,51 +9,105 @@
 </div>
 <hr>
 
+<!-- First -->
+<div id="first-invoice">
+  <div class="row">
+    <div class="col-9">
+      <h6><b>FECHA,</b> <%= I18n.l(@invoice.created_at, format: '%d %B %Y').upcase %></h6>
+    </div>
+    <div class="col-3">
+      <h6><b>CONDICIONES DE VENTA:</b>  <i class="fas fa-times ml-3"></i> <b>CONTADO</b></h6>
+    </div>
+  </div>
 
-<div class="row">
-  <div class="col-9">
-    <h5><b>Cliente:</b> <%= "#{@invoice.recipient.first_name} #{@invoice.recipient.last_name}" %></h5>
+  <hr>
+
+  <div class="row">
+    <div class="col-9">
+      <h6><b>NOMBRE O RAZÓN SOCIAL:</b> <%= "#{@invoice.recipient.first_name} #{@invoice.recipient.last_name}".upcase %></h6>
+    </div>
+    <div class="col-3">
+      <h6><b>CI o RUC:</b> <%= "#{@invoice.recipient.doc_ruc}" %></h6>
+    </div>
   </div>
-  <div class="col-3">
-    <h5><b>Fecha:</b> <%= @invoice.created_at %></h5>
-  </div>
-</div>
-<br>
-<div class="row">
-  <div class="col-12">
-    <h5>Invoice Summary</h5>
-    <table class="table">
-      <thead>
-      <tr>
-        <th scope="col">Cantidad</th>
-        <th scope="col" style="width: 60%">Descripcion</th>
-        <th scope="col">Precio unitario</th>
-        <th scope="col">Precio total</th>
-      </tr>
-      </thead>
-      <tbody>
-      <% total = 0 %>
-      <% @invoice.line_items.each do |hasProduct| %>
-        <% total += hasProduct.quantity * hasProduct.net_amount %>
+
+  <hr>
+
+  <h6><b>DIRECCIÓN:</b> <%= "#{@invoice.recipient.city}, #{@invoice.recipient.country}".upcase %></h6>
+
+  <br>
+
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-sm text-center table-borderless">
+        <thead>
         <tr>
-          <th scope="row"><%= hasProduct.quantity %></th>
-          <th scope="row"><%= hasProduct.description %></th>
-          <th scope="row"><%= number_with_delimiter(hasProduct.net_amount, :delimiter => ',') %></th>
-          <th scope="row"><%= number_with_delimiter(hasProduct.quantity * hasProduct.net_amount, :delimiter => ',') %></th>
+          <th scope="col"></th>
+          <th scope="col" style="width: 50%"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col">VALOR DE VENTA</th>
+          <th scope="col"></th>
         </tr>
-      <% end %>
-      </tbody>
-    </table>
-    <hr>
-    <div class="row">
-      <div class="col-10">
+        </thead>
+        <thead>
+        <tr>
+          <th scope="col">CANT.</th>
+          <th scope="col" style="width: 50%">CLASE DE MERCADERIAS Y/O SERVICIOS</th>
+          <th scope="col">PRECIO<BR>UNITARIO</th>
+          <th scope="col">EXENTAS</th>
+          <th scope="col">5%</th>
+          <th scope="col">10%</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% total = 0 %>
+        <% @invoice.line_items.each do |hasProduct| %>
+          <% total += hasProduct.quantity * hasProduct.net_amount %>
+          <tr>
+            <th scope="row"><%= hasProduct.quantity %></th scope="row">
+            <th scope="row"><%= hasProduct.description %></th>
+            <th scope="row"><%= number_with_delimiter(hasProduct.net_amount, :delimiter => ',') %></th>
+            <th scope="row"><%= number_with_delimiter((hasProduct.quantity * hasProduct.net_amount) - (hasProduct.quantity * hasProduct.net_amount * 10 / 100) , :delimiter => ',') %></th>
+            <th scope="row">----------</th>
+            <th scope="row"><%= number_with_delimiter(hasProduct.quantity * hasProduct.net_amount , :delimiter => ',') %></th>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <br>
+      <hr>
+      <div class="row">
+        <div class="col-9 pl-5">
+          <p id="totalStringF"><b>TOTAL A PAGAR GS.</b></p>
+        </div>
+        <div class="col-3 pl-5">
+          <p><b>TOTAL:</b> <%= number_with_delimiter(total, :delimiter => ',') %></br></p>
+        </div>
       </div>
-      <div class="col-2">
-        <p><b>SubTotal:</b> <%= number_with_delimiter(total, :delimiter => ',') %></b>
-        <p><b>Tax:</b> <%= number_with_delimiter(total, :delimiter => ',') %></b>
-        <p><b>50%:</b> <%= number_with_delimiter(total, :delimiter => ',') %></b>
-        <p><b>Total:</b> <%= number_with_delimiter(total, :delimiter => ',') %></b>
+      <hr>
+      <div class="row text-center">
+        <div class="col-3">
+          <p><b>LIQUIDACION DEL IVA:</b></p>
+        </div>
+        <div class="col-1">
+          <p><b>5%</b> ------------ </br></p>
+        </div>
+        <div class="col-3">
+          <p><b>10%:</b> <%= number_with_delimiter((total * 10) / 100 , :delimiter => ',') %></b></p>
+        </div>
+        <div class="col-5">
+          <p><b>TOTAL IVA:</b> <%= number_with_delimiter((total * 10) / 100 , :delimiter => ',') %></b></p>
+        </div>
       </div>
+      <hr>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        let result = numeroALetras(<%= total %>);
+        document.getElementById('totalStringF').innerHTML='<b>TOTAL A PAGAR GS.</b> ' + result;
+    });
+</script>
