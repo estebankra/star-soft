@@ -1,3 +1,4 @@
-measure: supply
+measure:
+  key: supply
 dimensions:
-  - stock
+  - name

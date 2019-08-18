@@ -1,0 +1,11 @@
+measure: order
+filters:
+  - created_at
+dimensions:
+  - created_at
+chart:
+  type: line
+  options:
+    scales:
+      yAxes:
+        - stacked: true

@@ -28,10 +28,10 @@ class Order < ApplicationRecord
     contextual_filter :for_client, ->(relation, context_params) { relation.where(client_id: context_params[:client_id]) }
   end
 
-  STATUSES = %w[draft private published].freeze
+  STATUSES = %w(draft private published).freeze
 
   def to_s
-    title
+    client_first_name
   end
 
   def sponsors=(value)
