@@ -4,7 +4,7 @@
   <div class="sidebar-heading"><i class="fab fa-stumbleupon-circle fa-3x"></i><br>StarWeb</div>
   <div class="list-group list-group-flush mt-4">
     <% if current_user.is_admin? %>
-      <%= link_to(raw("<i class='fas fa-chart-line fa-lg'></i><br>Reportes"), '/reports/index', class: "list-group-item list-group-item-action") %>
+      <%= link_to(raw("<i class='fas fa-chart-line fa-lg'></i><br>Reportes"), reports_path, class: "list-group-item list-group-item-action") %>
       <%= link_to(raw("<i class='fa fa-user fa-lg'></i><br>Usuarios"), '/users/index', class: "list-group-item list-group-item-action") %>
     <%end%>
     <%= link_to(raw("<i class='fas fa-tasks fa-lg '></i><br>Pedidos"), orders_path, class: "list-group-item list-group-item-action") %>

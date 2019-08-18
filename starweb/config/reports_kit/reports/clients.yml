@@ -1,0 +1,3 @@
+measure: client
+dimensions:
+  - created_at

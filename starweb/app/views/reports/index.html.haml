@@ -1,9 +1,32 @@
-<h1>Reportes</h1>
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">Reportes</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Index</li>
-  </ol>
-</nav>
-</div>
-<hr>
+%h1 Reportes
+%nav{"aria-label" => "breadcrumb"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      %a{:href => "#"} Reportes
+    %li.breadcrumb-item.active{"aria-current" => "page"} Index
+
+  .row
+    .col-md-6.col-sm-12
+      %h3 Estado de pedidos
+      = render_report 'orders'
+
+    .col-md-6.col-sm-12
+      %h3 Clientes registrados
+      = render_report 'orders_client'
+  .row
+    .col-md-6.col-sm-12
+      %h3 Stock de productos
+      = render_report 'supplies'
+
+    .col-md-6.col-sm-12
+      %h3 Usuarios del sistema
+      = render_report 'my_users'
+
+  .row
+    .col-md-6.col-sm-12
+      %h3 Estado de pedidos
+      = render_report 'orders'
+
+    .col-md-6.col-sm-12
+      %h3 Clientes registrados
+      = render_report 'clients'
