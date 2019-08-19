@@ -72,6 +72,9 @@ gem 'invoicing'
 gem 'prawn'
 gem 'prawn-table'
 
+# For working with json
+gem 'httparty'
+
 # For search in orders
 gem "select2-rails"
 

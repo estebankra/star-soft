@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  require 'httparty'
+
   before_action :authenticate_user!
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   require 'invoicing/ledger_item/pdf_generator'
@@ -18,6 +20,16 @@ class OrdersController < ApplicationController
   def show
     @hasProduct = HasProduct.new
     @order_detail = OrderDetail.new
+
+    if @order.paid == 0
+      # Quotations
+      real = HTTParty.get('https://api.cambio.today/v1/quotes/BRL/PYG/json?quantity=1&key=2291|UcRBwxvE*C~uzgnYu6~ESYN5VbugBB6A')
+      peso = HTTParty.get('https://api.cambio.today/v1/quotes/ARS/PYG/json?quantity=1&key=2291|UcRBwxvE*C~uzgnYu6~ESYN5VbugBB6A')
+      dolar = HTTParty.get('https://api.cambio.today/v1/quotes/USD/PYG/json?quantity=1&key=2291|UcRBwxvE*C~uzgnYu6~ESYN5VbugBB6A')
+      @dolar = JSON.parse(dolar.body)
+      @peso = JSON.parse(peso.body)
+      @real = JSON.parse(real.body)
+    end
   end
 
   # GET /orders/new

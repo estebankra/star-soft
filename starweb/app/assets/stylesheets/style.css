@@ -92,6 +92,10 @@ footer {
 #select2-e1-container {
   line-height: 40px !important; }
 
+.cotizaciones-widget header .logo {
+    display: none !important;
+}
+
 @media print {
     body {
         font-family: Consolas;
