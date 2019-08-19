@@ -7,20 +7,22 @@
   </ol>
 </nav>
 </div>
+
 <hr>
 <div id="page-inner">
   <% if current_user.is_secretary? %>
-    <% if @order.paid == 0 %>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalProduct"> Agregar producto </button>
-    <% end %>
-
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalOrderDetail">Agregar detalles</button>
     <% if @order.paid == 2 %>
       <button class="btn btn-success" disabled>Pagado</button>
-    <% elsif !@order.products.empty? %>
+    <% elsif !@order.products.empty? and !@order.order_details.empty? %>
       <a type="button" class="btn btn-primary" href="/orders/invoice/<%=@order.id%>">Facturar</a>
+      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalPayForeignCurrency">Cobrar en moneda extranjera</button>
     <% end %>
-    <%= link_to 'Editar', edit_order_path(@order), class: 'btn btn-link' %>
+    <% if @order.paid == 0 %>
+      <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalProduct"> Agregar producto </button>
+      <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalOrderDetail">Agregar detalles</button>
+    <% end %>
+
+    <%= link_to 'Editar pedido', edit_order_path(@order), class: 'btn btn-link' %>
   <%end%>
   <div class="row mt-4">
     <div class="col-md-6">
@@ -218,6 +220,49 @@
           </div>
         </div>
       </div>
+
+      <% if @order.paid == 0 %>
+        <!-- Modal -->
+        <div class="modal fade" id="modalPayForeignCurrency" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Total en moneda extranjera</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div id="form_order_detail" class="modal-body">
+                <% peso = Integer('%.0f' % @peso['result']['value']) %>
+                <% dolar = Integer('%.0f' % @dolar['result']['value']) %>
+                <% real = Integer('%.0f' % @real['result']['value']) %>
+
+                <% total = 0 %>
+                <% @order.has_products.each do |hasProduct| %>
+                  <% total += hasProduct.quantity * hasProduct.product.price %>
+                <% end %>
+
+                <div class="row text-center">
+                  <div class="col-md-4">
+                    <h4><%= image_tag("brasil.jpg", :alt => "rss feed") %> <br> <%= '%.2f' % (total / real) %> reales </h4>
+                  </div>
+
+                  <div class="col-md-4">
+                    <h4><%= image_tag("argentina.jpg", :alt => "rss feed") %> <br> <%= '%.2f' % (total / peso) %> pesos </h4>
+                  </div>
+
+                  <div class="col-md-4">
+                    <h4><%= image_tag("eeuu.jpg", :alt => "rss feed") %> <br> <%= '%.2f' % (total / dolar) %> dólares </h4>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <a type="button" class="btn btn-primary"  onclick="return confirm('Estás seguro?')" href="/orders/pay/<%=@order.id%>"> Cobrar </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
   <!-- /. PAGE INNER  -->
     </div>
     <!-- /. PAGE WRAPPER  -->

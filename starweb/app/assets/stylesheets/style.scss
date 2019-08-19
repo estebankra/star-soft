@@ -144,6 +144,10 @@ footer {
   margin-bottom: 50px;
 }
 
+.clearfix {
+  display: none !important;
+}
+
 @media print {
   html, body {
     font-family: Sans-Serif;
