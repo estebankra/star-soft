@@ -5,16 +5,16 @@
       %a{:href => "#"} Reportes
     %li.breadcrumb-item.active{"aria-current" => "page"} Index
 
-  %h2 Pedidos
-  %hr
   .row
     .col-md-6.col-sm-12
-      %h3 Estado de pedidos
-      = render_report 'orders'
-
+      %h3 Historico de Facturas
+      = render_report 'invoices_total_amount' do |report|
+        = report.form do |f|
+          .pull-right
+            = f.date_range :created_at
     .col-md-6.col-sm-12
-      %h3 Pedidos por cliente
-      = render_report 'orders_client'
+      %h3 Estado de pedidos
+      = render_report 'orders_state'
 
   .row
     .col-md-6.col-sm-12
@@ -24,31 +24,15 @@
           .pull-right
             = f.date_range :created_at
 
-  %h2 Clientes
-  %hr
+    .col-md-6.col-sm-12
+      %h3 Pedidos por cliente
+      = render_report 'orders_client'
+
   .row
-    .col-md-6.col-sm-12
-      %h3 Stock de productos
-      = render_report 'supplies'
-
-    .col-md-6.col-sm-12
-      %h3 Usuarios del sistema
-      = render_report 'my_users'
-
-  %h2 Productos
-  %hr
-  .row
-    .col-md-6.col-sm-12
-      %h3 Estado de pedidos
-      = render_report 'orders'
-
     .col-md-6.col-sm-12
       %h3 Clientes registrados
       = render_report 'clients'
 
-  %h2 Sistema
-  %hr
-  .row
     .col-md-6.col-sm-12
       %h3 Usuarios del sistema
       = render_report 'users_of_system'

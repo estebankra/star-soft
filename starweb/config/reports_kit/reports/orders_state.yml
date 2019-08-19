@@ -1,17 +1,14 @@
 measure: order
-filters:
-  - created_at
 dimensions:
-  - created_at
+  - state
 chart:
-  type: line
   options:
     scales:
       xAxes:
         - scaleLabel:
             display: true
-            labelString: Fecha de pedidos
+            labelString: Estados
       yAxes:
         - scaleLabel:
             display: true
-            labelString: Cantidad de pedidos
+            labelString: Cantidad

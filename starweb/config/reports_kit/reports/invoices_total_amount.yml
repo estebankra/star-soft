@@ -1,4 +1,4 @@
-measure: order
+measure: invoicing_ledger_item
 filters:
   - created_at
 dimensions:
@@ -10,8 +10,8 @@ chart:
       xAxes:
         - scaleLabel:
             display: true
-            labelString: Fecha de pedidos
+            labelString: Fecha
       yAxes:
         - scaleLabel:
             display: true
-            labelString: Cantidad de pedidos
+            labelString: Cantidad de facturas
