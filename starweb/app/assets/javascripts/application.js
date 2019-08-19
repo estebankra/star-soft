@@ -18,4 +18,5 @@
 //= require popper
 //= require bootstrap
 //= require select2
+//= require reports_kit/application
 //= require_tree .

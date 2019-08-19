@@ -1,0 +1,17 @@
+measure: invoicing_ledger_item
+filters:
+  - created_at
+dimensions:
+  - created_at
+chart:
+  type: line
+  options:
+    scales:
+      xAxes:
+        - scaleLabel:
+            display: true
+            labelString: Fecha
+      yAxes:
+        - scaleLabel:
+            display: true
+            labelString: Cantidad de facturas

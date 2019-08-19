@@ -132,6 +132,17 @@ footer {
   display: none;
 }
 
+.form-inline {
+  display: contents;
+}
+
+.btn-primary {
+  margin-left: 5px;
+}
+
+.reports_kit_actions {
+  margin-bottom: 50px;
+}
 
 @media print {
   html, body {

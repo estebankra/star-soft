@@ -1,0 +1,38 @@
+%h1 Reportes
+%nav{"aria-label" => "breadcrumb"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      %a{:href => "#"} Reportes
+    %li.breadcrumb-item.active{"aria-current" => "page"} Index
+
+  .row
+    .col-md-6.col-sm-12
+      %h3 Historico de Facturas
+      = render_report 'invoices_total_amount' do |report|
+        = report.form do |f|
+          .pull-right
+            = f.date_range :created_at
+    .col-md-6.col-sm-12
+      %h3 Estado de pedidos
+      = render_report 'orders_state'
+
+  .row
+    .col-md-6.col-sm-12
+      %h3 Fecha de pedidos
+      = render_report 'orders_date' do |report|
+        = report.form do |f|
+          .pull-right
+            = f.date_range :created_at
+
+    .col-md-6.col-sm-12
+      %h3 Pedidos por cliente
+      = render_report 'orders_client'
+
+  .row
+    .col-md-6.col-sm-12
+      %h3 Clientes registrados
+      = render_report 'clients'
+
+    .col-md-6.col-sm-12
+      %h3 Usuarios del sistema
+      = render_report 'users_of_system'

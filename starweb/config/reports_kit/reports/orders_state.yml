@@ -1,0 +1,14 @@
+measure: order
+dimensions:
+  - state
+chart:
+  options:
+    scales:
+      xAxes:
+        - scaleLabel:
+            display: true
+            labelString: Estados
+      yAxes:
+        - scaleLabel:
+            display: true
+            labelString: Cantidad

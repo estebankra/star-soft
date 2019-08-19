@@ -1,0 +1,14 @@
+measure: user
+dimensions:
+- permission_level
+chart:
+  options:
+    scales:
+      xAxes:
+        - scaleLabel:
+            display: true
+            labelString: Permisos
+      yAxes:
+        - scaleLabel:
+            display: true
+            labelString: Numero de usuarios

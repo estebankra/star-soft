@@ -61,6 +61,11 @@ gem 'simple_form'
 
 gem 'country_select', '~> 4.0'
 
+# Reports
+gem 'reports_kit'
+
+gem 'haml'
+
 # For invoices
 gem 'invoicing'
 # For pdf generator
@@ -69,9 +74,6 @@ gem 'prawn-table'
 
 # For search in orders
 gem "select2-rails"
-
-# Errors messages in spanish
-gem 'rails-i18n', '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

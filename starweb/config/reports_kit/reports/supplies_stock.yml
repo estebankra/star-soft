@@ -1,0 +1,14 @@
+data_method: MyDataMethods.supplies_by_stock
+chart:
+  options:
+    legend:
+      display: false
+    scales:
+      xAxes:
+        - scaleLabel:
+            display: true
+            labelString: Insumo
+      yAxes:
+        - scaleLabel:
+            display: true
+            labelString: En stock
