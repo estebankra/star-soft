@@ -68,10 +68,11 @@
           <tr>
             <th scope="row"><%= hasProduct.quantity %></th scope="row">
             <th scope="row"><%= hasProduct.product.name %></th>
-            <th scope="row"><%= number_with_delimiter(hasProduct.product.price, :delimiter => ',') %></th>
-            <th scope="row"><%= number_with_delimiter((hasProduct.quantity * hasProduct.product.price) - (hasProduct.quantity * hasProduct.product.price * 10 / 100) , :delimiter => ',') %></th>
+            <th scope="row"><%= number_with_delimiter('%.0f' % hasProduct.product.price, :delimiter => '.') %></th>
             <th scope="row">----------</th>
-            <th scope="row"><%= number_with_delimiter(hasProduct.quantity * hasProduct.product.price , :delimiter => ',') %></th>
+            <th scope="row">----------</th>
+            <% total10 = hasProduct.quantity * hasProduct.product.price %>
+            <th scope="row"><%= number_with_delimiter('%.0f' %  total10, :delimiter => '.') %></th>
           </tr>
         <% end %>
         </tbody>
@@ -83,7 +84,7 @@
           <p id="totalStringF"><b>TOTAL A PAGAR GS.</b></p>
         </div>
         <div class="col-3 pl-5">
-          <p><b>TOTAL:</b> <%= number_with_delimiter(total, :delimiter => ',') %></br></p>
+          <p><b>TOTAL:</b> <%= number_with_delimiter('%.0f' % total, :delimiter => '.') %></br></p>
         </div>
       </div>
       <hr>
@@ -95,10 +96,11 @@
           <p><b>5%</b> ------------ </br></p>
         </div>
         <div class="col-3">
-          <p><b>10%:</b> <%= number_with_delimiter((total * 10) / 100 , :delimiter => ',') %></b></p>
+          <% iva =  (total * 10) / 100 %>
+          <p><b>10%:</b> <%= number_with_delimiter( '%.0f' % iva, :delimiter => '.') %></b></p>
         </div>
         <div class="col-5">
-          <p><b>TOTAL IVA:</b> <%= number_with_delimiter((total * 10) / 100 , :delimiter => ',') %></b></p>
+          <p><b>TOTAL IVA:</b> <%= number_with_delimiter('%.0f' % iva, :delimiter => '.') %></b></p>
         </div>
       </div>
       <hr>
@@ -169,10 +171,11 @@
           <tr>
             <th scope="row"><%= hasProduct.quantity %></th scope="row">
             <th scope="row"><%= hasProduct.product.name %></th>
-            <th scope="row"><%= number_with_delimiter(hasProduct.product.price, :delimiter => ',') %></th>
-            <th scope="row"><%= number_with_delimiter((hasProduct.quantity * hasProduct.product.price) - (hasProduct.quantity * hasProduct.product.price * 10 / 100) , :delimiter => ',') %></th>
+            <th scope="row"><%= number_with_delimiter('%.0f' % hasProduct.product.price, :delimiter => '.') %></th>
             <th scope="row">----------</th>
-            <th scope="row"><%= number_with_delimiter(hasProduct.quantity * hasProduct.product.price , :delimiter => ',') %></th>
+            <th scope="row">----------</th>
+            <% total10 = hasProduct.quantity * hasProduct.product.price %>
+            <th scope="row"><%= number_with_delimiter('%.0f' %  total10 , :delimiter => '.') %></th>
           </tr>
         <% end %>
         </tbody>
@@ -184,7 +187,7 @@
           <p id="totalStringS"><b>TOTAL A PAGAR GS.</b></p>
         </div>
         <div class="col-3 pl-5">
-          <p><b>TOTAL:</b> <%= number_with_delimiter(total, :delimiter => ',') %></br></p>
+          <p><b>TOTAL:</b> <%= number_with_delimiter('%.0f' % total, :delimiter => '.') %></br></p>
         </div>
       </div>
       <hr>
@@ -196,10 +199,11 @@
           <p><b>5%</b> ------------ </br></p>
         </div>
         <div class="col-3">
-          <p><b>10%:</b> <%= number_with_delimiter((total * 10) / 100 , :delimiter => ',') %></b></p>
+          <% iva =  (total * 10) / 100 %>
+          <p><b>10%:</b> <%= number_with_delimiter('%.0f' % iva , :delimiter => '.') %></b></p>
         </div>
         <div class="col-5">
-          <p><b>TOTAL IVA:</b> <%= number_with_delimiter((total * 10) / 100 , :delimiter => ',') %></b></p>
+          <p><b>TOTAL IVA:</b> <%= number_with_delimiter( '%.0f' % iva, :delimiter => '.') %></b></p>
         </div>
       </div>
       <hr>

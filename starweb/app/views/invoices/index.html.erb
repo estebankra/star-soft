@@ -32,7 +32,7 @@
           <% invoice.line_items.each do |item| %>
             <% total += item.quantity * item.net_amount %>
           <% end %>
-          <td>GS. <%= number_with_delimiter(total, :delimiter => ',') %></td>
+          <td>GS. <%= number_with_delimiter('%.0f' % total, :delimiter => '.') %></td>
           <td><a class="fas fa-eye mt-2" href="/invoices/<%=invoice.id%>"></a></td>
         </tr>
       <% end %>
