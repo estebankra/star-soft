@@ -35,7 +35,7 @@
               <h5 class="card-title mt-3"><b>Pedido</b></h5>
               <hr>
               <p class="card-text">
-                <b>Fecha de entrega</b><br><%= @order.deliver_date %>
+                <b>Fecha de entrega</b><br><%= I18n.l(@order.deliver_date, format: '%d de %B de %Y').upcase %>
               </p>
               <p>
                 <% if @order.state == 'En espera' %>
