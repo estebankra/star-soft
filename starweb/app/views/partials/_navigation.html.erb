@@ -9,7 +9,7 @@
     <%end%>
     <%= link_to(raw("<i class='fas fa-tasks fa-lg '></i><br>Pedidos"), orders_path, class: "list-group-item list-group-item-action") %>
     <% if current_user.is_secretary? %>
-      <%= link_to(raw("<i class='fas fa-boxes fa-lg '></i><br>Facturas"), invoices_path, class: "list-group-item list-group-item-action") %>
+      <%= link_to(raw("<i class='fas fa-coins fa-lg '></i><br>Facturas"), invoicing_ledger_items_path, class: "list-group-item list-group-item-action") %>
       <%= link_to(raw("<i class='fas fa-tshirt fa-lg '></i><br>Productos"), products_path, class: "list-group-item list-group-item-action") %>
       <%= link_to(raw("<i class='fas fa-user-friends fa-lg '></i><br>Clientes"), clients_path, class: "list-group-item list-group-item-action") %>
       <%= link_to(raw("<i class='fas fa-boxes fa-lg '></i><br>Insumos"), supplies_path, class: "list-group-item list-group-item-action") %>

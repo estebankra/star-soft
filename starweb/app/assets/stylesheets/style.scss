@@ -144,9 +144,10 @@ footer {
   margin-bottom: 50px;
 }
 
-.clearfix {
-  display: none !important;
+.select2-container--default .select2-selection--single {
+  width: unset !important;
 }
+
 
 @media print {
   html, body {

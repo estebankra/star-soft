@@ -6,7 +6,9 @@
       <label class="input-group-text" for="inputGroupSelect01">Cliente</label>
       <%= form.select :client_id, Client.all.collect {|p| [ "#{p.first_name} #{p.last_name} #{p.doc_ruc}", p.id ] }, {prompt: 'Selecciona el Cliente'}, class: 'form-control', id: 'e1' %>
     </div>
+    <%= link_to 'Nuevo', new_client_path, class: 'btn btn-info' %>
   </div>
+
 
   <%= form.input :deliver_date, label: 'Fecha de entrega' %>
 
@@ -29,7 +31,7 @@
     <%end%>
   </select>
 
-  <%= link_to 'Nuevo', new_sponsor_path, class: 'btn btn-primary' %>
+  <%= link_to 'Nuevo', new_sponsor_path, class: 'btn btn-info' %>
 
   <br><br>
 
