@@ -7,8 +7,12 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    # Paginate
-    @orders = Order.includes(:client).page params[:page]
+
+    # Filter data by search send by view
+    @q = Order.includes(:client).ransack(params[:q])
+    # Paginate the result
+    @orders = @q.result.page params[:page]
+
     if params[:state].present?
       @orders = @orders.where("state = ?", params[:state])
     end
