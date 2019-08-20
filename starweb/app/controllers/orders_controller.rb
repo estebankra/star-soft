@@ -3,7 +3,6 @@ class OrdersController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  require 'invoicing/ledger_item/pdf_generator'
 
   # GET /orders
   # GET /orders.json
@@ -13,6 +12,9 @@ class OrdersController < ApplicationController
     if params[:state].present?
       @orders = @orders.where("state = ?", params[:state])
     end
+    if params[:paid].present?
+      @orders = @orders.where("paid = ?", params[:paid])
+    end
   end
 
   # GET /orders/1
@@ -21,7 +23,7 @@ class OrdersController < ApplicationController
     @hasProduct = HasProduct.new
     @order_detail = OrderDetail.new
 
-    if @order.paid == 0
+    if @order.paid == 'No pagado'
       # Quotations
       real = HTTParty.get('https://api.cambio.today/v1/quotes/BRL/PYG/json?quantity=1&key=2291|UcRBwxvE*C~uzgnYu6~ESYN5VbugBB6A')
       peso = HTTParty.get('https://api.cambio.today/v1/quotes/ARS/PYG/json?quantity=1&key=2291|UcRBwxvE*C~uzgnYu6~ESYN5VbugBB6A')
@@ -105,11 +107,6 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  # For print an invoice
-  def print
-
-  end
-
   def pay
     @order = Order.find(params[:id])
     invoice = EndUserInvoice.new(sender: current_user, recipient: @order.client, currency: 'GS', status: 'paid out' )
@@ -126,13 +123,11 @@ class OrdersController < ApplicationController
 
     invoice.save
 
-    @order.paid = 2
+    @order.paid = 'Pagado'
 
     @order.save
 
     redirect_to @order
-    #pdf_creator = Invoicing::LedgerItem::PdfGenerator.new(invoice)
-    #pdf_file = pdf_creator.render Rails.root.join('pdf')
   end
 
   private
@@ -144,6 +139,7 @@ class OrdersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def order_params
-    params.require(:order).permit(:deliver_date, :client_id, :course_club, :logo, :state, :notes, :sponsors)
+    params.require(:order).permit(:deliver_date, :client_id, :course_club,
+                                  :logo, :state, :paid, :notes, :sponsors)
   end
 end

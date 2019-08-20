@@ -6,7 +6,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.string :course_club
       t.string :logo
       t.string :state, default: 'En espera'
-      t.integer :paid, default: 0
+      t.string :paid, default: 'No pagado'
       t.string :notes
 
       t.timestamps

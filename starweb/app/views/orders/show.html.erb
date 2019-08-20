@@ -10,20 +10,35 @@
 
 <hr>
 <div id="page-inner">
-  <% if current_user.is_secretary? %>
-    <% if @order.paid == 2 %>
-      <button class="btn btn-success" disabled>Pagado</button>
-    <% elsif !@order.products.empty? and !@order.order_details.empty? %>
-      <a type="button" class="btn btn-primary" href="/orders/invoice/<%=@order.id%>">Facturar</a>
-      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalPayForeignCurrency">Cobrar en moneda extranjera</button>
-    <% end %>
-    <% if @order.paid == 0 %>
-      <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalProduct"> Agregar producto </button>
-      <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalOrderDetail">Agregar detalles</button>
-    <% end %>
+  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+    <% if current_user.is_secretary? %>
+      <% if @order.paid == 'Pagado' %>
+        <button class="btn btn-success" disabled>Pagado</button>
+      <% elsif !@order.products.empty? and !@order.order_details.empty? %>
+        <a type="button" class="btn btn-primary" href="/orders/invoice/<%=@order.id%>">Facturar</a>
+      <% elsif @order.products.empty? or @order.order_details.empty? %>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modalProduct">Agregar producto</button>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modalOrderDetail">Agregar detalles</button>
+      <% end %>
+    <div class="btn-group" role="group">
+      <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Opciones
+      </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+          <% if @order.paid == 'No pagado' %>
+            <% if !@order.products.empty? and !@order.order_details.empty? %>
+              <a class="dropdown-item" data-toggle="modal" data-target="#modalPayForeignCurrency">Cobrar en moneda extranjera</a>
+              <hr>
+              <a class="dropdown-item" data-toggle="modal" data-target="#modalProduct">Agregar producto</a>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalOrderDetail">Agregar detalles</a>
+            <% end %>
+          <% end %>
+          <%= link_to 'Editar pedido', edit_order_path(@order), class: 'dropdown-item' %>
+        </div>
+    </div>
+    <%end%>
+  </div>
 
-    <%= link_to 'Editar pedido', edit_order_path(@order), class: 'btn btn-link' %>
-  <%end%>
   <div class="row mt-4">
     <div class="col-md-6">
       <h4>Principal</h4>
@@ -32,7 +47,13 @@
         <div class="col-md-6 col-sm-12">
           <div class="card text-center border-primary col-md-12">
             <div class="card-body">
-              <h5 class="card-title mt-3"><b>Pedido</b></h5>
+              <h5 class="card-title mt-3"><b>Pedido</b><br>
+                <% if @order.paid == 'Pagado' %>
+                  <span class="badge badge-success">Pagado</span>
+                <% else %>
+                  <span class="badge badge-warning">No pagado</span>
+                <% end %>
+              </h5>
               <hr>
               <p class="card-text">
                 <b>Fecha de entrega</b><br><%= I18n.l(@order.deliver_date, format: '%d de %B de %Y').upcase %>
@@ -221,7 +242,7 @@
         </div>
       </div>
 
-      <% if @order.paid == 0 %>
+      <% if @order.paid == 'No pagado' %>
         <!-- Modal -->
         <div class="modal fade" id="modalPayForeignCurrency" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">

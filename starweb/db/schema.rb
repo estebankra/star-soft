@@ -142,7 +142,7 @@ ActiveRecord::Schema.define(version: 2019_08_15_211201) do
     t.string "course_club"
     t.string "logo"
     t.string "state", default: "En espera"
-    t.integer "paid", default: 0
+    t.string "paid", default: "No pagado"
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

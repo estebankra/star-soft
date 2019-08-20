@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   has_many :orders, through: :has_products
 
   # Validation
-  validates :name, :price, :image, presence: true
+  # validates :name, :price, :image, presence: true
   validates :price, numericality: true
   validates :description, length: { maximum: 300 }
 
