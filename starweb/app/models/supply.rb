@@ -5,7 +5,7 @@ class Supply < ApplicationRecord
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
 	# Validation
-	validates :name, :image, :stock,  presence: true
+	# validates :name, :image, :stock,  presence: true
 	validates :name, length: { in: 3..100 }
 	validates :description, length: { maximum: 200 }
 end
