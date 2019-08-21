@@ -33,26 +33,12 @@
           </div>
           <hr>
           <% if order.state == 'En espera' %>
-            <% if current_user.is_admin? or current_user.is_secretary? %>
-              <p class='alert bg-danger text-white'><%= order.state %></p>
-            <% elsif current_user.is_team? %>
-              <p class="alert bg-danger text-white"><%= link_to order.state, orders_state_path(order) %></p>
-            <%end%>
-
+            <p class='alert bg-danger text-white'><b><%= order.state %></b></p>
           <% elsif order.state == 'En proceso' %>
-            <% if current_user.is_admin? or current_user.is_secretary? %>
-              <p class='alert bg-warning text-white'><%= order.state %>
-            <% elsif current_user.is_team? %></p>
-              <p class="alert bg-warning text-white"><%= link_to order.state, orders_state_path(order) %></p>
-            <%end%>
-
+            <p class='alert bg-warning'><b><%= order.state %></b>
           <% else order.state == 'Completado' %>
-            <% if current_user.is_admin? or current_user.is_secretary? %>
-              <p class='alert bg-success text-white'><%= order.state %></p>
-            <% elsif current_user.is_team? %>
-              <p class="alert bg-success"><%= link_to order.state, orders_state_path(order) %></p>
-            <%end%>
-          <% end %>
+            <p class='alert bg-success text-white'><b><%= order.state %></b></p>
+          <%end%>
           <div class="card-body">
             <%= link_to '', order, class: 'fas fa-eye mt-2' %>
           </div>
