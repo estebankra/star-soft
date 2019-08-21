@@ -4,7 +4,15 @@ class HasUsedSuppliesController < ApplicationController
   # GET /has_used_supplies
   # GET /has_used_supplies.json
   def index
-    @has_used_supplies = HasUsedSupply.all
+    params[:q] ||= {}
+    if params[:q][:created_at_lteq].present?
+      params[:q][:created_at_lteq] = params[:q][:created_at_lteq].to_date.end_of_day
+    end
+
+    # Filter data by search send by view
+    @q = HasUsedSupply.includes(:order).ransack(params[:q])
+    # Paginate the result
+    @has_used_supplies = @q.result.page(params[:page]).per(params[:per])
   end
 
   # GET /has_used_supplies/1
@@ -26,8 +34,13 @@ class HasUsedSuppliesController < ApplicationController
   def create
     @has_used_supply = HasUsedSupply.new
     @has_used_supply.supplies = params[:supplies]
-    @has_used_supply.discount_stock
+    @has_used_supply.orders = params[:has_used_supply][:order_id]
     @order = Order.find(params[:has_used_supply][:order_id])
+
+    # Discount stock
+    @has_used_supply.discount_stock
+
+    # Update state of order
     @order.state = ('Completado' if @order.state == 'En proceso')
     redirect_to @order if @order.save
   end

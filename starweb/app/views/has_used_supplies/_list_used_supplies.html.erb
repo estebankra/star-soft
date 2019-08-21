@@ -1,0 +1,33 @@
+<div class="row">
+  <% if @has_used_supplies.empty? %>
+    <div class="col-md-4 col-sm-6">
+      <p class="alert alert-warning">No ha encontrado ningún registro</p>
+    </div>
+  <% else %>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <tr>
+          <th>Fecha</th>
+          <th>Cliente</th>
+          <th>Insumo</th>
+          <th>Cantidad Utilizada</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @has_used_supplies.each do |has_used_supply| %>
+          <tr>
+            <td><%= I18n.l(has_used_supply.created_at, format: '%d de %B de %Y') %></td>
+            <td><%= "#{has_used_supply.order.client.first_name} #{has_used_supply.order.client.last_name}" %></td>
+            <td><%= has_used_supply.supply.name %></td>
+            <td><%= has_used_supply.quantity %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+  <%end%>
+  </div>
+</div>
+
+<!-- Pagination -->
+<%= render 'partials/pagination', paginate: @has_used_supplies%>
