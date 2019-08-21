@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :colors
   devise_for :users
   resources :users, only: [:index]
-  resources :invoices, only: [:index, :show]
+  resources :invoicing_ledger_items, only: %i[index show]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'orders#index'

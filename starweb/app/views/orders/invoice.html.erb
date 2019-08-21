@@ -105,10 +105,12 @@
       </div>
       <hr>
     </div>
-    <div id="buttons">
-      <button type="button" class="btn btn-info" data-toggle="modal" disabled data-target="#modalProduct"> Imprimir (Ctrl + P) </button>
-      <a type="button" class="btn btn-primary"  onclick="return confirm('Estás seguro?')" href="/orders/pay/<%=@order.id%>"> Facturar </a>
-    </div>
+    <% if @order.paid == 'No pagado' %>
+      <div id="buttons">
+        <button type="button" class="btn btn-info" data-toggle="modal" disabled data-target="#modalProduct"> Imprimir (Ctrl + P) </button>
+        <a type="button" class="btn btn-primary"  onclick="return confirm('Estás seguro?')" href="/orders/pay/<%=@order.id%>"> Facturar </a>
+      </div>
+    <% end %>
   </div>
 </div>
 
