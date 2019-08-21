@@ -1,31 +1,37 @@
-<p id="notice"><%= notice %></p>
+<h1>Historial de insumos utilizados</h1>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Historial</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Index</li>
+    </ol>
+  </nav>
+</div>
+<hr>
 
-<h1>Has Used Supplies</h1>
+<div class="row mb-2">
+  <!-- New supply -->
+  <div class="col"></div>
+  <!-- Search -->
+  <div class="ml-3 mr-3">
+    <%= search_form_for @q, remote: true, class: 'form-inline' do |f| %>
+      <%= f.search_field :order_client_first_name_or_order_client_last_name_cont, class: 'form-control mr-sm-2', autofocus: true, placeholder: 'Buscar por cliente' %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Order</th>
-      <th>Supply</th>
-      <th>Quantity</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @has_used_supplies.each do |has_used_supply| %>
-      <tr>
-        <td><%= has_used_supply.order %></td>
-        <td><%= has_used_supply.supply %></td>
-        <td><%= has_used_supply.quantity %></td>
-        <td><%= link_to 'Show', has_used_supply %></td>
-        <td><%= link_to 'Edit', edit_has_used_supply_path(has_used_supply) %></td>
-        <td><%= link_to 'Destroy', has_used_supply, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <%= f.submit class: 'btn btn-outline-success my-2 my-sm-0' %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <!-- Filter by date of registry-->
+  <div class="form-inline">
+    <%= search_form_for @q, remote: true do |f| %>
+      Desde: <%= f.search_field :created_at_gteq ,class: 'form-control input-sm', type: 'date' %>
+      Hasta: <%= f.search_field :created_at_lteq, class: 'form-control input-sm', type: 'date' %>
+      <%= f.submit 'Filtrar', class: 'btn btn-outline-success my-2 my-sm-0' %>
+    <% end %>
+  </div>
 
-<br>
+</div>
 
-<%= link_to 'New Has Used Supply', new_has_used_supply_path %>
+<div id="list-used-supplies">
+  <%= render 'list_used_supplies' %>
+</div>
+
+
