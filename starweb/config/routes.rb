@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   mount ReportsKit::Engine, at: '/'
-
   resources :reports, only: [:index]
   resources :has_products
   resources :has_sponsors
@@ -17,6 +16,7 @@ Rails.application.routes.draw do
   get 'orders/pay/:id', to: 'orders#pay'
   resources :currencies, except: [:show]
   resources :quotations
+  resources :has_used_supplies
   resources :clients
   resources :products
   resources :supplies

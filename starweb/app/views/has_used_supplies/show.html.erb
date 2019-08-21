@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @has_used_supply.order %>
+</p>
+
+<p>
+  <strong>Supply:</strong>
+  <%= @has_used_supply.supply %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @has_used_supply.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_has_used_supply_path(@has_used_supply) %> |
+<%= link_to 'Back', has_used_supplies_path %>

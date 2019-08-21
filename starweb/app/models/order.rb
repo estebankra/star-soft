@@ -8,12 +8,11 @@ class Order < ApplicationRecord
   has_many :products, through: :has_products
   has_many :has_details
   has_many :order_details, through: :has_details
-
+  has_many :supplies, through: :has_used_supplies
   # Validations
   validates :course_club, :logo, :deliver_date, presence: true
   validates :course_club, length: { maximum: 50 }
   validates :notes, length: { maximum: 300 }
-
   # Sponsors
   # before_update :clear_sponsors
   before_destroy :clear_sponsors

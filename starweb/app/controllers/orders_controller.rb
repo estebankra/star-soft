@@ -27,6 +27,7 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @hasProduct = HasProduct.new
+    @has_used_supply = HasUsedSupply.new
     @order_detail = OrderDetail.new
 
     if @order.paid == 'No pagado'
@@ -88,10 +89,6 @@ class OrdersController < ApplicationController
     @order.state =
       if @order.state == 'En espera'
         'En proceso'
-      elsif @order.state == 'En proceso'
-        'Completado'
-      elsif @order.state == 'Completado'
-        'En espera'
       end
 
     redirect_to @order if @order.save
