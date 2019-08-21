@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
   before_action :authenticate_user!
+  before_action :authenticate_secretary!
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   # GET /clients

@@ -1,5 +1,6 @@
 class SuppliesController < ApplicationController
   before_action :authenticate_user!
+  before_action :authenticate_secretary!
   before_action :set_supply, only: [:show, :edit, :update, :destroy]
 
   # GET /supplies

@@ -1,5 +1,6 @@
 class HasSponsorsController < ApplicationController
   before_action :set_has_sponsor, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_secretary!
 
   # DELETE /has_sponsors/1
   # DELETE /has_sponsors/1.json

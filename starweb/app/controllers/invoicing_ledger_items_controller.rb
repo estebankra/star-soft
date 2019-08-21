@@ -1,6 +1,6 @@
 class InvoicingLedgerItemsController < ApplicationController
   before_action :authenticate_user!
-
+  before_action :authenticate_secretary!
   def index
     params[:q] ||= {}
     if params[:q][:created_at_lteq].present?
