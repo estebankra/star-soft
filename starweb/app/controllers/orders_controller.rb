@@ -20,9 +20,7 @@ class OrdersController < ApplicationController
     if params[:state].present?
       @orders = @orders.where("state = ?", params[:state])
     end
-    if params[:paid].present?
-      @orders = @orders.where("paid = ?", params[:paid])
-    end
+    @orders = @orders.where("paid = ?", params[:paid]) if params[:paid].present?
   end
 
   # GET /orders/1
@@ -87,17 +85,16 @@ class OrdersController < ApplicationController
 
   def state
     @order = Order.find(params[:id])
-    @order.state = if @order.state == 'En espera'
-      'En proceso'
-    elsif @order.state == 'En proceso'
-      'Completado'
-    else
-      'En espera'
-     end
+    @order.state =
+      if @order.state == 'En espera'
+        'En proceso'
+      elsif @order.state == 'En proceso'
+        'Completado'
+      elsif @order.state == 'Completado'
+        'En espera'
+      end
 
-    if @order.save
-      redirect_to orders_path
-    end
+    redirect_to @order if @order.save
   end
 
   # DELETE /orders/1
