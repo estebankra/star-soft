@@ -13,7 +13,7 @@
   <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
     <% if current_user.is_secretary? %>
       <% if @order.paid == 'Pagado' %>
-        <button class="btn btn-success" disabled>Pagado</button>
+        <a type="button" class="btn btn-success" href="/orders/invoice/<%=@order.id%>">Pagado</a>
       <% elsif !@order.products.empty? and !@order.order_details.empty? %>
         <a type="button" class="btn btn-primary" href="/orders/invoice/<%=@order.id%>">Facturar</a>
       <% elsif @order.products.empty? or @order.order_details.empty? %>

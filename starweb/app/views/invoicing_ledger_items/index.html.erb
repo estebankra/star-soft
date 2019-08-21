@@ -11,7 +11,7 @@
 <div id="page-inner">
 
   <div class="row mb-2">
-    <!-- Search -->
+    <!-- Total in one day -->
     <% total = 0 %>
     <% @invoices.each do |invoice| %>
       <% if invoice.created_at.strftime("%Y/%m/%d") == Date.today.strftime("%Y/%m/%d") %>
@@ -20,12 +20,17 @@
         <% end %>
       <% end %>
     <% end %>
-    <div class="col"><span class="btn btn-outline-success pl-5 pr-5 pt-2"><h3>Ventas hoy: Gs. <%= number_with_delimiter( '%.0f' % total, :delimiter => '.') %></h3></span></div>
+
+    <div class="col"><span class="btn btn-outline-success pl-5 pr-5 pt-2"><h3>Ventas hoy: Gs. <%= number_with_delimiter( '%.0f' % total, :delimiter => '.') %></h3></span>
+    </div>
+    
+
+    <!-- Search -->    
     <div class="mr-3 form-inline">
       <%= search_form_for @q, remote: true do |f| %>
         Desde: <%= f.search_field :created_at_gteq ,class: 'form-control input-sm date', type: 'date' %>
         Hasta: <%= f.search_field :created_at_lteq, class: 'form-control input-sm', type: 'date' %>
-        <%= f.submit class: 'btn btn-outline-success my-2 my-sm-0' %>
+        <%= f.submit 'Filtrar', class: 'btn btn-outline-success my-2 my-sm-0' %>
       <% end %>
     </div>
   </div>

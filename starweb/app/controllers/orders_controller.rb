@@ -7,11 +7,15 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
+    params[:q] ||= {}
+    if params[:q][:deliver_date_lteq].present?
+      params[:q][:deliver_date_lteq] = params[:q][:deliver_date_lteq].to_date.end_of_day
+    end
 
     # Filter data by search send by view
     @q = Order.includes(:client).ransack(params[:q])
     # Paginate the result
-    @orders = @q.result.page params[:page]
+    @orders = @q.result.page(params[:page]).per(params[:per])
 
     if params[:state].present?
       @orders = @orders.where("state = ?", params[:state])
