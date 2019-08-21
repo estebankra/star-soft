@@ -8,7 +8,7 @@ class HasSponsorsController < ApplicationController
     @order = Order.find(@has_sponsor.order_id)
     @has_sponsor.destroy
     respond_to do |format|
-      format.html { redirect_to @order, notice: 'El auspiciante se retiro del pedido correctamente.' }
+      format.html { redirect_to @order, notice: 'El auspiciante se retiró del pedido correctamente.' }
       format.json { head :no_content }
     end
   end

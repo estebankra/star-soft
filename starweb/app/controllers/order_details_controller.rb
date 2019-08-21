@@ -29,7 +29,7 @@ class OrderDetailsController < ApplicationController
 
     respond_to do |format|
       if @order_detail.save
-        format.html {redirect_to @order, notice: 'Order detail was successfully created.'}
+        format.html {redirect_to @order, notice: 'El detalle se agregó correctamente.'}
         format.json {render :show, status: :created, location: @order_detail}
       else
         format.html {render :new}
@@ -64,7 +64,7 @@ class OrderDetailsController < ApplicationController
     @order_detail.destroy
 
     respond_to do |format|
-      format.html {redirect_to order, notice: 'Order detail was successfully destroyed.'}
+      format.html {redirect_to order, notice: 'El detalle se eliminó correctamente.'}
       format.json {head :no_content}
     end
   end

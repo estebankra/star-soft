@@ -2,8 +2,8 @@ class Order < ApplicationRecord
   # Relations
   belongs_to :client
   delegate :first_name, :last_name, :doc_ruc, to: :client, prefix: true
-  has_many :has_sponsors
-  has_many :sponsors, through: :has_sponsors
+  has_many :has_sponsors, dependent: :destroy
+  has_many :sponsors, through: :has_sponsors, dependent: :destroy
   has_many :has_products
   has_many :products, through: :has_products
   has_many :has_details

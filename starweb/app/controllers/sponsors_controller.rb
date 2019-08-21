@@ -31,7 +31,7 @@ class SponsorsController < ApplicationController
 
     respond_to do |format|
       if @sponsor.save
-        format.html { redirect_to sponsors_url, notice: 'Sponsor was successfully created.' }
+        format.html { redirect_to sponsors_url, notice: 'El auspiciante se creó correctamente.' }
         format.json { render :show, status: :created, location: sponsors_url }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class SponsorsController < ApplicationController
   def update
     respond_to do |format|
       if @sponsor.update(sponsor_params)
-        format.html { redirect_to sponsors_url, notice: 'Sponsor was successfully updated.' }
+        format.html { redirect_to sponsors_url, notice: 'El auspiciante se actualizó correctamente.' }
         format.json { render :show, status: :ok, location: sponsors_url }
       else
         format.html { render :edit }
@@ -69,7 +69,7 @@ class SponsorsController < ApplicationController
   def destroy
     @sponsor.destroy
     respond_to do |format|
-      format.html { redirect_to sponsors_url, notice: 'Sponsor was successfully destroyed.' }
+      format.html { redirect_to sponsors_url, notice: 'El auspiciante se eliminó correctamente.' }
       format.json { head :no_content }
     end
   end
