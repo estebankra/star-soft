@@ -2,6 +2,8 @@ class OrdersController < ApplicationController
   require 'httparty'
 
   before_action :authenticate_user!
+  before_action :authenticate_secretary!, only: [:new, :edit, :create, :update, :destroy, :invoice, :pay]
+  before_action :authenticate_team!, only: [:state]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders

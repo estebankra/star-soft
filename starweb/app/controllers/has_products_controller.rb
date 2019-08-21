@@ -1,5 +1,6 @@
 class HasProductsController < ApplicationController
   before_action :set_has_product, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_secretary!
 
   # GET /has_products
   # GET /has_products.json
