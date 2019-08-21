@@ -62,7 +62,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order successfully created.' }
+        format.html { redirect_to @order, notice: 'El pedido se creó correctamente.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -77,7 +77,7 @@ class OrdersController < ApplicationController
     @order.sponsors = params[:sponsors]
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to @order, notice: 'El pedido se actualizó correctamente.' }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }

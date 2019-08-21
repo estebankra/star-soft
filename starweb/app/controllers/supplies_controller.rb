@@ -29,7 +29,7 @@ class SuppliesController < ApplicationController
 
     respond_to do |format|
       if @supply.save
-        format.html { redirect_to supplies_url, notice: 'Supply was successfully created.' }
+        format.html { redirect_to supplies_url, notice: 'El insumo se creó correctamente.' }
         format.json { render :show, status: :created, location: supplies_url }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class SuppliesController < ApplicationController
   def update
     respond_to do |format|
       if @supply.update(supply_params)
-        format.html { redirect_to supplies_url, notice: 'Supply was successfully updated.' }
+        format.html { redirect_to supplies_url, notice: 'El insumo se actualizó correctamente.' }
         format.json { render :show, status: :ok, location: supplies_url }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class SuppliesController < ApplicationController
   def destroy
     @supply.destroy
     respond_to do |format|
-      format.html { redirect_to supplies_url, notice: 'Supply was successfully destroyed.' }
+      format.html { redirect_to supplies_url, notice: 'El insumo se eliminó correctamente.' }
       format.json { head :no_content }
     end
   end
