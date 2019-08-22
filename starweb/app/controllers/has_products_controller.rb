@@ -72,6 +72,6 @@ class HasProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def has_product_params
-      params.require(:has_product).permit(:order_id, :product_id, :specs_f, :specs_b, :quantity, :color, :design)
+      params.require(:has_product).permit(:order_id, :product_id, :specs_f, :specs_b, :quantity)
     end
 end
