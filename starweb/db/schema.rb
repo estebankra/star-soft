@@ -16,21 +16,15 @@ ActiveRecord::Schema.define(version: 2019_08_21_133955) do
   enable_extension "plpgsql"
 
   create_table "clients", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "doc_ruc"
-    t.integer "phone"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "doc_ruc", null: false
+    t.integer "phone", null: false
     t.date "date_nac"
     t.string "email"
     t.string "city"
     t.string "country"
     t.boolean "in_trash", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "currencies", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,8 +44,6 @@ ActiveRecord::Schema.define(version: 2019_08_21_133955) do
     t.string "specs_f"
     t.string "specs_b"
     t.integer "quantity"
-    t.string "color"
-    t.string "design"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "design_file_name"
@@ -138,7 +130,7 @@ ActiveRecord::Schema.define(version: 2019_08_21_133955) do
   end
 
   create_table "order_details", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "number"
     t.string "size"
     t.datetime "created_at", null: false
@@ -148,9 +140,9 @@ ActiveRecord::Schema.define(version: 2019_08_21_133955) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.date "deliver_date"
-    t.bigint "client_id"
-    t.string "course_club"
+    t.date "deliver_date", null: false
+    t.bigint "client_id", null: false
+    t.string "course_club", null: false
     t.string "logo"
     t.string "state", default: "En espera"
     t.string "paid", default: "No pagado"
@@ -166,8 +158,8 @@ ActiveRecord::Schema.define(version: 2019_08_21_133955) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.decimal "price", precision: 20, scale: 4
+    t.string "name", null: false
+    t.decimal "price", precision: 20, scale: 4, null: false
     t.string "image"
     t.string "description"
     t.boolean "in_trash", default: false
@@ -179,23 +171,8 @@ ActiveRecord::Schema.define(version: 2019_08_21_133955) do
     t.datetime "image_updated_at"
   end
 
-  create_table "quotations", force: :cascade do |t|
-    t.bigint "currency_id"
-    t.string "purchase"
-    t.string "sale"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["currency_id"], name: "index_quotations_on_currency_id"
-  end
-
-  create_table "reports", force: :cascade do |t|
-    t.integer "num_clients"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "sponsors", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "image"
     t.boolean "in_trash", default: false
     t.datetime "created_at", null: false
@@ -207,9 +184,9 @@ ActiveRecord::Schema.define(version: 2019_08_21_133955) do
   end
 
   create_table "supplies", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "image"
-    t.integer "stock"
+    t.integer "stock", null: false
     t.string "description"
     t.boolean "in_trash", default: false
     t.datetime "created_at", null: false
@@ -264,5 +241,4 @@ ActiveRecord::Schema.define(version: 2019_08_21_133955) do
   add_foreign_key "has_used_supplies", "orders"
   add_foreign_key "has_used_supplies", "supplies"
   add_foreign_key "orders", "clients"
-  add_foreign_key "quotations", "currencies"
 end

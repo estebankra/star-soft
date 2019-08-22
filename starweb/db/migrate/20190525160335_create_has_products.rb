@@ -6,8 +6,6 @@ class CreateHasProducts < ActiveRecord::Migration[5.2]
       t.string :specs_f
       t.string :specs_b
       t.integer :quantity
-      t.string :color
-      t.string :design
 
       t.timestamps
     end
