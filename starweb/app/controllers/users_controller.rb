@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_admin!
   def index
-    @q = User.ransack(params[:q])
+    @q = User.where.not(id: current_user.id).ransack(params[:q])
     @users = @q.result.page params[:page]
   end
 
