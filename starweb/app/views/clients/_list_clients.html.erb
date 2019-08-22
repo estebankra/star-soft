@@ -30,7 +30,14 @@
             <td><%= client.email %></td>
             <td><%= client.city %></td>
             <td><%= client.country %></td>
-            <td><%= link_to '', edit_client_path(client), class: 'fas fa-edit' %>  <%= link_to '' , client, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>
+            <td>
+              <% if client.in_trash == false %>
+                  <%= link_to '', edit_client_path(client), class: 'fas fa-edit' %>
+                  <%= link_to '' , client, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %>
+              <% else %>
+                  <%= link_to '' , client, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-recycle"  %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
         </tbody>

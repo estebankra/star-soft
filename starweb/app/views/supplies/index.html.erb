@@ -14,6 +14,7 @@
       <%= link_to 'Nuevo', new_supply_path, class: 'btn btn-primary' %>
     </div>
     <!-- Search -->
+    <%= link_to(raw("<i class='fas fa-trash fa-lg'></i>"), supplies_trash_url, class: "btn btn-secondary mr-3") %>
     <%= render 'partials/search_by_name', q: @q %>
   </div>
   <div id="list_supplies">

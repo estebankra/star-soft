@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_08_21_133955) do
     t.string "email"
     t.string "city"
     t.string "country"
+    t.boolean "in_trash", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -154,6 +155,7 @@ ActiveRecord::Schema.define(version: 2019_08_21_133955) do
     t.string "state", default: "En espera"
     t.string "paid", default: "No pagado"
     t.string "notes"
+    t.boolean "in_trash", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "logo_file_name"
@@ -168,6 +170,7 @@ ActiveRecord::Schema.define(version: 2019_08_21_133955) do
     t.decimal "price", precision: 20, scale: 4
     t.string "image"
     t.string "description"
+    t.boolean "in_trash", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_file_name"
@@ -194,6 +197,7 @@ ActiveRecord::Schema.define(version: 2019_08_21_133955) do
   create_table "sponsors", force: :cascade do |t|
     t.string "name"
     t.string "image"
+    t.boolean "in_trash", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_file_name"
@@ -207,6 +211,7 @@ ActiveRecord::Schema.define(version: 2019_08_21_133955) do
     t.string "image"
     t.integer "stock"
     t.string "description"
+    t.boolean "in_trash", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_file_name"

@@ -9,6 +9,7 @@ class CreateClients < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :city
       t.string :country
+      t.boolean :in_trash, default: false
 
       t.timestamps
     end

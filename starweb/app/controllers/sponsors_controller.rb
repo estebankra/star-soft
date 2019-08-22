@@ -6,7 +6,12 @@ class SponsorsController < ApplicationController
   # GET /sponsors
   # GET /sponsors.json
   def index
-    @q = Sponsor.ransack(params[:q])
+    @q = Sponsor.where(in_trash: false).ransack(params[:q])
+    @sponsors = @q.result.page params[:page]
+  end
+
+  def trash
+    @q = Sponsor.where(in_trash: true).ransack(params[:q])
     @sponsors = @q.result.page params[:page]
   end
 
@@ -67,7 +72,8 @@ class SponsorsController < ApplicationController
   # DELETE /sponsors/1
   # DELETE /sponsors/1.json
   def destroy
-    @sponsor.destroy
+    @sponsor.in_trash = @sponsor.in_trash == false
+    @sponsor.save
     respond_to do |format|
       format.html { redirect_to sponsors_url, notice: 'El auspiciante se eliminó correctamente.' }
       format.json { head :no_content }

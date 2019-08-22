@@ -1,19 +1,25 @@
+# frozen_string_literal: true
+
 class ClientsController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_secretary!
-  before_action :set_client, only: [:show, :edit, :update, :destroy]
+  before_action :set_client, only: %i[show edit update destroy]
 
   # GET /clients
   # GET /clients.json
   def index
-    @q = Client.ransack(params[:q])
+    @q = Client.where(in_trash: false).ransack(params[:q])
+    @clients = @q.result.page params[:page]
+  end
+
+  def trash
+    @q = Client.where(in_trash: true).ransack(params[:q])
     @clients = @q.result.page params[:page]
   end
 
   # GET /clients/1
   # GET /clients/1.json
-  def show
-  end
+  def show; end
 
   # GET /clients/new
   def new
@@ -21,8 +27,7 @@ class ClientsController < ApplicationController
   end
 
   # GET /clients/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /clients
   # POST /clients.json
@@ -57,7 +62,9 @@ class ClientsController < ApplicationController
   # DELETE /clients/1
   # DELETE /clients/1.json
   def destroy
-    @client.destroy
+    @client.in_trash = @client.in_trash == false
+    @client.save
+
     respond_to do |format|
       format.html { redirect_to clients_url, notice: 'El cliente se eliminó correctamente.' }
       format.json { head :no_content }
@@ -66,12 +73,12 @@ class ClientsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_client
-      @client = Client.find(params[:id])
-    end
+  def set_client
+    @client = Client.find(params[:id])
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def client_params
-      params.require(:client).permit(:first_name, :last_name, :doc_ruc, :phone, :date_nac, :email, :city, :country, :term)
-    end
+  def client_params
+    params.require(:client).permit(:first_name, :last_name, :doc_ruc, :phone, :date_nac, :email, :city, :country, :term)
+  end
 end

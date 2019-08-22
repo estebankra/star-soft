@@ -9,7 +9,6 @@ class Product < ApplicationRecord
   validates :description, length: { maximum: 300 }
 
   # before_update :clear_supplies
-  before_destroy :clear_supplies
   after_create :save_supplies
   after_update :save_supplies
 
@@ -33,12 +32,6 @@ class Product < ApplicationRecord
           HasSupply.create(supply_id: supply_id, product_id: self.id )
         end
       end
-    end
-  end
-
-  def clear_supplies
-    HasSupply.all.each do | has_supply |
-      HasSupply.destroy(has_supply.id) if has_supply.product_id == self.id
     end
   end
 end

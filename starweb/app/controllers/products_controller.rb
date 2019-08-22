@@ -5,7 +5,13 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @q = Product.ransack(params[:q])
+    @q = Product.where(in_trash: false).ransack(params[:q])
+    @products = @q.result.page params[:page]
+    @has_supplies = HasSupply.all
+  end
+
+  def trash
+    @q = Product.where(in_trash: true).ransack(params[:q])
     @products = @q.result.page params[:page]
     @has_supplies = HasSupply.all
   end
@@ -59,8 +65,8 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    @product.destroy
-    @supplies = Supply.all
+    @product.in_trash = @product.in_trash == false
+    @product.save
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'El producto se eliminó correctamente.' }
       format.json { head :no_content }

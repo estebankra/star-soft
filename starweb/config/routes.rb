@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   get 'orders/invoice/:id', to: 'orders#invoice'
   get 'orders/half/:id', to: 'orders#half'
   get 'orders/pay/:id', to: 'orders#pay'
+  get 'sponsors/trash', to: 'sponsors#trash', as: 'sponsors_trash'
+  get 'clients/trash', to: 'clients#trash', as: 'clients_trash'
+  get 'supplies/trash', to: 'supplies#trash', as: 'supplies_trash'
+  get 'products/trash', to: 'products#trash', as: 'products_trash'
+  get 'orders/trash', to: 'orders#trash', as: 'orders_trash'
   resources :currencies, except: [:show]
   resources :quotations
   resources :has_used_supplies

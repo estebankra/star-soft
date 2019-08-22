@@ -5,6 +5,7 @@ class CreateSupplies < ActiveRecord::Migration[5.2]
       t.string :image
       t.integer :stock
       t.string :description
+      t.boolean :in_trash, default: false
 
       t.timestamps
     end
