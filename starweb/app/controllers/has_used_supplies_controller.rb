@@ -11,7 +11,7 @@ class HasUsedSuppliesController < ApplicationController
     end
 
     # Filter data by search send by view
-    @q = HasUsedSupply.includes(:order).ransack(params[:q])
+    @q = HasUsedSupply.includes(:order, :supply).ransack(params[:q])
     # Paginate the result
     @has_used_supplies = @q.result.page(params[:page]).per(params[:per])
   end

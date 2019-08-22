@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   def index
     @q = Product.where(in_trash: false).ransack(params[:q])
     @products = @q.result.page params[:page]
-    @has_supplies = HasSupply.all
+    @has_supplies = HasSupply.includes(:product, :supply)
   end
 
   def trash
