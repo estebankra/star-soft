@@ -8,6 +8,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.string :state, default: 'En espera'
       t.string :paid, default: 'No pagado'
       t.string :notes
+      t.boolean :in_trash, default: false
 
       t.timestamps
     end

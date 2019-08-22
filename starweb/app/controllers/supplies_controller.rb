@@ -6,7 +6,12 @@ class SuppliesController < ApplicationController
   # GET /supplies
   # GET /supplies.json
   def index
-    @q = Supply.ransack(params[:q])
+    @q = Supply.where(in_trash: false).ransack(params[:q])
+    @supplies = @q.result.page params[:page]
+  end
+
+  def trash
+    @q = Supply.where(in_trash: true).ransack(params[:q])
     @supplies = @q.result.page params[:page]
   end
 
@@ -55,7 +60,8 @@ class SuppliesController < ApplicationController
   # DELETE /supplies/1
   # DELETE /supplies/1.json
   def destroy
-    @supply.destroy
+    @supply.in_trash = @supply.in_trash == false
+    @supply.save
     respond_to do |format|
       format.html { redirect_to supplies_url, notice: 'El insumo se eliminó correctamente.' }
       format.json { head :no_content }

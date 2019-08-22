@@ -13,9 +13,9 @@ class Order < ApplicationRecord
   validates :course_club, :logo, :deliver_date, presence: true
   validates :course_club, length: { maximum: 50 }
   validates :notes, length: { maximum: 300 }
+
   # Sponsors
   # before_update :clear_sponsors
-  before_destroy :clear_sponsors
   after_create :save_sponsors
   after_update :save_sponsors
 

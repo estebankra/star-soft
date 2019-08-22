@@ -8,7 +8,7 @@
 
   <h3><%= form.label 'Insumos necesarios'%></h3>
   <select class="multiple-supplies" name="supplies[]" multiple="multiple">
-    <% Supply.all.each do |supply| %>
+    <% Supply.where(in_trash: false).each do |supply| %>
       <option value="<%= supply.id %>"><%= supply.name %></option>
     <%end%>
   </select>

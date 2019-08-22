@@ -46,7 +46,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
-    @sponsors = Sponsor.all
+    @sponsors = Sponsor.where(in_trash: false)
   end
 
   # GET /orders/1/edit
@@ -99,8 +99,8 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
-    @order.destroy
-    @sponsors = Sponsor.all
+    @order.in_trash = @order.in_trash == false
+    @order.save
     respond_to do |format|
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
