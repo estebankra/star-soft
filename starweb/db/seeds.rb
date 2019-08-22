@@ -23,7 +23,7 @@ end
 end
 
 # Add images
-Sponsor.all.each { |sponsor| sponsor.image = File.open(Dir['app/assets/images/*.jpg'].sample); sponsor.save! }
+Sponsor.all.each { |sponsor| sponsor.image = File.open(Dir['app/assets/images/sponsors/*.jpg'].sample); sponsor.save! }
 
 # Create 30 supplies
 30.times do
@@ -34,7 +34,7 @@ Sponsor.all.each { |sponsor| sponsor.image = File.open(Dir['app/assets/images/*.
 end
 
 # Add images
-Supply.all.each { |suply| suply.image = File.open(Dir['app/assets/images/*.jpg'].sample); suply.save! }
+Supply.all.each { |suply| suply.image = File.open(Dir['app/assets/images/supplies/*.jpg'].sample); suply.save! }
 
 # Create 30 products
 30.times do
@@ -45,7 +45,7 @@ Supply.all.each { |suply| suply.image = File.open(Dir['app/assets/images/*.jpg']
 end
 
 # Add images
-Product.all.each { |product| product.image = File.open(Dir['app/assets/images/*.jpg'].sample); product.save! }
+Product.all.each { |product| product.image = File.open(Dir['app/assets/images/products/*.jpg'].sample); product.save! }
 
 # For users of system
 User.transaction do
