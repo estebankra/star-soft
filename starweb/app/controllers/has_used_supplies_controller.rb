@@ -1,5 +1,5 @@
 class HasUsedSuppliesController < ApplicationController
-  before_action :authenticate_secretary!
+  before_action :authenticate_secretary!, only: [:show, :edit, :update, :destroy]
   before_action :set_has_used_supply, only: [:show, :edit, :update, :destroy]
 
   # GET /has_used_supplies
