@@ -36,7 +36,7 @@
       <span class="select2-selection__choice__remove" role="presentation">×</span>Gorgeous Rubber Wallet</li>
     </ul>
 
-    <% @sponsors.each do |sponsor| %>
+    <% Sponsor.where(in_trash: false).each do |sponsor| %>
       <option value="<%= sponsor.id %>"><%= sponsor.name %></option>
     <%end%>
   </select>

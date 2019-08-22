@@ -1,4 +1,4 @@
-class Order < ApplicationRecord
+  class Order < ApplicationRecord
   # Relations
   belongs_to :client
   delegate :first_name, :last_name, :doc_ruc, to: :client, prefix: true
@@ -9,6 +9,7 @@ class Order < ApplicationRecord
   has_many :has_details
   has_many :order_details, through: :has_details
   has_many :supplies, through: :has_used_supplies
+
   # Validations
   validates :course_club, :logo, :deliver_date, presence: true
   validates :course_club, length: { maximum: 50 }

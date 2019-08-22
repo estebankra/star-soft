@@ -5,6 +5,6 @@ class Sponsor < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   # Validation
-  # validates :name, :image,  presence: true
+  # validates :name, :image, presence: true
   validates :name, length: { in: 2..100 }
 end

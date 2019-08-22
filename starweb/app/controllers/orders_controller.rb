@@ -44,7 +44,6 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
-    @sponsors = Sponsor.where(in_trash: false)
   end
 
   # GET /orders/1/edit
