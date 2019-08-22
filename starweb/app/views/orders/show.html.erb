@@ -119,6 +119,7 @@
                     <th>Número</th>
                     <th>Tamaño</th>
                     <th>Cantidad</th>
+                    <th>Notas</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -128,6 +129,7 @@
                     <td><%= order_detail.number %></td>
                     <td><%= order_detail.size %><br>
                     <td><%= order_detail.quantity %><br>
+                    <td><%= order_detail.notes %><br>
                       <% if current_user.is_secretary? %>
                         <% if @order.paid == 'No pagado' %>
                           <td style="width: 20px;"><%= link_to '' , order_detail, method: :delete, data: { confirm: 'Estás seguro?' }, class: "fas fa-trash"  %></td>
@@ -154,7 +156,7 @@
               <div class="card border-primary col-md-12">
                 <div class="row no-gutters">
                     <div class="col-md-4 mt-4">
-                      <%= image_tag hasProduct.product_image.url(:thumb), class: 'card-img' %>
+                      <%= image_tag hasProduct.product_image.url(:original), class: 'card-img' %>
                     </div>
                     <div class="col-md-6 ml-3">
                       <div class="card-body">
@@ -285,15 +287,15 @@
 
                 <div class="row text-center">
                   <div class="col-md-4">
-                    <h4><%= image_tag("brasil.jpg", :alt => "rss feed") %> <br> <%= '%.2f' % (total / real) %> reales </h4>
+                    <h4><%= image_tag("currencies/brasil.jpg", :alt => "rss feed") %> <br> <%= '%.2f' % (total / real) %> reales </h4>
                   </div>
 
                   <div class="col-md-4">
-                    <h4><%= image_tag("argentina.jpg", :alt => "rss feed") %> <br> <%= '%.2f' % (total / peso) %> pesos </h4>
+                    <h4><%= image_tag("currencies/argentina.jpg", :alt => "rss feed") %> <br> <%= '%.2f' % (total / peso) %> pesos </h4>
                   </div>
 
                   <div class="col-md-4">
-                    <h4><%= image_tag("eeuu.jpg", :alt => "rss feed") %> <br> <%= '%.2f' % (total / dolar) %> dólares </h4>
+                    <h4><%= image_tag("currencies/eeuu.jpg", :alt => "rss feed") %> <br> <%= '%.2f' % (total / dolar) %> dólares </h4>
                   </div>
                 </div>
                 <div class="modal-footer">
