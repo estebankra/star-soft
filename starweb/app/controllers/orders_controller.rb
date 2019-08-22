@@ -113,7 +113,6 @@ class OrdersController < ApplicationController
     invoice = EndUserInvoice.new(sender: current_user, recipient: @order.client, currency: 'GS', status: 'paid out' )
 
     total = 0
-
     @order.has_products.each do |hasProduct|
       invoice.line_items.build(description: hasProduct.product.name,
                                net_amount: hasProduct.product.price, quantity: hasProduct.quantity, tax_amount: 0)
@@ -121,11 +120,8 @@ class OrdersController < ApplicationController
     end
 
     invoice.total_amount = 0
-
     invoice.save
-
     @order.paid = 'Pagado'
-
     @order.save
 
     redirect_to @order

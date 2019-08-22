@@ -1,4 +1,4 @@
 class HasSponsor < ApplicationRecord
-  belongs_to :order, dependent: :destroy
-  belongs_to :sponsor, dependent: :destroy
+  belongs_to :order
+  belongs_to :sponsor
 end

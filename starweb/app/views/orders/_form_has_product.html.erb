@@ -1,50 +1,25 @@
-<%= form_with(model: has_product, local: true) do |form| %>
-<% if has_product.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(has_product.errors.count, "error") %> prohibited this has_product from being saved:</h2>
+<%= simple_form_for has_product, defaults: { label_html: { class: 'font-weight-bold' } }, remote: true do |form| %>
+  <%= form.error_notification %>
 
-  <ul>
-    <% has_product.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
-
-<div class="field">
   <%= form.hidden_field :order_id, value: order.id %>
-</div>
 
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Producto</label>
-    <%= form.select :product_id, Product.where(in_trash: false).collect {|p| [ "#{p.name} -- GS. #{number_with_delimiter(p.price, :delimiter => ',')}", p.id ] }, {prompt: 'Selecciona el producto'}, class: 'form-control', id: 'e3' %>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inputGroupSelect01">Producto</label>
+      <%= form.select :product_id, Product.where(in_trash: false).collect {|p| [ "#{p.name} -- GS. #{number_with_delimiter(p.price, :delimiter => ',')}", p.id ] }, {prompt: 'Selecciona el producto'}, class: 'form-control', id: 'e3' %>
+    </div>
   </div>
-</div>
 
+  <%= form.input :specs_f, as: :text, label: 'Especificaciones frontal' %>
 
-<div class="field">
-  <%= form.label 'Especificaciones frontal' %>
-  <%= form.text_area :specs_f, class: 'form-control' %>
-</div>
+  <%= form.input :specs_b, as: :text, label: 'Especificaciones dorso' %>
 
-<div class="field">
-  <%= form.label 'Especificaciones dorso' %>
-  <%= form.text_area :specs_b, class: 'form-control'%>
-</div>
+  <%= form.input :quantity, label: 'Cantidad', input_html: {value: form.object.quantity || '1'} %>
 
-<div class="field">
-  <%= form.label 'Cantidad' %>
-  <%= form.number_field :quantity, class: 'form-control' %>
-</div>
+  <%= form.input :notes, label: 'Notas', as: :text %>
 
-<div class="field">
-  <%= form.label 'Notas' %>
-  <%= form.text_area :color, class: 'form-control' %>
-</div><br>
-<div class="modal-footer">
   <%= form.submit 'Guardar', class: 'btn btn-primary' %>
-</div>
+
 <% end %>
 
 <script type="text/javascript">
