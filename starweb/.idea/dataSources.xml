@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="Rails starweb: development" uuid="984278cf-10c0-46ab-9f55-fffffdd26398">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/starweb_development</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails starweb: test" uuid="ce39b477-2cbe-48c5-9620-f0ad2829ccf4">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/starweb_test</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails starweb: production" uuid="41de2a80-1ef5-442f-9b92-50935b33bee9">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/starweb_production</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails fuzzy logic" uuid="481aff21-8d6a-49cb-b399-bb143c9d763e">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/../../students-desertion-app/config/database.ymldatabase.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/fuzzy_development</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="PostgreSQL - postgres@localhost" uuid="c7385327-d481-4102-abb6-cc279ec6314f">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
+    </data-source>
+  </component>
+</project>

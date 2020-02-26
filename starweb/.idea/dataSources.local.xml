@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails starweb: development" uuid="984278cf-10c0-46ab-9f55-fffffdd26398">
+      <database-info product="PostgreSQL" version="11.7 (Ubuntu 11.7-0ubuntu0.19.10.1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.5" dbms="POSTGRES" exact-version="11.7" exact-driver-version="42.2">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <user-name>postgres</user-name>
+      <schema-mapping />
+    </data-source>
+    <data-source name="Rails starweb: test" uuid="ce39b477-2cbe-48c5-9620-f0ad2829ccf4">
+      <database-info product="PostgreSQL" version="11.7 (Ubuntu 11.7-0ubuntu0.19.10.1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.5" dbms="POSTGRES" exact-version="11.7" exact-driver-version="42.2">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <user-name>postgres</user-name>
+      <schema-mapping />
+    </data-source>
+    <data-source name="Rails starweb: production" uuid="41de2a80-1ef5-442f-9b92-50935b33bee9">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="POSTGRES" exact-version="0" />
+      <user-name>starweb</user-name>
+      <schema-mapping />
+    </data-source>
+    <data-source name="Rails fuzzy logic" uuid="481aff21-8d6a-49cb-b399-bb143c9d763e">
+      <database-info product="PostgreSQL" version="11.7 (Ubuntu 11.7-0ubuntu0.19.10.1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.5" dbms="POSTGRES" exact-version="11.7" exact-driver-version="42.2">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <user-name>estebankra</user-name>
+      <schema-mapping />
+    </data-source>
+    <data-source name="PostgreSQL - postgres@localhost" uuid="c7385327-d481-4102-abb6-cc279ec6314f">
+      <database-info product="PostgreSQL" version="11.7 (Ubuntu 11.7-0ubuntu0.19.10.1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.5" dbms="POSTGRES" exact-version="11.7" exact-driver-version="42.2">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <schema-mapping />
+    </data-source>
+  </component>
+</project>

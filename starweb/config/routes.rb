@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'dashboard/home'
   mount ReportsKit::Engine, at: '/'
   resources :reports, only: [:index]
   resources :has_products
